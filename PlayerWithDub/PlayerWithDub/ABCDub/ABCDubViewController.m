@@ -38,9 +38,9 @@
 @implementation ABCDubViewController
 
 - (void)configData {
-    _mp4FilePath = [[NSBundle mainBundle] pathForResource:@"幻想中的无敌神鹰" ofType:@"mp4"];
-    _mp3FilePath = [[NSBundle mainBundle] pathForResource:@"幻想中的无敌神鹰" ofType:@"mp3"];
-    _srtFilePath = [[NSBundle mainBundle] pathForResource:@"幻想中的无敌神鹰" ofType:@"srt"];
+    _mp4FilePath = [[NSBundle mainBundle] pathForResource:TestSourceName ofType:@"mp4"];
+    _mp3FilePath = [[NSBundle mainBundle] pathForResource:TestSourceName ofType:@"mp3"];
+    _srtFilePath = [[NSBundle mainBundle] pathForResource:TestSourceName ofType:@"srt"];
 }
 
 - (void)viewDidLoad {
@@ -96,7 +96,7 @@
     NSString *fileName = [NSString stringWithFormat:@"%ld.mp3", self.selectedIndexPath.row];
     
     __weak typeof(self) weakself = self;
-    [[ABCDubHelper sharedInstance] recordAudioWithResourceId:@"1001" mp3FileName:fileName duration:self.selectedSegment.duration completion:^(NSURL *url, NSError *error) {
+    [[ABCDubHelper sharedInstance] recordAudioWithResourceId:TestSourceId mp3FileName:fileName duration:self.selectedSegment.duration completion:^(NSURL *url, NSError *error) {
         if (url) {
             [weakself playAudioWithUrl:url];
         }
@@ -128,7 +128,7 @@
 - (void)previewDub {
     [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
     __weak typeof(self) weakself = self;
-    [[ABCDubHelper sharedInstance] composeWithResourceId:@"1001" subAudioInfos:self.viewModel.captions completion:^(NSURL *url, NSError *error) {
+    [[ABCDubHelper sharedInstance] composeWithResourceId:TestSourceId subAudioInfos:self.viewModel.captions completion:^(NSURL *url, NSError *error) {
         [MBProgressHUD hideHUDForView:weakself.view.window animated:YES];
         if (url) {
             [weakself playComposedVideoWithUrl:url];

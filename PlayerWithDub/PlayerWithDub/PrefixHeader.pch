@@ -14,6 +14,8 @@
 #define APP_TEST (FALSE)
 #else
 #define APP_TEST (TRUE)
+#define TestSourceId (@"1002")
+#define TestSourceName (@"幻想中的无敌神鹰")
 #endif
 
 #ifdef __OBJC__

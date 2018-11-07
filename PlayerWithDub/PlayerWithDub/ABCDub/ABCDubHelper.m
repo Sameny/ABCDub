@@ -143,13 +143,13 @@ static ABCDubHelper *sharedDubHepler;
 }
 
 - (ABCMediaComposeUnit *)videoUnitWithResourceId:(NSString *)resourceId {
-    NSString *mp4FilePath = [[NSBundle mainBundle] pathForResource:@"幻想中的无敌神鹰" ofType:@"mp4"];
+    NSString *mp4FilePath = [[NSBundle mainBundle] pathForResource:TestSourceName ofType:@"mp4"];
     ABCMediaComposeUnit *videoUnit = [[ABCMediaComposeUnit alloc] initWithUrl:[NSURL fileURLWithPath:mp4FilePath] mediaType:(AVMediaTypeVideo) beginTime:kCMTimeZero timeRange:kABCAssetTimeRange];
     return videoUnit;
 }
 
 - (ABCMediaComposeUnit *)baseAudioUnitWithResourceId:(NSString *)resourceId {
-    NSString *mp4FilePath = [[NSBundle mainBundle] pathForResource:@"幻想中的无敌神鹰" ofType:@"mp3"];
+    NSString *mp4FilePath = [[NSBundle mainBundle] pathForResource:TestSourceName ofType:@"mp3"];
     ABCMediaComposeUnit *videoUnit = [[ABCMediaComposeUnit alloc] initWithUrl:[NSURL fileURLWithPath:mp4FilePath] mediaType:(AVMediaTypeAudio) beginTime:kCMTimeZero timeRange:kABCAssetTimeRange];
     return videoUnit;
 }
