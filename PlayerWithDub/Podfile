@@ -1,0 +1,19 @@
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '8.0'
+
+use_frameworks!
+
+target 'PlayerWithDub' do
+
+    pod 'Masonry'
+    pod 'MBProgressHUD'
+    pod 'YYCategories'
+    pod 'YYModel'
+    pod 'AFNetworking'
+    pod 'SDWebImage'
+    pod 'MJRefresh'
+    pod 'KeyboardToolBar', '2.0.1'
+    pod 'UICountingLabel'
+end

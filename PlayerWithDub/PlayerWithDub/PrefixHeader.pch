@@ -1,0 +1,31 @@
+//
+//  PrefixHeader.pch
+//  PlayerWithDub
+//
+//  Created by 泽泰 舒 on 2018/11/6.
+//  Copyright © 2018年 泽泰 舒. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+//#define RELEASE_APP
+#ifdef RELEASE_APP
+#define APP_TEST (FALSE)
+#else
+#define APP_TEST (TRUE)
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "YYCategories.h"
+#import "YYModel.h"
+#import "Masonry.h"
+
+#import "ABCSimpleDefines.h"
+#endif
+
+
+#endif /* PrefixHeader_pch */
