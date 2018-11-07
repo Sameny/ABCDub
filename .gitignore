@@ -43,6 +43,7 @@ xcuserdata/
 # Carthage/Checkouts
 
 Carthage/Build
+Podfile.lock
 
 # fastlane
 #
