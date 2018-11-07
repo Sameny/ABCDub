@@ -26,7 +26,7 @@ extern NSString * const ABCMediaComposeErrorDomain;
 + (void)composeAudiosWithUnits:(NSArray <ABCMediaComposeUnit *>*)audiosUnits toUrl:(NSURL *)desUrl completion:(ABCMediaComposeCompletion)completion;
 
 /**
- 设置子音轨并将所有子音轨放在同一条音轨上，该音轨和主音轨并行
+ 将所有子音频放在同一条音轨上，该音轨和视频、主音轨三者并行
  
  @param video 视频的资源信息
  @param baseAudio 主音轨的资源信息
@@ -37,7 +37,7 @@ extern NSString * const ABCMediaComposeErrorDomain;
 + (void)mixComposeMediasWithVideo:(ABCMediaComposeUnit *)video baseAudio:(ABCMediaComposeUnit *)baseAudio subAudios:(NSArray <ABCMediaComposeUnit *>*)audiosUnits toUrl:(NSURL *)desUrl completion:(ABCMediaComposeCompletion)completion;
 
 /**
- 设置子音轨并将所有子音轨放在同一条音轨上，该音轨和主音轨并行
+ 将所有子音频放在同一条音轨上，该音轨和主音轨并行
 
  @param baseAudio 主音轨的资源信息
  @param audiosUnits 子音轨的信息
