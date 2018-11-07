@@ -83,8 +83,12 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    // 释放
     [self pause];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+    // 释放
     [self releaseMySelf];
 }
 
@@ -401,6 +405,9 @@ static const CGFloat maxRateInDirection = 0.9; // 方向的最大偏差
         if (self.bottomToolsView.hidden) {
             [self showBottomToolsView];
         }
+        else {
+            [self hiddenBottomToolsView];
+        }
     }
 }
 
@@ -482,10 +489,6 @@ static const CGFloat maxRateInDirection = 0.9; // 方向的最大偏差
     [UIView animateWithDuration:0.5 animations:^{
         self.bottomToolsView.center = CGPointMake(center.x, center.y - size.height);
     }];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
 }
 
 @end

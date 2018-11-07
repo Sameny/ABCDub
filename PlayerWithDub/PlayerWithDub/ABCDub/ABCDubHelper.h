@@ -42,6 +42,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)mp3FilePathWithResourceId:(NSString *)recourceId fileName:(NSString *)mp3FileName;
 
+
+/**
+ clear the video by composing.
+ */
 - (void)clearComposedVideos;
 
 @end
