@@ -9,5 +9,6 @@
 #ifndef ABCDubPrefixHeader_h
 #define ABCDubPrefixHeader_h
 
+#import "ABCError.h"
 
 #endif /* ABCDubPrefixHeader_h */

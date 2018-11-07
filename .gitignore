@@ -16,6 +16,7 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+*.DS_Store
 
 ## Other
 *.moved-aside
@@ -42,6 +43,7 @@ xcuserdata/
 # Carthage/Checkouts
 
 Carthage/Build
+Podfile.lock
 
 # fastlane
 #

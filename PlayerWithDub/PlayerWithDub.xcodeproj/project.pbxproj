@@ -13,6 +13,7 @@
 		10103824218C389F00085420 /* ABCCaptionSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 10103823218C389F00085420 /* ABCCaptionSegment.m */; };
 		10103827218C392E00085420 /* ABCSRTParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 10103826218C392E00085420 /* ABCSRTParser.m */; };
 		1010382B218C52D500085420 /* ABCSRTParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1010382A218C52D500085420 /* ABCSRTParserTest.m */; };
+		102A4ADE21928C9700AC6C89 /* SZTPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102A4ADD21928C9700AC6C89 /* SZTPlayerViewController.m */; };
 		102CE658218BE27D00D2E8CA /* MP3Endocder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 102CE657218BE27D00D2E8CA /* MP3Endocder.mm */; };
 		102CE665218BED8300D2E8CA /* MP3EncodedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 102CE664218BED8300D2E8CA /* MP3EncodedRequest.m */; };
 		102CE668218BF77B00D2E8CA /* ABCError.m in Sources */ = {isa = PBXBuildFile; fileRef = 102CE667218BF77B00D2E8CA /* ABCError.m */; };
@@ -102,6 +103,9 @@
 		10103825218C392E00085420 /* ABCSRTParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSRTParser.h; sourceTree = "<group>"; };
 		10103826218C392E00085420 /* ABCSRTParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSRTParser.m; sourceTree = "<group>"; };
 		1010382A218C52D500085420 /* ABCSRTParserTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSRTParserTest.m; sourceTree = "<group>"; };
+		102A4ADB219287E600AC6C89 /* ABCDubPrefixHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCDubPrefixHeader.h; sourceTree = "<group>"; };
+		102A4ADC21928C9700AC6C89 /* SZTPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayerViewController.h; sourceTree = "<group>"; };
+		102A4ADD21928C9700AC6C89 /* SZTPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPlayerViewController.m; sourceTree = "<group>"; };
 		102CE656218BE27D00D2E8CA /* MP3Endocder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MP3Endocder.h; sourceTree = "<group>"; };
 		102CE657218BE27D00D2E8CA /* MP3Endocder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MP3Endocder.mm; sourceTree = "<group>"; };
 		102CE663218BED8300D2E8CA /* MP3EncodedRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MP3EncodedRequest.h; sourceTree = "<group>"; };
@@ -185,7 +189,7 @@
 		10BF24AD219011F10078BEFB /* NSObject+SZTAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SZTAdd.h"; sourceTree = "<group>"; };
 		10BF24AE219011F10078BEFB /* NSObject+SZTAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SZTAdd.m"; sourceTree = "<group>"; };
 		10BF24B0219033830078BEFB /* ABCSimpleDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSimpleDefines.h; sourceTree = "<group>"; };
-		10BF24B1219036130078BEFB /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		10BF24B1219036130078BEFB /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		10BF24B321903ABB0078BEFB /* ABCDubTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCDubTableViewCell.h; sourceTree = "<group>"; };
 		10BF24B421903ABB0078BEFB /* ABCDubTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCDubTableViewCell.m; sourceTree = "<group>"; };
 		777D5A045157527A3A542F10 /* Pods-PlayerWithDub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayerWithDub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlayerWithDub/Pods-PlayerWithDub.debug.xcconfig"; sourceTree = "<group>"; };
@@ -388,6 +392,8 @@
 				1057771C2188291E00F7EEB2 /* AWVideoPlayerViewController.h */,
 				1057771D2188291E00F7EEB2 /* AWVideoPlayerViewController.m */,
 				1057771B2188291E00F7EEB2 /* AWVideoPlayerViewController.xib */,
+				102A4ADC21928C9700AC6C89 /* SZTPlayerViewController.h */,
+				102A4ADD21928C9700AC6C89 /* SZTPlayerViewController.m */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -469,6 +475,7 @@
 				103BFA3121916EB7002A681A /* ABCDubFileManager.m */,
 				106D1AB621917DF5007973DE /* ABCDubHelper.h */,
 				106D1AB721917DF5007973DE /* ABCDubHelper.m */,
+				102A4ADB219287E600AC6C89 /* ABCDubPrefixHeader.h */,
 			);
 			path = ABCDub;
 			sourceTree = "<group>";
@@ -736,6 +743,7 @@
 				10BF24B521903ABB0078BEFB /* ABCDubTableViewCell.m in Sources */,
 				10817D832189A9BE0026E5C7 /* ABCAudioRecorder.m in Sources */,
 				105776F121880BC400F7EEB2 /* main.m in Sources */,
+				102A4ADE21928C9700AC6C89 /* SZTPlayerViewController.m in Sources */,
 				10BF24AB219011030078BEFB /* UIViewController+PresentAnimation.m in Sources */,
 				10817D7B218950210026E5C7 /* ABCMediaComposeUnit.m in Sources */,
 				103BFA2E21912560002A681A /* ControlHelper.m in Sources */,

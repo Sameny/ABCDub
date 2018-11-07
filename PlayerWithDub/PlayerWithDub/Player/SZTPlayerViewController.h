@@ -6,12 +6,20 @@
 //  Copyright © 2018年 泽泰 舒. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "AWVideoPlayerViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SZTPlayerViewController : UIViewController
 
+@property (nonatomic, strong, readonly) AWVideoPlayerViewController *player;
+
+@property (nonatomic, strong) NSURL *url;
+
+// can be overrided
+- (void)backBtnDidClicked;
+
 @end
+
 
 NS_ASSUME_NONNULL_END

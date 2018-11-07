@@ -14,6 +14,7 @@
 #import "ABCDubViewModel.h"
 #import "ABCDubTableViewCell.h"
 
+#import "SZTPlayerViewController.h"
 #import "AWVideoPlayerViewController.h"
 #import "ABCDubViewController.h"
 
@@ -125,7 +126,27 @@
 }
 
 - (void)previewDub {
-    
+    [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
+    __weak typeof(self) weakself = self;
+    [[ABCDubHelper sharedInstance] composeWithResourceId:@"1001" subAudioInfos:self.viewModel.captions completion:^(NSURL *url, NSError *error) {
+        [MBProgressHUD hideHUDForView:weakself.view.window animated:YES];
+        if (url) {
+            [weakself playComposedVideoWithUrl:url];
+        }
+        else if (error.code == ABCMediaComposeErrorCodeEmptyMedia) {
+            NSLog(@"合成视频和音频进行预览出错:%@", error);
+        }
+        else {
+            NSLog(@"合成视频和音频进行预览出错");
+        }
+    }];
+}
+
+- (void)playComposedVideoWithUrl:(NSURL *)url {
+    [self.player pause];
+    SZTPlayerViewController *playerViewController = [[SZTPlayerViewController alloc] init];
+    playerViewController.url = url;
+    [self presentViewController:playerViewController animated:YES completion:nil];
 }
 
 - (void)backBtnDidClicked {

@@ -81,11 +81,12 @@ NSString *outputFileTypeWithResultType(ABCMediaComposeResultType resultType) {
             if (completion) {
                 completion(NO, err);
             }
+            *stop = YES;
             return;
         }
     }];
     
-    [ABCMediaComposeUtil exportWithAsset:composition desUrl:desUrl resultType:ABCMediaComposeResultTypeM4A completion:completion];
+    [ABCMediaComposeUtil exportWithAsset:composition desUrl:desUrl resultType:ABCMediaComposeResultTypeMPEG4 completion:completion];
 }
 
 + (void)mixComposeAudiosWithBaseAudio:(ABCMediaComposeUnit *)baseAudio subAudios:(NSArray <ABCMediaComposeUnit *>*)audiosUnits toUrl:(NSURL *)desUrl completion:(ABCMediaComposeCompletion)completion {
@@ -171,18 +172,18 @@ NSString *outputFileTypeWithResultType(ABCMediaComposeResultType resultType) {
     if (!unit || !unit.url || !composition) {
         return NO;
     }
-    AVAsset *audioAsset = [AVAsset assetWithURL:unit.url];
-    AVAssetTrack *audioTrack = [[audioAsset tracksWithMediaType:mediaType] firstObject];
+    AVAsset *mediaAsset = [AVAsset assetWithURL:unit.url];
+    AVAssetTrack *mediaTrack = [[mediaAsset tracksWithMediaType:mediaType] firstObject];
     CMTimeRange timeRange = unit.timeRange;
     if (0 == CMTimeCompare(kABCAssetTime, timeRange.duration)) {
-        timeRange.duration = audioAsset.duration;
+        timeRange.duration = mediaAsset.duration;
     }
     
     NSError *err;
     if (!compositionTrack) { // 如果传进来的合成轨道是nil，就自动创建一个新的合成轨道。
         compositionTrack = [composition addMutableTrackWithMediaType:mediaType preferredTrackID:(kCMPersistentTrackID_Invalid)];
     }
-    BOOL success = [compositionTrack insertTimeRange:timeRange ofTrack:audioTrack atTime:unit.beginTime error:&err];
+    BOOL success = [compositionTrack insertTimeRange:timeRange ofTrack:mediaTrack atTime:unit.beginTime error:&err];
     if (!success) {
         *error = err;
         return NO;

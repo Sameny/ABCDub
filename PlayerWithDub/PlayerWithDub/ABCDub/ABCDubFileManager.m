@@ -55,9 +55,9 @@ NSString * dubFileDirectory(NSString *directoryName, BOOL needCached) {
     return nil;
 }
 
-// 合成的视频临时目录，每次退出d时清除
+// 合成的视频临时目录，每次退出时清除
 + (NSString *)videoFileDirectory {
-    return dubFileDirectory(kABCComposeVideoDirectoryName, NO);
+    return dubFileDirectory(kABCComposeVideoDirectoryName, YES);
 }
 
 @end

@@ -84,40 +84,57 @@ static ABCDubHelper *sharedDubHepler;
 }
 
 - (void)composeWithResourceId:(NSString *)resourceId subAudioInfos:(NSArray <ABCCaptionSegment *>*)audioInfos completion:(ABCURLHandler)completion {
-    /* TODO: 根据sourceId来获取视频和音频的url ,暂时写死 */
-    ABCMediaComposeUnit *videoUnit = [self videoUnitWithResourceId:resourceId];
-    ABCMediaComposeUnit *audioUnit = [self baseAudioUnitWithResourceId:resourceId];
-    
-    NSMutableArray <ABCMediaComposeUnit *>*units = [[NSMutableArray alloc] init];
-    for (NSInteger i = 0; i < audioInfos.count; i++) {
-        NSString *mp3FileName = [NSString stringWithFormat:@"%ld.mp3", i];
-        NSString *mp3FilePath = [ABCDubFileManager mp3FilePathWithSubDirectory:resourceId fileName:mp3FileName];
-        if ([LocalFileManager fileSizeAtPath:mp3FilePath] > 0) {
-            ABCCaptionSegment *segment = audioInfos[i];
-            CMTime begin = CMTimeMakeWithSeconds(segment.startTime/1000.f, 1000);
-            ABCMediaComposeUnit *mp3Unit = [[ABCMediaComposeUnit alloc] initWithUrl:[NSURL fileURLWithPath:mp3FilePath] mediaType:(AVMediaTypeVideo) beginTime:begin timeRange:kABCAssetTimeRange];
-            [units addObject:mp3Unit];
-        }
-    }
-    // 合成
-    NSString *videoPath = [ABCDubFileManager videoFileDirectory];
-    NSURL *videoUrl = [NSURL fileURLWithPath:videoPath];
-    if (!videoUrl && completion) {
-        completion(nil, nil);
-        return;
-    }
-    [ABCMediaComposeUtil mixComposeMediasWithVideo:videoUnit baseAudio:audioUnit subAudios:units toUrl:[NSURL fileURLWithPath:videoPath] completion:^(BOOL success, NSError * _Nullable err) {
-        if (success) {
-            if (completion) {
-                completion(videoUrl, nil);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        /* TODO: 根据sourceId来获取视频和音频的url ,暂时写死 */
+        ABCMediaComposeUnit *videoUnit = [self videoUnitWithResourceId:resourceId];
+        ABCMediaComposeUnit *audioUnit = [self baseAudioUnitWithResourceId:resourceId];
+        
+        NSMutableArray <ABCMediaComposeUnit *>*units = [[NSMutableArray alloc] init];
+        for (NSInteger i = 0; i < audioInfos.count; i++) {
+            NSString *mp3FileName = [NSString stringWithFormat:@"%ld.mp3", i];
+            NSString *mp3FilePath = [ABCDubFileManager mp3FilePathWithSubDirectory:resourceId fileName:mp3FileName];
+            if ([LocalFileManager fileSizeAtPath:mp3FilePath] > 0) {
+                ABCCaptionSegment *segment = audioInfos[i];
+                CMTime begin = CMTimeMakeWithSeconds(segment.startTime/1000.f, 1000);
+                ABCMediaComposeUnit *mp3Unit = [[ABCMediaComposeUnit alloc] initWithUrl:[NSURL fileURLWithPath:mp3FilePath] mediaType:(AVMediaTypeAudio) beginTime:begin timeRange:kABCAssetTimeRange];
+                [units addObject:mp3Unit];
             }
         }
-        else {
-            if (completion) {
-                completion(nil, err);
-            }
+        if (units.count == 0 && completion) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, [NSError errorWithDomain:ABCMediaComposeErrorDomain code:ABCMediaComposeErrorCodeEmptyMedia userInfo:@{NSLocalizedDescriptionKey:ABCMediaComposeErrorEmptyMedia}]);
+            });
+            return;
         }
-    }];
+        // 合成
+        NSString *videoPath = [[[ABCDubFileManager videoFileDirectory] stringByAppendingPathComponent:resourceId] stringByAppendingPathExtension:@"mp4"];
+        NSURL *videoUrl = nil;
+        if (videoPath) {
+            videoUrl = [NSURL fileURLWithPath:videoPath];
+        }
+        if (!videoUrl && completion) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, [NSError errorWithDomain:CreateFilePathErrorDomain code:CreateFilePathErrorCodeDirectoryCreateError userInfo:@{NSLocalizedDescriptionKey:CreateFilePathErrorDirectoryCreateError}]);
+            });
+            return;
+        }
+        [ABCMediaComposeUtil mixComposeMediasWithVideo:videoUnit baseAudio:audioUnit subAudios:units toUrl:videoUrl completion:^(BOOL success, NSError * _Nullable err) {
+            if (success) {
+                if (completion) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completion(videoUrl, nil);
+                    });
+                }
+            }
+            else {
+                if (completion) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completion(nil, err);
+                    });
+                }
+            }
+        }];
+    });
 }
 
 - (void)clearComposedVideos {

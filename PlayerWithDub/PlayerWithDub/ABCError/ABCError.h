@@ -15,6 +15,9 @@ extern NSString * const ABCMediaComposeErrorDomain;
 extern NSString * const kABCMediaComposeErrorExport;
 extern NSInteger const kABCMediaComposeErrorCodeExport;
 
+extern NSString * const ABCMediaComposeErrorEmptyMedia;
+extern NSInteger const ABCMediaComposeErrorCodeEmptyMedia;
+
 /* MP3 Encoder errors (code 30201~30220) */
 extern NSString * const MP3EncoderErrorDomain;
 
@@ -29,6 +32,11 @@ extern NSInteger const ParseSRTFileErrorCodeLoadDataFaild;
 extern NSString * const ParseSRTFileErrorLoadDataFaild;
 extern NSInteger const ParseSRTFileErrorCodeOccurException;
 extern NSString * const ParseSRTFileErrorOccurException;
+
+/* create directory or path error (code 30401~30420) */
+extern NSString * const CreateFilePathErrorDomain;
+extern NSInteger const CreateFilePathErrorCodeDirectoryCreateError;
+extern NSString * const CreateFilePathErrorDirectoryCreateError;
 
 @interface ABCError : NSObject
 

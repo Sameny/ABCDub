@@ -13,6 +13,9 @@ NSString * const ABCMediaComposeErrorDomain = @"abc media merge error";
 NSString * const kABCMediaComposeErrorExport = @"export occur error";
 NSInteger const kABCMediaComposeErrorCodeExport = 30101;
 
+NSString * const ABCMediaComposeErrorEmptyMedia = @"medias have empty one";
+NSInteger const ABCMediaComposeErrorCodeEmptyMedia = 30102;
+
 
 /* Encoder errors (code 30201~30220) */
 NSString * const MP3EncoderErrorDomain = @"abc mp3 encoder error";
@@ -28,6 +31,11 @@ NSInteger const ParseSRTFileErrorCodeLoadDataFaild = 30301;
 NSString * const ParseSRTFileErrorLoadDataFaild = @"cound not load srt file";
 NSInteger const ParseSRTFileErrorCodeOccurException = 30302;
 NSString * const ParseSRTFileErrorOccurException = @"parser srt accur exception";
+
+/* create directory or path error (code 30401~30420) */
+NSString * const CreateFilePathErrorDomain = @"create file path faild";
+NSInteger const CreateFilePathErrorCodeDirectoryCreateError = 30301;
+NSString * const CreateFilePathErrorDirectoryCreateError = @"cound create directory";
 
 @implementation ABCError
 
