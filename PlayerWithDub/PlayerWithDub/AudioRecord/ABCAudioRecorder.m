@@ -34,15 +34,16 @@ static ABCAudioRecorder *sharedABCAudioRecorder = nil;
 
 - (void)startRecordWithUrl:(NSString *)url duration:(NSTimeInterval)duration completion:(ABCMediaRecordCompletion)completion {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-        NSError *sessionError;
-        [[AVAudioSession sharedInstance] setActive:YES error:&sessionError];
-        
         self.audioRecorder = [self audioRecorderWithUrl:url settings:[self defaultAduioRecorderSettings]];
         self.audioRecorder.delegate = self;
         
         BOOL success = NO;
         if ([self.audioRecorder prepareToRecord]) {
+            AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+            [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+            [audioSession overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:nil]; // 不加这句，撸出来的声音很小，但是之后插入耳机会无效，所以后面录音完成后在需要耳机功能的地方设置为AVAudioSessionPortOverrideNone
+            NSError *sessionError;
+            [audioSession setActive:YES error:&sessionError];
             success = [self.audioRecorder recordForDuration:duration];
         }
         if (success) {
@@ -68,6 +69,7 @@ static ABCAudioRecorder *sharedABCAudioRecorder = nil;
 }
 
 - (void)resetAudioRecorder {
+    [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:nil];
     self.audioRecorder.delegate = nil;
     self.audioRecorder = nil;
 }
