@@ -6,6 +6,8 @@
 //  Copyright © 2016年 杭州匠物科技. All rights reserved.
 //
 
+#import "SZTResourceLoader.h"
+
 #import <AVFoundation/AVFoundation.h>
 
 #import "AWVideoPlayerViewController.h"
@@ -41,6 +43,9 @@
 
 @property (nonatomic) BOOL isPlaying;
 @property (nonatomic) NSInteger waitingForHiddenBottomToolsViewSeconds;
+
+/*  PlayWithLoading  */
+@property (nonatomic, assign) BOOL playAtLoading;
 
 @end
 
@@ -326,7 +331,6 @@
         // 手机静音时允许播放声音
         AVAudioSession *audioSession = [AVAudioSession sharedInstance];
         [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-        [audioSession overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:nil]; 
         
         [self.player play];
         self.isPlaying = YES;
@@ -489,6 +493,54 @@ static const CGFloat maxRateInDirection = 0.9; // 方向的最大偏差
     [UIView animateWithDuration:0.5 animations:^{
         self.bottomToolsView.center = CGPointMake(center.x, center.y - size.height);
     }];
+}
+
+@end
+
+
+#import "SZTPlayerResourceManager.h"
+@implementation AWVideoPlayerViewController (PlayWithLoading)
+
+- (void)playVideoWithURLString:(NSString *)urlString atLoading:(BOOL)atLoading cachedFilePath:(NSString *)cachedFilePath {
+//    if (cachedFilePath && [SZTPlayerResourceManager cacheExistsAtVideoPath:cachedFilePath]) {
+//        [self readyForPlayVideoWithURLString:cachedFilePath];
+//        [self play];
+//        return;
+//    }
+    if (urlString.length == 0) {
+        return;
+    }
+    NSURL *url = [NSURL URLWithString:urlString];
+    if (!url) {
+        return;
+    }
+    
+    SZTResourceLoader *resourceLoader = [[SZTPlayerResourceManager sharedInstance] resourceLoaderWithUrl:urlString];
+    AVURLAsset *videoURLAsset = [AVURLAsset assetWithURL:url];
+    [videoURLAsset.resourceLoader setDelegate:resourceLoader queue:dispatch_get_main_queue()];
+    AVPlayerItem *item = [[AVPlayerItem alloc] initWithAsset:videoURLAsset];
+
+    if (self.timeObserver) {
+        [self.player removeTimeObserver:self.timeObserver];
+        self.timeObserver = nil;
+    }
+    self.player = [[AVPlayer alloc] initWithPlayerItem:item];
+    if (self.playerLayer) {
+        self.playerLayer.player = self.player;
+    }
+    else {
+        self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
+        self.playerLayer.frame = self.view.bounds;
+        // 设置播放窗口和当前视图之间的比例显示内容
+        self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+        [self.playerContainer.layer insertSublayer:self.playerLayer below:self.placeHolderImageView.layer];
+    }
+    self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    
+    [self setPlayerControlViewDisplayValues];
+    [self setPlayerObserver];
+    [self play];
+    [self.player play];
 }
 
 @end

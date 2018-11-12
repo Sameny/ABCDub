@@ -145,7 +145,7 @@
 - (void)playComposedVideoWithUrl:(NSURL *)url {
     [self.player pause];
     SZTPlayerViewController *playerViewController = [[SZTPlayerViewController alloc] init];
-    playerViewController.url = url;
+    [playerViewController setVideoUrl:url needLoading:NO];
     [self presentViewController:playerViewController animated:YES completion:nil];
 }
 

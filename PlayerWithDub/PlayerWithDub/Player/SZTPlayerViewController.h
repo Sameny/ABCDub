@@ -14,8 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) AWVideoPlayerViewController *player;
 
-@property (nonatomic, strong) NSURL *url;
-
+- (void)setVideoUrl:(NSURL *)url needLoading:(BOOL)needLoading;
 // can be overrided
 - (void)backBtnDidClicked;
 

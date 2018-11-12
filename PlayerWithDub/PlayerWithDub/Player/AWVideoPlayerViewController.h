@@ -64,3 +64,18 @@ static CGFloat const kVideoHeightToWidthRate = 1080.0/1920;
 - (void)releaseMySelf;
 
 @end
+
+
+
+@interface AWVideoPlayerViewController (PlayWithLoading)
+
+/**
+ 支持在下载时播放视频
+
+ @param urlString 视频路径
+ @param atLoading 是否在下载时播放
+ @Param cachedFilePath 如果已经缓存过，就直接从缓存播放，如果没有缓存，就在下载完成后，存储到该缓存地址
+ */
+- (void)playVideoWithURLString:(NSString *)urlString atLoading:(BOOL)atLoading cachedFilePath:(NSString *)cachedFilePath;
+
+@end

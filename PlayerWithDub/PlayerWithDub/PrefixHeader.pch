@@ -16,6 +16,8 @@
 #define APP_TEST (TRUE)
 #define TestSourceId (@"1002")
 #define TestSourceName (@"幻想中的无敌神鹰")
+#define TestVideoUrl (@"ABCVideo.http://vodg3ns8cfm.vod.126.net/vodg3ns8cfm/0S0r2IXc_75031_shd.mp4")
+#define ABCVideoPrefix (@"ABCVideo.")
 #endif
 
 #ifdef __OBJC__

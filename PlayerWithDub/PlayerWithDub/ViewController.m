@@ -8,6 +8,8 @@
 
 #import <VideoToolbox/VideoToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+#import "SZTPlayer.h"
+#import "SZTPlayerView.h"
 
 #import "ABCSRTParser.h"
 #import "MP3Endocder.h"
@@ -31,6 +33,9 @@
 @property (nonatomic, strong) AWVideoPlayerViewController *playerViewController;
 @property (nonatomic, strong) AVAudioPlayer *musicPlayer;
 
+@property (nonatomic, strong) SZTPlayer *player;
+@property (nonatomic, strong) SZTPlayerView *playerView;
+
 @end
 
 @implementation ViewController
@@ -40,28 +45,30 @@
     [[UIApplication sharedApplication] setStatusBarStyle:(UIStatusBarStyleLightContent)];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.playerViewController.view];
+//    [self.view addSubview:self.playerViewController.view];
+    [self.view addSubview:self.playerView];
     self.navigationController.navigationBar.hidden = YES;
     
     [self addSubviews];
     
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"幻想中的无敌神鹰" ofType:@"srt"];
-    NSLog(@"开始解析srt文件");
-    [ABCSRTParser parserWithFilePath:filePath completion:^(NSArray<ABCCaptionSegment *> * _Nonnull captions, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"解析srt文件出错:%@", error);
-        }
-        else {
-            NSLog(@"完成解析srt文件");
-        }
-    }];
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"幻想中的无敌神鹰" ofType:@"srt"];
+//    NSLog(@"开始解析srt文件");
+//    [ABCSRTParser parserWithFilePath:filePath completion:^(NSArray<ABCCaptionSegment *> * _Nonnull captions, NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"解析srt文件出错:%@", error);
+//        }
+//        else {
+//            NSLog(@"完成解析srt文件");
+//        }
+//    }];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     self.view.window.frame = CGRectMake(0, 0, size.width, size.height);
     self.navigationController.view.frame = CGRectMake(0, 0, size.width, size.height);
     self.view.frame = CGRectMake(0, 0, size.width, size.height);
-    [self.playerViewController setPlayerFrame:CGRectMake(0, 0, size.width, size.width*9.f/16.f)];
+//    [self.playerViewController setPlayerFrame:CGRectMake(0, 0, size.width, size.width*9.f/16.f)];
+    self.playerView.frame = CGRectMake(0, 0, size.width, size.width*9.f/16.f);
 }
 
 - (void)recordTest {
@@ -109,6 +116,28 @@
 - (void)printSizeOfPath:(NSString *)path {
     NSUInteger fileSize = [LocalFileManager fileSizeAtPath:path];
     NSLog(@"path : %@, \n file size : %lu kb", path, fileSize/1024);
+}
+
+- (void)playNetworkVideo {
+    NSURL *videoUrl = [[NSBundle mainBundle] URLForResource:@"幻想中的无敌神鹰" withExtension:@"mp4"];
+//    NSURL *url = [NSURL URLWithString:TestVideoUrl];
+    [self.player configUrl:videoUrl];
+    [self.playerView addPlayerLayer:self.player.playerLayer];
+}
+
+- (SZTPlayer *)player {
+    if (!_player) {
+        _player = [[SZTPlayer alloc] init];
+    }
+    return _player;
+}
+
+- (SZTPlayerView *)playerView {
+    if (!_playerView) {
+        _playerView = [[SZTPlayerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*9.f/16.f)];
+        _playerView.backgroundColor = [UIColor redColor];
+    }
+    return _playerView;
 }
 
 - (void)playRecordTest {
@@ -188,8 +217,8 @@
 - (void)addSubviews {
     [self.view addSubview:self.composeBtn];
     self.composeBtn.frame = CGRectMake(100, 400, 100, 50);
-//    [self.view addSubview:self.recordBtn];
-//    self.recordBtn.frame = CGRectMake(100, 460, 100, 50);
+    [self.view addSubview:self.recordBtn];
+    self.recordBtn.frame = CGRectMake(100, 460, 140, 50);
 //
 //    [self.view addSubview:self.mp3EncodeBtn];
 //    self.mp3EncodeBtn.frame = CGRectMake(100, 520, 100, 50);
@@ -229,9 +258,9 @@
     if (!_recordBtn) {
         _recordBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         
-        [_recordBtn setTitle:@"开始录制" forState:(UIControlStateNormal)];
+        [_recordBtn setTitle:@"播放网络视频" forState:(UIControlStateNormal)];
         [_recordBtn setTitleColor:[UIColor redColor] forState:(UIControlStateNormal)];
-        [_recordBtn addTarget:self action:@selector(recordTest) forControlEvents:(UIControlEventTouchUpInside)];
+        [_recordBtn addTarget:self action:@selector(playNetworkVideo) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _recordBtn;
 }

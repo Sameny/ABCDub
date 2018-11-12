@@ -13,7 +13,10 @@
 		10103824218C389F00085420 /* ABCCaptionSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 10103823218C389F00085420 /* ABCCaptionSegment.m */; };
 		10103827218C392E00085420 /* ABCSRTParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 10103826218C392E00085420 /* ABCSRTParser.m */; };
 		1010382B218C52D500085420 /* ABCSRTParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1010382A218C52D500085420 /* ABCSRTParserTest.m */; };
+		10250093219561690024679A /* SZTPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 10250092219561690024679A /* SZTPlayer.m */; };
+		1025009A219923D20024679A /* SZTPlayerFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 10250099219923D20024679A /* SZTPlayerFileHandle.m */; };
 		102A4ADE21928C9700AC6C89 /* SZTPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102A4ADD21928C9700AC6C89 /* SZTPlayerViewController.m */; };
+		102A4AE12192EC3100AC6C89 /* SZTResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 102A4AE02192EC3100AC6C89 /* SZTResourceLoader.m */; };
 		102CE658218BE27D00D2E8CA /* MP3Endocder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 102CE657218BE27D00D2E8CA /* MP3Endocder.mm */; };
 		102CE665218BED8300D2E8CA /* MP3EncodedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 102CE664218BED8300D2E8CA /* MP3EncodedRequest.m */; };
 		102CE668218BF77B00D2E8CA /* ABCError.m in Sources */ = {isa = PBXBuildFile; fileRef = 102CE667218BF77B00D2E8CA /* ABCError.m */; };
@@ -58,7 +61,10 @@
 		105777592188419800F7EEB2 /* 卡车围场十周年纪念日要来了.srt in Resources */ = {isa = PBXBuildFile; fileRef = 105777442188419800F7EEB2 /* 卡车围场十周年纪念日要来了.srt */; };
 		1057775A2188419800F7EEB2 /* 帮我和我妈妈打个招呼.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 105777452188419800F7EEB2 /* 帮我和我妈妈打个招呼.mp4 */; };
 		106D1AB821917DF5007973DE /* ABCDubHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 106D1AB721917DF5007973DE /* ABCDubHelper.m */; };
+		10721AE62193D90800867A74 /* SZTPlayerResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10721AE52193D90800867A74 /* SZTPlayerResourceManager.m */; };
 		1077336921903F78004F5998 /* UIButton+SZTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 1077336821903F78004F5998 /* UIButton+SZTAdd.m */; };
+		107D765F2199592B0024EDB7 /* SZTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 107D765E2199592B0024EDB7 /* SZTPlayerView.m */; };
+		107D766121997CC20024EDB7 /* SZTPlayerImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107D766021997CC20024EDB7 /* SZTPlayerImages.xcassets */; };
 		10817D78218940840026E5C7 /* ABCMediaComposeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 10817D77218940840026E5C7 /* ABCMediaComposeUtil.m */; };
 		10817D7B218950210026E5C7 /* ABCMediaComposeUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 10817D7A218950210026E5C7 /* ABCMediaComposeUnit.m */; };
 		10817D7F218979870026E5C7 /* LocalFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10817D7D218979870026E5C7 /* LocalFileManager.m */; };
@@ -103,9 +109,16 @@
 		10103825218C392E00085420 /* ABCSRTParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSRTParser.h; sourceTree = "<group>"; };
 		10103826218C392E00085420 /* ABCSRTParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSRTParser.m; sourceTree = "<group>"; };
 		1010382A218C52D500085420 /* ABCSRTParserTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSRTParserTest.m; sourceTree = "<group>"; };
+		10250091219561690024679A /* SZTPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayer.h; sourceTree = "<group>"; };
+		10250092219561690024679A /* SZTPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPlayer.m; sourceTree = "<group>"; };
+		10250098219923D20024679A /* SZTPlayerFileHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayerFileHandle.h; sourceTree = "<group>"; };
+		10250099219923D20024679A /* SZTPlayerFileHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPlayerFileHandle.m; sourceTree = "<group>"; };
+		1025009E219952750024679A /* SZTKVOSimpleDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTKVOSimpleDefine.h; sourceTree = "<group>"; };
 		102A4ADB219287E600AC6C89 /* ABCDubPrefixHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCDubPrefixHeader.h; sourceTree = "<group>"; };
 		102A4ADC21928C9700AC6C89 /* SZTPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayerViewController.h; sourceTree = "<group>"; };
 		102A4ADD21928C9700AC6C89 /* SZTPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPlayerViewController.m; sourceTree = "<group>"; };
+		102A4ADF2192EC3100AC6C89 /* SZTResourceLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTResourceLoader.h; sourceTree = "<group>"; };
+		102A4AE02192EC3100AC6C89 /* SZTResourceLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTResourceLoader.m; sourceTree = "<group>"; };
 		102CE656218BE27D00D2E8CA /* MP3Endocder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MP3Endocder.h; sourceTree = "<group>"; };
 		102CE657218BE27D00D2E8CA /* MP3Endocder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MP3Endocder.mm; sourceTree = "<group>"; };
 		102CE663218BED8300D2E8CA /* MP3EncodedRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MP3EncodedRequest.h; sourceTree = "<group>"; };
@@ -166,8 +179,14 @@
 		105777452188419800F7EEB2 /* 帮我和我妈妈打个招呼.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "帮我和我妈妈打个招呼.mp4"; sourceTree = "<group>"; };
 		106D1AB621917DF5007973DE /* ABCDubHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCDubHelper.h; sourceTree = "<group>"; };
 		106D1AB721917DF5007973DE /* ABCDubHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCDubHelper.m; sourceTree = "<group>"; };
+		10721AE42193D90800867A74 /* SZTPlayerResourceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayerResourceManager.h; sourceTree = "<group>"; };
+		10721AE52193D90800867A74 /* SZTPlayerResourceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPlayerResourceManager.m; sourceTree = "<group>"; };
 		1077336721903F77004F5998 /* UIButton+SZTAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+SZTAdd.h"; sourceTree = "<group>"; };
 		1077336821903F78004F5998 /* UIButton+SZTAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SZTAdd.m"; sourceTree = "<group>"; };
+		107D765D2199592B0024EDB7 /* SZTPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayerView.h; sourceTree = "<group>"; };
+		107D765E2199592B0024EDB7 /* SZTPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPlayerView.m; sourceTree = "<group>"; };
+		107D766021997CC20024EDB7 /* SZTPlayerImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SZTPlayerImages.xcassets; sourceTree = "<group>"; };
+		107D766221997DA90024EDB7 /* SZTFontDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTFontDefine.h; sourceTree = "<group>"; };
 		10817D76218940840026E5C7 /* ABCMediaComposeUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCMediaComposeUtil.h; sourceTree = "<group>"; };
 		10817D77218940840026E5C7 /* ABCMediaComposeUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCMediaComposeUtil.m; sourceTree = "<group>"; };
 		10817D79218950210026E5C7 /* ABCMediaComposeUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCMediaComposeUnit.h; sourceTree = "<group>"; };
@@ -277,6 +296,8 @@
 			children = (
 				103BFA2C21912560002A681A /* ControlHelper.h */,
 				103BFA2D21912560002A681A /* ControlHelper.m */,
+				1025009E219952750024679A /* SZTKVOSimpleDefine.h */,
+				107D766221997DA90024EDB7 /* SZTFontDefine.h */,
 			);
 			path = Heplers;
 			sourceTree = "<group>";
@@ -394,6 +415,17 @@
 				1057771B2188291E00F7EEB2 /* AWVideoPlayerViewController.xib */,
 				102A4ADC21928C9700AC6C89 /* SZTPlayerViewController.h */,
 				102A4ADD21928C9700AC6C89 /* SZTPlayerViewController.m */,
+				102A4ADF2192EC3100AC6C89 /* SZTResourceLoader.h */,
+				102A4AE02192EC3100AC6C89 /* SZTResourceLoader.m */,
+				10721AE42193D90800867A74 /* SZTPlayerResourceManager.h */,
+				10721AE52193D90800867A74 /* SZTPlayerResourceManager.m */,
+				10250091219561690024679A /* SZTPlayer.h */,
+				10250092219561690024679A /* SZTPlayer.m */,
+				10250098219923D20024679A /* SZTPlayerFileHandle.h */,
+				10250099219923D20024679A /* SZTPlayerFileHandle.m */,
+				107D765D2199592B0024EDB7 /* SZTPlayerView.h */,
+				107D765E2199592B0024EDB7 /* SZTPlayerView.m */,
+				107D766021997CC20024EDB7 /* SZTPlayerImages.xcassets */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -642,6 +674,7 @@
 				105777552188419800F7EEB2 /* 她的话触动了我.srt in Resources */,
 				105777502188419800F7EEB2 /* 帮我和我妈妈打个招呼.mp3 in Resources */,
 				1057772321882B0100F7EEB2 /* player_centerPlay@2x.png in Resources */,
+				107D766121997CC20024EDB7 /* SZTPlayerImages.xcassets in Resources */,
 				105777512188419800F7EEB2 /* 丁满照看鸟宝宝.srt in Resources */,
 				10BF24B2219036130078BEFB /* Podfile in Resources */,
 				1057772F21882B4B00F7EEB2 /* player_slideThumb@2x.png in Resources */,
@@ -740,15 +773,20 @@
 				10817D7F218979870026E5C7 /* LocalFileManager.m in Sources */,
 				102CE668218BF77B00D2E8CA /* ABCError.m in Sources */,
 				105776E621880BC100F7EEB2 /* ViewController.m in Sources */,
+				10250093219561690024679A /* SZTPlayer.m in Sources */,
 				10BF24B521903ABB0078BEFB /* ABCDubTableViewCell.m in Sources */,
 				10817D832189A9BE0026E5C7 /* ABCAudioRecorder.m in Sources */,
 				105776F121880BC400F7EEB2 /* main.m in Sources */,
+				1025009A219923D20024679A /* SZTPlayerFileHandle.m in Sources */,
 				102A4ADE21928C9700AC6C89 /* SZTPlayerViewController.m in Sources */,
 				10BF24AB219011030078BEFB /* UIViewController+PresentAnimation.m in Sources */,
 				10817D7B218950210026E5C7 /* ABCMediaComposeUnit.m in Sources */,
 				103BFA2E21912560002A681A /* ControlHelper.m in Sources */,
 				106D1AB821917DF5007973DE /* ABCDubHelper.m in Sources */,
+				102A4AE12192EC3100AC6C89 /* SZTResourceLoader.m in Sources */,
 				10817D78218940840026E5C7 /* ABCMediaComposeUtil.m in Sources */,
+				10721AE62193D90800867A74 /* SZTPlayerResourceManager.m in Sources */,
+				107D765F2199592B0024EDB7 /* SZTPlayerView.m in Sources */,
 				10BF24A1218FDD820078BEFB /* ABCDubViewModel.m in Sources */,
 				1077336921903F78004F5998 /* UIButton+SZTAdd.m in Sources */,
 				103BFA3221916EB7002A681A /* ABCDubFileManager.m in Sources */,

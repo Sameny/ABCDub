@@ -14,6 +14,8 @@
 @property (nonatomic, strong) AWVideoPlayerViewController *player;
 @property (nonatomic, strong) UIButton *backBtn;
 
+@property (nonatomic, strong) NSURL *url;
+
 @end
 
 @implementation SZTPlayerViewController
@@ -29,9 +31,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (_url) {
-        [self.player readyForPlayingVideoWithURL:_url];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -45,6 +44,18 @@
     self.navigationController.view.frame = CGRectMake(0, 0, size.width, size.height);
     self.view.frame = CGRectMake(0, 0, size.width, size.height);
     [self.player setPlayerFrame:CGRectMake(0, 0, size.width, size.width*9.f/16.f)];
+}
+
+- (void)setVideoUrl:(NSURL *)url needLoading:(BOOL)needLoading {
+    if (url) {
+        if (needLoading) {
+            // TODO: load video from server
+        }
+        else {
+            [self.player readyForPlayingVideoWithURL:url];
+        }
+        _url = url;
+    }
 }
 
 - (void)backBtnDidClicked {
