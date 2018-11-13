@@ -13,6 +13,8 @@
 		10103824218C389F00085420 /* ABCCaptionSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 10103823218C389F00085420 /* ABCCaptionSegment.m */; };
 		10103827218C392E00085420 /* ABCSRTParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 10103826218C392E00085420 /* ABCSRTParser.m */; };
 		1010382B218C52D500085420 /* ABCSRTParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1010382A218C52D500085420 /* ABCSRTParserTest.m */; };
+		1017F600219A6AB00080F524 /* SZTPlayerFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1017F5FF219A6AB00080F524 /* SZTPlayerFullScreenViewController.m */; };
+		1017F603219A979C0080F524 /* SZTPresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1017F602219A979C0080F524 /* SZTPresentedViewController.m */; };
 		10250093219561690024679A /* SZTPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 10250092219561690024679A /* SZTPlayer.m */; };
 		1025009A219923D20024679A /* SZTPlayerFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 10250099219923D20024679A /* SZTPlayerFileHandle.m */; };
 		102A4ADE21928C9700AC6C89 /* SZTPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102A4ADD21928C9700AC6C89 /* SZTPlayerViewController.m */; };
@@ -109,6 +111,10 @@
 		10103825218C392E00085420 /* ABCSRTParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSRTParser.h; sourceTree = "<group>"; };
 		10103826218C392E00085420 /* ABCSRTParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSRTParser.m; sourceTree = "<group>"; };
 		1010382A218C52D500085420 /* ABCSRTParserTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSRTParserTest.m; sourceTree = "<group>"; };
+		1017F5FE219A6AB00080F524 /* SZTPlayerFullScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayerFullScreenViewController.h; sourceTree = "<group>"; };
+		1017F5FF219A6AB00080F524 /* SZTPlayerFullScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPlayerFullScreenViewController.m; sourceTree = "<group>"; };
+		1017F601219A979C0080F524 /* SZTPresentedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPresentedViewController.h; sourceTree = "<group>"; };
+		1017F602219A979C0080F524 /* SZTPresentedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPresentedViewController.m; sourceTree = "<group>"; };
 		10250091219561690024679A /* SZTPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayer.h; sourceTree = "<group>"; };
 		10250092219561690024679A /* SZTPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPlayer.m; sourceTree = "<group>"; };
 		10250098219923D20024679A /* SZTPlayerFileHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayerFileHandle.h; sourceTree = "<group>"; };
@@ -298,6 +304,8 @@
 				103BFA2D21912560002A681A /* ControlHelper.m */,
 				1025009E219952750024679A /* SZTKVOSimpleDefine.h */,
 				107D766221997DA90024EDB7 /* SZTFontDefine.h */,
+				1017F601219A979C0080F524 /* SZTPresentedViewController.h */,
+				1017F602219A979C0080F524 /* SZTPresentedViewController.m */,
 			);
 			path = Heplers;
 			sourceTree = "<group>";
@@ -426,6 +434,8 @@
 				107D765D2199592B0024EDB7 /* SZTPlayerView.h */,
 				107D765E2199592B0024EDB7 /* SZTPlayerView.m */,
 				107D766021997CC20024EDB7 /* SZTPlayerImages.xcassets */,
+				1017F5FE219A6AB00080F524 /* SZTPlayerFullScreenViewController.h */,
+				1017F5FF219A6AB00080F524 /* SZTPlayerFullScreenViewController.m */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -774,6 +784,7 @@
 				102CE668218BF77B00D2E8CA /* ABCError.m in Sources */,
 				105776E621880BC100F7EEB2 /* ViewController.m in Sources */,
 				10250093219561690024679A /* SZTPlayer.m in Sources */,
+				1017F603219A979C0080F524 /* SZTPresentedViewController.m in Sources */,
 				10BF24B521903ABB0078BEFB /* ABCDubTableViewCell.m in Sources */,
 				10817D832189A9BE0026E5C7 /* ABCAudioRecorder.m in Sources */,
 				105776F121880BC400F7EEB2 /* main.m in Sources */,
@@ -792,6 +803,7 @@
 				103BFA3221916EB7002A681A /* ABCDubFileManager.m in Sources */,
 				102CE658218BE27D00D2E8CA /* MP3Endocder.mm in Sources */,
 				100B3BF6218AD80400919864 /* GCDTimer.m in Sources */,
+				1017F600219A6AB00080F524 /* SZTPlayerFullScreenViewController.m in Sources */,
 				105776E321880BC100F7EEB2 /* AppDelegate.m in Sources */,
 				10BF24A4218FE8AA0078BEFB /* ABCNavigationViewController.m in Sources */,
 				10BF24A8218FEE230078BEFB /* ABCPresentAnimation.m in Sources */,

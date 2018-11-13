@@ -9,6 +9,7 @@
 #ifndef SZTFontDefine_h
 #define SZTFontDefine_h
 
+#define SZTFontNamePingFangSC @"PingFangSC-Regular"
 #define SZTFontNamePingFangSCMedium @"PingFangSC-Medium"
 
 #endif /* SZTFontDefine_h */

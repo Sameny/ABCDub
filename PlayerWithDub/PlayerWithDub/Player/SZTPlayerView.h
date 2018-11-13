@@ -8,12 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+@class SZTPlayerView;
+@protocol SZTPlayerViewDelegate <NSObject>
+
+@required
+// 旋转为竖屏时调用
+- (void)addPlayerView:(SZTPlayerView *)playerView;
+
+@end
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class AVPlayerLayer;
 @interface SZTPlayerView : UIView
 
+@property (nonatomic, weak) UIViewController <SZTPlayerViewDelegate> *presentingViewController;
+
 - (void)addPlayerLayer:(AVPlayerLayer *)playerLayer;
+
+- (void)changeScreenToPortrait;
 
 @end
 

@@ -23,7 +23,7 @@
 #import "AWVideoPlayerViewController.h"
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <SZTPlayerViewDelegate>
 
 @property (nonatomic, strong) UIButton *composeBtn;
 @property (nonatomic, strong) UIButton *recordBtn;
@@ -125,6 +125,11 @@
     [self.playerView addPlayerLayer:self.player.playerLayer];
 }
 
+- (void)addPlayerView:(SZTPlayerView *)playerView {
+    [self.view addSubview:playerView];
+    playerView.frame = CGRectMake(0, 0, PORTRAIT_SCREEN_WIDTH, PORTRAIT_SCREEN_WIDTH*9.f/16.f);
+}
+
 - (SZTPlayer *)player {
     if (!_player) {
         _player = [[SZTPlayer alloc] init];
@@ -136,6 +141,7 @@
     if (!_playerView) {
         _playerView = [[SZTPlayerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*9.f/16.f)];
         _playerView.backgroundColor = [UIColor redColor];
+        _playerView.presentingViewController = self;
     }
     return _playerView;
 }

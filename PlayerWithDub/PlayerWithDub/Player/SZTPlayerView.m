@@ -6,6 +6,7 @@
 //  Copyright © 2018年 泽泰 舒. All rights reserved.
 //
 
+#import "SZTPlayerFullScreenViewController.h"
 #import <AVFoundation/AVPlayerLayer.h>
 #import "SZTFontDefine.h"
 #import "SZTPlayerView.h"
@@ -23,6 +24,8 @@
 @property (nonatomic, strong) UISlider *slider;
 
 @property (nonatomic, weak) AVPlayerLayer *playerLayer;
+
+@property (nonatomic, strong) SZTPlayerFullScreenViewController *playerFullScreenViewController;
 
 @end
 
@@ -48,6 +51,12 @@
     [self.layer insertSublayer:playerLayer below:self.placeHolderImageView.layer];
     playerLayer.frame = self.bounds;
     self.playerLayer = playerLayer;
+}
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    self.playerLayer.frame = frame;
+    [self updateFrame:frame];
 }
 
 - (void)removePlayerLayer {
@@ -84,12 +93,52 @@ static CGFloat kSZTPlayerViewBottomViewMargin = 8.f;
     [self.bottomView addSubview:self.slider];
 }
 
+- (void)updateFrame:(CGRect)frame {
+    self.mediaNameLabel.frame = CGRectMake(10, 10, frame.size.width - 20, 20);
+    self.bottomView.frame = CGRectMake(kSZTPlayerViewBottomViewMargin, frame.size.height - kSZTPlayerViewBottomViewHeight, frame.size.width - kSZTPlayerViewBottomViewMargin*2, kSZTPlayerViewBottomViewHeight);
+    self.currentTimeLabel.frame = CGRectMake(0, (self.bottomView.bounds.size.height - kSZTPlayerViewTimeLabelHeight)/2, kSZTPlayerViewTimeLabelWidth, kSZTPlayerViewTimeLabelHeight);
+    self.slider.frame = CGRectMake(kSZTPlayerViewTimeLabelWidth + 8, (kSZTPlayerViewBottomViewHeight - 16.f)/2, self.bottomView.frame.size.width - kSZTPlayerViewTimeLabelWidth*2 - 18 - 8*3, 16);
+    self.restTimeLabel.frame = CGRectMake(self.bottomView.frame.size.width - kSZTPlayerViewTimeLabelWidth - 18.f - 8, (self.bottomView.bounds.size.height - kSZTPlayerViewTimeLabelHeight)/2, kSZTPlayerViewTimeLabelWidth, kSZTPlayerViewTimeLabelHeight);
+    self.changeScreenBtn.frame = CGRectMake(self.bottomView.frame.size.width - 18, (kSZTPlayerViewBottomViewHeight - 18.f)/2, 18, 18);
+}
+
+CGFloat kChangeScreenAnimateDuration = 0.3;
 - (void)changeScreenToPortrait {
+    if (!self.presentingViewController) {
+        return;
+    }
     
+    [self.presentingViewController addPlayerView:self.playerFullScreenViewController.playerView];
+    [self.playerFullScreenViewController dismissViewControllerAnimated:NO completion:nil];
+    
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    CGFloat angle = orientation == UIInterfaceOrientationLandscapeRight?-M_PI_2:M_PI_2;
+    self.transform = CGAffineTransformMakeRotation(angle);
+    [UIView animateWithDuration:kChangeScreenAnimateDuration animations:^{
+        self.transform = CGAffineTransformIdentity;
+        self.playerFullScreenViewController = nil;
+    }];
 }
 
 - (void)changeScreenToLandscape {
-    
+    if (!self.presentingViewController) {
+        return;
+    }
+    if (!self.playerFullScreenViewController.isBeingPresented) {
+        self.playerFullScreenViewController.playerView = self;
+        // 推出透明的视图控制器
+        self.playerFullScreenViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        self.playerFullScreenViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        
+        [self.presentingViewController presentViewController:self.playerFullScreenViewController animated:NO completion:nil];
+    }
+}
+
+- (SZTPlayerFullScreenViewController *)playerFullScreenViewController {
+    if (!_playerFullScreenViewController) {
+        _playerFullScreenViewController = [[SZTPlayerFullScreenViewController alloc] init];
+    }
+    return _playerFullScreenViewController;
 }
 
 - (UIView *)bottomView {
@@ -119,7 +168,8 @@ static CGFloat kSZTPlayerViewBottomViewMargin = 8.f;
     if (!_currentTimeLabel) {
         _currentTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, (self.bottomView.bounds.size.height - kSZTPlayerViewTimeLabelHeight)/2, kSZTPlayerViewTimeLabelWidth, kSZTPlayerViewTimeLabelHeight)];
         _currentTimeLabel.textColor = [UIColor whiteColor];
-        _currentTimeLabel.font = [UIFont fontWithName:SZTFontNamePingFangSCMedium size:12.f];
+        _currentTimeLabel.font = [UIFont fontWithName:SZTFontNamePingFangSC size:12.f];
+        _currentTimeLabel.textAlignment = NSTextAlignmentCenter;
         _currentTimeLabel.text = @"00:00";
     }
     return _currentTimeLabel;
@@ -127,9 +177,10 @@ static CGFloat kSZTPlayerViewBottomViewMargin = 8.f;
 
 - (UILabel *)restTimeLabel {
     if (!_restTimeLabel) {
-        _restTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.bottomView.frame.size.width - kSZTPlayerViewTimeLabelWidth, (self.bottomView.bounds.size.height - kSZTPlayerViewTimeLabelHeight)/2, kSZTPlayerViewTimeLabelWidth, kSZTPlayerViewTimeLabelHeight)];
+        _restTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.bottomView.frame.size.width - kSZTPlayerViewTimeLabelWidth - 18.f - 8, (self.bottomView.bounds.size.height - kSZTPlayerViewTimeLabelHeight)/2, kSZTPlayerViewTimeLabelWidth, kSZTPlayerViewTimeLabelHeight)];
         _restTimeLabel.textColor = [UIColor whiteColor];
-        _restTimeLabel.font = [UIFont fontWithName:SZTFontNamePingFangSCMedium size:12.f];
+        _restTimeLabel.font = [UIFont fontWithName:SZTFontNamePingFangSC size:12.f];
+        _restTimeLabel.textAlignment = NSTextAlignmentCenter;
         _restTimeLabel.text = @"00:00";
     }
     return _restTimeLabel;
@@ -138,7 +189,7 @@ static CGFloat kSZTPlayerViewBottomViewMargin = 8.f;
 - (UIButton *)changeScreenBtn {
     if (!_changeScreenBtn) {
         _changeScreenBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _changeScreenBtn.frame = CGRectMake(self.bottomView.frame.size.width - 18 - 8, (kSZTPlayerViewBottomViewHeight - 18.f)/2, 18, 18);
+        _changeScreenBtn.frame = CGRectMake(self.bottomView.frame.size.width - 18, (kSZTPlayerViewBottomViewHeight - 18.f)/2, 18, 18);
         [_changeScreenBtn setImage:[UIImage imageNamed:@"player_full_screen"] forState:(UIControlStateNormal)];
         [_changeScreenBtn addTarget:self action:@selector(changeScreen) forControlEvents:(UIControlEventTouchUpInside)];
     }
@@ -147,7 +198,7 @@ static CGFloat kSZTPlayerViewBottomViewMargin = 8.f;
 
 - (UISlider *)slider {
     if (!_slider) {
-        _slider = [[UISlider alloc] initWithFrame:CGRectMake(kSZTPlayerViewTimeLabelWidth + 10, 5, self.bottomView.frame.size.width - kSZTPlayerViewTimeLabelWidth - 20, 20)];
+        _slider = [[UISlider alloc] initWithFrame:CGRectMake(kSZTPlayerViewTimeLabelWidth + 8, (kSZTPlayerViewBottomViewHeight - 16.f)/2, self.bottomView.frame.size.width - kSZTPlayerViewTimeLabelWidth*2 - 18 - 8*3, 16)];
         _slider.value = 0;
     }
     return _slider;
