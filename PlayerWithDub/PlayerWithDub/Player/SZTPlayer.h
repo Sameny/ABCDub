@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)playerDidCompletedBuffer;
 
 - (void)player:(SZTPlayer *)player didCompletedCacheToUrl:(NSString *)url;
+- (void)playerDidReachEnd:(SZTPlayer *)player;
 
 @end
 

@@ -14,6 +14,10 @@
 
 @optional
 
+// buffering
+- (void)resourceLoaderWillOneStartBuffer:(SZTResourceLoader *)loader;
+- (void)resourceLoaderDidEndNowBuffer:(SZTResourceLoader *)loader;
+
 // progress
 - (void)resourceLoader:(SZTResourceLoader *)loader didBufferToProgress:(double)progress;
 - (void)resourceLoader:(SZTResourceLoader *)loader didCompleteWithSuccess:(BOOL)success error:(NSError *)error;
@@ -33,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) SZTResourceLoaderReceiveHandler receiveHandler;
 @property (nonatomic, assign) BOOL isSeek;
 @property (nonatomic, weak) id<SZTResourceLoaderDelegate> delegate;
+
+@property (nonatomic, assign) BOOL cancel;
 
 - (instancetype)initWithResourceUrl:(NSString *)resourceUrl;
 

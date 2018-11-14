@@ -6,6 +6,7 @@
 //  Copyright © 2018年 泽泰 舒. All rights reserved.
 //
 
+#import "SZTPlayerFileHandle.h"
 #import <AFNetworking/AFURLSessionManager.h>
 #import "LocalFileManager.h"
 
@@ -37,8 +38,19 @@ static SZTPlayerResourceManager *sharedPlayerResourceManager;
     if (self) {
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         self.session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clear) name:UIApplicationWillTerminateNotification object:nil];
     }
     return self;
+}
+
+- (void)clear {
+    dispatch_sync(self.resourceLoaderQueue, ^{
+        for (SZTResourceLoader *downloader in self.resourceLoaders) {
+            downloader.cancel = YES;
+        }
+        [self.resourceLoaders removeAllObjects];
+        [SZTPlayerFileHandle clearAllResourceCaches];
+    });
 }
 
 - (NSURLSessionDataTask *)dataTaskWithUrl:(NSString *)url offset:(long long)offset resourceLength:(long long)resourceLength  {

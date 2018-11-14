@@ -48,6 +48,10 @@
     [self removePlayerLayer];
 }
 
+- (BOOL)isPlaying {
+    return self.player.isPlaying;
+}
+
 #pragma mark - player begin
 - (void)configUrl:(NSURL *)url {
     [self.player configUrl:url];
@@ -72,6 +76,33 @@
     }
 }
 
+- (void)play {
+    [self.player play];
+}
+
+- (void)pause {
+    [self.player pause];
+}
+
+- (void)stop {
+    [self.player stop];
+}
+
+- (void)clear {
+    [self.player clear];
+}
+
+- (void)seekToTimeWithSeconds:(NSTimeInterval)seconds completion:(void(^)(BOOL finish))completion {
+    if (self.player.totalSeconds > 0) {
+        [self seekToSeconds:seconds completion:completion];
+    }
+    else {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self seekToTimeWithSeconds:seconds completion:completion];
+        });
+    }
+}
+
 - (void)slideValueChanging {
     if (self.player.totalSeconds > 0) {
         CGFloat value = self.slider.value;
@@ -83,13 +114,20 @@
 - (void)slideValueEndChanging {
     if (self.player.totalSeconds > 0) {
         CGFloat value = self.slider.value;
-        self.isSeeking = YES;
         NSTimeInterval nowSeconds = value*self.player.totalSeconds;
-        __weak typeof(self) weakself = self;
-        [self.player seekToTimeWithSeconds:nowSeconds completion:^(BOOL finish) {
-            weakself.isSeeking = NO;
-        }];
+        [self seekToSeconds:nowSeconds completion:nil];
     }
+}
+
+- (void)seekToSeconds:(NSTimeInterval)seconds completion:(void(^)(BOOL finish))completion {
+    self.isSeeking = YES;
+    __weak typeof(self) weakself = self;
+    [self.player seekToTimeWithSeconds:seconds completion:^(BOOL finish) {
+        weakself.isSeeking = NO;
+        if (completion) {
+            completion(finish);
+        }
+    }];
 }
 
 #define kSZTPlayerTIMESTRING(seconds, greaterThanHour) greaterThanHour?[NSString stringWithFormat:@"%02ld:%02ld:%02ld", seconds/3600, (seconds%3600)/60, seconds%60]:[NSString stringWithFormat:@"%02ld:%02ld", (seconds%3600)/60, seconds%60]
@@ -107,12 +145,15 @@
     if (!self.isSeeking) {
         [self updateProgressWithNowSeconds:seconds];
     }
+    if (_delegate && [_delegate respondsToSelector:@selector(playerDidPlayAtSeconds:)]) {
+        [_delegate playerDidPlayAtSeconds:seconds];
+    }
 }
 
 - (void)player:(SZTPlayer *)player playerStatusDidChanged:(SZTPlayerStatus)status {
     switch (status) {
         case SZTPlayerStatusPlaying: {
-            [self.statusView setStatus:(SZTPlayerStatusViewStatusPlaying) withDescription:nil];
+            [self.statusView setStatus:(SZTPlayerStatusViewStatusNone) withDescription:nil];
         }
             break;
         case SZTPlayerStatusPaused: {
@@ -137,6 +178,15 @@
 
 - (void)player:(SZTPlayer *)player didOccurError:(NSError *)error {
     [self.statusView setStatus:(SZTPlayerStatusViewStatusError) withDescription:nil];
+}
+
+- (void)playerDidReachEnd:(SZTPlayer *)player {
+    if (_delegate && [_delegate respondsToSelector:@selector(playerDidReachEnd)]) {
+        [_delegate playerDidReachEnd];
+    }
+    else {
+        [self.player pause];
+    }
 }
 
 #pragma mark - player end

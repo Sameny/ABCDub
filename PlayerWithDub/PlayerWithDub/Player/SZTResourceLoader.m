@@ -43,6 +43,7 @@
 @property (nonatomic, assign) BOOL enableCache;
 @property (nonatomic, assign) BOOL canResponseToProgress;
 @property (nonatomic, assign) BOOL resetting;
+@property (nonatomic, assign) BOOL buffering;
 
 @end
 
@@ -94,7 +95,7 @@
 }
 
 - (void)handlerProcessData:(NSData *)data withDataTask:(NSURLSessionDataTask *)dataTask {
-    while (self.resetting) {
+    while (self.resetting || _cancel) {
         return;
     }
     
@@ -103,7 +104,9 @@
     [self processLoadingRequests];
     if (self.canResponseToProgress) {
         double localNowOffset = self.currentStartOffset + self.fileHandle.fileLength;
-        [_delegate resourceLoader:self didBufferToProgress:localNowOffset/self.resourceLength];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self->_delegate resourceLoader:self didBufferToProgress:localNowOffset/self.resourceLength];
+        });
     }
 }
 
@@ -120,10 +123,12 @@
         }
         else {
             NSLog(@"下载视频出错:%@", error);
+            if (_delegate && [_delegate respondsToSelector:@selector(resourceLoader:didCompleteWithSuccess:error:)]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self->_delegate resourceLoader:self didCompleteWithSuccess:success error:error];
+                });
+            }
         }
-    }
-    if (_delegate && [_delegate respondsToSelector:@selector(resourceLoader:didCompleteWithSuccess:error:)]) {
-        [_delegate resourceLoader:self didCompleteWithSuccess:success error:error];
     }
 }
 
@@ -155,6 +160,14 @@
  建立下载资源的请求
  */
 - (void)newLoadResourceWithLoadingRequest:(SZTLoadingRequestInfo *)loadingRequest {
+    if (!self.buffering) {
+        self.buffering = YES;
+        if (_delegate && [_delegate respondsToSelector:@selector(resourceLoaderWillOneStartBuffer:)]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self->_delegate resourceLoaderWillOneStartBuffer:self];
+            });
+        }
+    }
     self.resetting = YES;
     if (self.task) {
         [self.task cancel];
@@ -176,13 +189,18 @@
     while (self.resetting) {
         return;
     }
-    NSMutableArray <SZTLoadingRequestInfo *>*completedRequests = [[NSMutableArray alloc] init];
-    [self.loadingRequests enumerateObjectsUsingBlock:^(SZTLoadingRequestInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([self processLoadingRequest:obj]) {
-            [completedRequests addObject:obj];
-        }
-    }];
-    [self.loadingRequests removeObjectsInArray:completedRequests];
+    @try {
+        NSMutableArray <SZTLoadingRequestInfo *>*completedRequests = [[NSMutableArray alloc] init];
+        [self.loadingRequests enumerateObjectsUsingBlock:^(SZTLoadingRequestInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([self processLoadingRequest:obj]) {
+                [completedRequests addObject:obj];
+            }
+        }];
+        [self.loadingRequests removeObjectsInArray:completedRequests];
+    } @catch (NSException *exception) {
+        NSError *error = [NSError errorWithDomain:@"player resource loader" code:-1 userInfo:@{NSLocalizedDescriptionKey:exception.description}];
+        [self completionWithSuccess:NO error:error];
+    }
 }
 
 - (BOOL)processLoadingRequest:(SZTLoadingRequestInfo *)loadingRequest {
@@ -213,6 +231,15 @@
             [loadingRequest respondWithData:subData];
         }
         
+        if (self.buffering) {
+            self.buffering = YES;
+            if (_delegate && [_delegate respondsToSelector:@selector(resourceLoaderDidEndNowBuffer:)]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self->_delegate resourceLoaderDidEndNowBuffer:self];
+                });
+            }
+        }
+        
         NSInteger nowEndOffset = currentOffset + unReadLength;
         NSInteger expectedEndOffset = loadingRequest.requestedOffset + loadingRequest.requestedLength;
         if (nowEndOffset >= expectedEndOffset) {
@@ -231,8 +258,16 @@
     [self.fileHandle clearTempData];
 }
 
+- (void)setCancel:(BOOL)cancel {
+    _cancel = cancel;
+    [self cancelDownloadAndClearTemp];
+}
+
 #pragma mark - AVAssetResourceLoaderDelegate
 - (BOOL)resourceLoader:(AVAssetResourceLoader *)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest *)loadingRequest {
+    if (_cancel) {
+        return NO;
+    }
     SZTLoadingRequestInfo *requestInfo = [[SZTLoadingRequestInfo alloc] initWithLoadingRequest:loadingRequest];
     [self.loadingRequests addObject:requestInfo];
     [self loadResourceWithLoadingRequest:requestInfo];

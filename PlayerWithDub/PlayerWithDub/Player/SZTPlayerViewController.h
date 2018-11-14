@@ -6,17 +6,13 @@
 //  Copyright © 2018年 泽泰 舒. All rights reserved.
 //
 
-#import "AWVideoPlayerViewController.h"
+#import "SZTPresentedViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SZTPlayerViewController : UIViewController
+@interface SZTPlayerViewController : SZTPresentedViewController
 
-@property (nonatomic, strong, readonly) AWVideoPlayerViewController *player;
-
-- (void)setVideoUrl:(NSURL *)url needLoading:(BOOL)needLoading;
-// can be overrided
-- (void)backBtnDidClicked;
+- (void)setVideoUrl:(NSURL *)url;
 
 @end
 

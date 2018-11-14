@@ -23,7 +23,7 @@
 #import "AWVideoPlayerViewController.h"
 #import "ViewController.h"
 
-@interface ViewController () <SZTPlayerViewDelegate>
+@interface ViewController () <SZTPlayerViewScreenDelegate>
 
 @property (nonatomic, strong) UIButton *composeBtn;
 @property (nonatomic, strong) UIButton *recordBtn;
@@ -122,7 +122,6 @@
 //    NSURL *url = [[NSBundle mainBundle] URLForResource:@"幻想中的无敌神鹰" withExtension:@"mp4"];
     NSURL *url = [NSURL URLWithString:TestVideoUrl];
     [self.playerView configUrl:url];
-//    [self.playerView addPlayerLayer:self.player.playerLayer];
 }
 
 - (void)addPlayerView:(SZTPlayerView *)playerView {

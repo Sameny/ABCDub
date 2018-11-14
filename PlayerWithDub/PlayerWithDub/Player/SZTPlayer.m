@@ -52,7 +52,7 @@
     else {
         SZTResourceLoader *resourceLoader = [[SZTPlayerResourceManager sharedInstance] resourceLoaderWithUrl:url.absoluteString];
         AVURLAsset *asset = [AVURLAsset URLAssetWithURL:url options:nil];
-        [asset.resourceLoader setDelegate:resourceLoader queue:self.loaderQueue];
+        [asset.resourceLoader setDelegate:resourceLoader queue:dispatch_get_main_queue()];
         resourceLoader.delegate = self;
         item = [AVPlayerItem playerItemWithAsset:asset];
     }
@@ -117,10 +117,12 @@
 
 - (void)seekToTimeWithSeconds:(NSTimeInterval)seconds completion:(void(^)(BOOL finish))completion {
     if (self.player) {
-        SZTResourceLoader *resourceLoader = [[SZTPlayerResourceManager sharedInstance] existsResourceLoaderWithUrl:self.url.absoluteString];
-        resourceLoader.isSeek = YES;
-        if (!resourceLoader) {
-            return;
+        if (!_isLocalFile) {
+            SZTResourceLoader *resourceLoader = [[SZTPlayerResourceManager sharedInstance] existsResourceLoaderWithUrl:self.url.absoluteString];
+            resourceLoader.isSeek = YES;
+            if (!resourceLoader) {
+                return;
+            }
         }
         __weak typeof(self) weakself = self;
         [self.player.currentItem cancelPendingSeeks];
@@ -164,14 +166,16 @@
 
 - (dispatch_queue_t)loaderQueue {
     if (!_loaderQueue) {
-        _loaderQueue = dispatch_queue_create("player loader queue", DISPATCH_QUEUE_CONCURRENT);
+        _loaderQueue = dispatch_queue_create("player loader queue", DISPATCH_QUEUE_SERIAL);
     }
     return _loaderQueue;
 }
 
 #pragma mark - observer handlers
 - (void)playerItemDidReachEnd:(AVPlayerItem *)item {
-    
+    if (_delegate && [_delegate respondsToSelector:@selector(playerDidReachEnd:)]) {
+        [_delegate playerDidReachEnd:self];
+    }
 }
 
 - (void)playerInterrupted:(NSNotification *)notification {
@@ -356,8 +360,13 @@
 }
 
 - (void)resourceLoader:(SZTResourceLoader *)loader didCompleteWithSuccess:(BOOL)success error:(NSError *)error {
-    if (_delegate && [_delegate respondsToSelector:@selector(player:didCompletedCacheToUrl:)]) {
-        [_delegate player:self didCompletedCacheToUrl:[loader getCachedFileUrl]];
+    if (success) {
+        if (_delegate && [_delegate respondsToSelector:@selector(player:didCompletedCacheToUrl:)]) {
+            [_delegate player:self didCompletedCacheToUrl:[loader getCachedFileUrl]];
+        }
+    }
+    else {
+        [self playerOccurError:error];
     }
 }
 

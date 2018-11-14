@@ -20,7 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (SZTResourceLoader *)resourceLoaderWithUrl:(NSString *)url;
 // method will return a existing loader 
 - (SZTResourceLoader *)existsResourceLoaderWithUrl:(NSString *)url;
+
+- (void)clear;
+
 + (BOOL)cacheExistsAtVideoPath:(NSString *)videoPath;
+
 
 @end
 

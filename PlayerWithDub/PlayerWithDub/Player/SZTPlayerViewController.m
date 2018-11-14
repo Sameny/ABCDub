@@ -6,12 +6,13 @@
 //  Copyright © 2018年 泽泰 舒. All rights reserved.
 //
 
+#import "SZTPlayerView.h"
 #import "ControlHelper.h"
 #import "SZTPlayerViewController.h"
 
 @interface SZTPlayerViewController ()
 
-@property (nonatomic, strong) AWVideoPlayerViewController *player;
+@property (nonatomic, strong) SZTPlayerView *playerView;
 @property (nonatomic, strong) UIButton *backBtn;
 
 @property (nonatomic, strong) NSURL *url;
@@ -23,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.player.view];
+    [self.view addSubview:self.playerView];
     self.navigationController.navigationBar.hidden = YES;
     [self.view addSubview:self.backBtn];
     self.backBtn.frame = CGRectMake(SZTBackItemLeftMargin, SZTBackItemTopMargin, SZTBackItemSize.width, SZTBackItemSize.height);
@@ -35,7 +36,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     if (_url) {
-        [self.player play];
+        [self.playerView play];
     }
 }
 
@@ -43,17 +44,12 @@
     self.view.window.frame = CGRectMake(0, 0, size.width, size.height);
     self.navigationController.view.frame = CGRectMake(0, 0, size.width, size.height);
     self.view.frame = CGRectMake(0, 0, size.width, size.height);
-    [self.player setPlayerFrame:CGRectMake(0, 0, size.width, size.width*9.f/16.f)];
+    self.playerView.frame = CGRectMake(0, 0, size.width, size.width*9.f/16.f);
 }
 
-- (void)setVideoUrl:(NSURL *)url needLoading:(BOOL)needLoading {
+- (void)setVideoUrl:(NSURL *)url {
     if (url) {
-        if (needLoading) {
-            // TODO: load video from server
-        }
-        else {
-            [self.player readyForPlayingVideoWithURL:url];
-        }
+        [self.playerView configUrl:url];
         _url = url;
     }
 }
@@ -68,11 +64,11 @@
 }
 
 #pragma mark - player
-- (AWVideoPlayerViewController *)player {
-    if (!_player) {
-        _player = [AWVideoPlayerViewController playerViewControllerWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*9.f/16) playerControl:(AWVideoPlayerControlAll)];
+- (SZTPlayerView *)playerView {
+    if (!_playerView) {
+        _playerView = [[SZTPlayerView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width*9.f/16.f)];
     }
-    return _player;
+    return _playerView;
 }
 
 - (UIButton *)backBtn {
