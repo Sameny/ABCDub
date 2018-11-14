@@ -15,6 +15,7 @@
 		1010382B218C52D500085420 /* ABCSRTParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1010382A218C52D500085420 /* ABCSRTParserTest.m */; };
 		1017F600219A6AB00080F524 /* SZTPlayerFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1017F5FF219A6AB00080F524 /* SZTPlayerFullScreenViewController.m */; };
 		1017F603219A979C0080F524 /* SZTPresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1017F602219A979C0080F524 /* SZTPresentedViewController.m */; };
+		1017F606219AC1790080F524 /* SZTPlayerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1017F605219AC1790080F524 /* SZTPlayerStatusView.m */; };
 		10250093219561690024679A /* SZTPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 10250092219561690024679A /* SZTPlayer.m */; };
 		1025009A219923D20024679A /* SZTPlayerFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 10250099219923D20024679A /* SZTPlayerFileHandle.m */; };
 		102A4ADE21928C9700AC6C89 /* SZTPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102A4ADD21928C9700AC6C89 /* SZTPlayerViewController.m */; };
@@ -115,6 +116,8 @@
 		1017F5FF219A6AB00080F524 /* SZTPlayerFullScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPlayerFullScreenViewController.m; sourceTree = "<group>"; };
 		1017F601219A979C0080F524 /* SZTPresentedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPresentedViewController.h; sourceTree = "<group>"; };
 		1017F602219A979C0080F524 /* SZTPresentedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPresentedViewController.m; sourceTree = "<group>"; };
+		1017F604219AC1790080F524 /* SZTPlayerStatusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayerStatusView.h; sourceTree = "<group>"; };
+		1017F605219AC1790080F524 /* SZTPlayerStatusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPlayerStatusView.m; sourceTree = "<group>"; };
 		10250091219561690024679A /* SZTPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayer.h; sourceTree = "<group>"; };
 		10250092219561690024679A /* SZTPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPlayer.m; sourceTree = "<group>"; };
 		10250098219923D20024679A /* SZTPlayerFileHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayerFileHandle.h; sourceTree = "<group>"; };
@@ -433,6 +436,8 @@
 				10250099219923D20024679A /* SZTPlayerFileHandle.m */,
 				107D765D2199592B0024EDB7 /* SZTPlayerView.h */,
 				107D765E2199592B0024EDB7 /* SZTPlayerView.m */,
+				1017F604219AC1790080F524 /* SZTPlayerStatusView.h */,
+				1017F605219AC1790080F524 /* SZTPlayerStatusView.m */,
 				107D766021997CC20024EDB7 /* SZTPlayerImages.xcassets */,
 				1017F5FE219A6AB00080F524 /* SZTPlayerFullScreenViewController.h */,
 				1017F5FF219A6AB00080F524 /* SZTPlayerFullScreenViewController.m */,
@@ -798,6 +803,7 @@
 				10817D78218940840026E5C7 /* ABCMediaComposeUtil.m in Sources */,
 				10721AE62193D90800867A74 /* SZTPlayerResourceManager.m in Sources */,
 				107D765F2199592B0024EDB7 /* SZTPlayerView.m in Sources */,
+				1017F606219AC1790080F524 /* SZTPlayerStatusView.m in Sources */,
 				10BF24A1218FDD820078BEFB /* ABCDubViewModel.m in Sources */,
 				1077336921903F78004F5998 /* UIButton+SZTAdd.m in Sources */,
 				103BFA3221916EB7002A681A /* ABCDubFileManager.m in Sources */,

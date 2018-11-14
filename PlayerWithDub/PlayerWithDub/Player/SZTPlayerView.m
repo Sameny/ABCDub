@@ -6,14 +6,16 @@
 //  Copyright © 2018年 泽泰 舒. All rights reserved.
 //
 
+#import "SZTPlayer.h"
+
+#import "SZTPlayerStatusView.h"
 #import "SZTPlayerFullScreenViewController.h"
-#import <AVFoundation/AVPlayerLayer.h>
 #import "SZTFontDefine.h"
 #import "SZTPlayerView.h"
 
-@interface SZTPlayerView ()
+@interface SZTPlayerView () <SZTPlayerDelegate>
 
-@property (nonatomic, strong) UIView *statusView;
+@property (nonatomic, strong) SZTPlayerStatusView *statusView;
 
 @property (nonatomic, strong) UIImageView *placeHolderImageView;
 @property (nonatomic, strong) UILabel *mediaNameLabel;
@@ -23,7 +25,10 @@
 @property (nonatomic, strong) UIButton *changeScreenBtn;
 @property (nonatomic, strong) UISlider *slider;
 
+@property (nonatomic, assign) BOOL isSeeking;
+
 @property (nonatomic, weak) AVPlayerLayer *playerLayer;
+@property (nonatomic, strong) SZTPlayer *player;
 
 @property (nonatomic, strong) SZTPlayerFullScreenViewController *playerFullScreenViewController;
 
@@ -43,6 +48,14 @@
     [self removePlayerLayer];
 }
 
+#pragma mark - player begin
+- (void)configUrl:(NSURL *)url {
+    [self.player configUrl:url];
+    if (!self.playerLayer) {
+        [self addPlayerLayer:self.player.playerLayer];
+    }
+}
+
 - (void)addPlayerLayer:(AVPlayerLayer *)playerLayer {
     if (!playerLayer) {
         return;
@@ -53,16 +66,85 @@
     self.playerLayer = playerLayer;
 }
 
-- (void)setFrame:(CGRect)frame {
-    [super setFrame:frame];
-    self.playerLayer.frame = frame;
-    [self updateFrame:frame];
-}
-
 - (void)removePlayerLayer {
     if (self.playerLayer) {
         [self.playerLayer removeFromSuperlayer];
     }
+}
+
+- (void)slideValueChanging {
+    if (self.player.totalSeconds > 0) {
+        CGFloat value = self.slider.value;
+        NSTimeInterval nowSeconds = value*self.player.totalSeconds;
+        [self updateProgressWithNowSeconds:nowSeconds];
+    }
+}
+
+- (void)slideValueEndChanging {
+    if (self.player.totalSeconds > 0) {
+        CGFloat value = self.slider.value;
+        self.isSeeking = YES;
+        NSTimeInterval nowSeconds = value*self.player.totalSeconds;
+        __weak typeof(self) weakself = self;
+        [self.player seekToTimeWithSeconds:nowSeconds completion:^(BOOL finish) {
+            weakself.isSeeking = NO;
+        }];
+    }
+}
+
+#define kSZTPlayerTIMESTRING(seconds, greaterThanHour) greaterThanHour?[NSString stringWithFormat:@"%02ld:%02ld:%02ld", seconds/3600, (seconds%3600)/60, seconds%60]:[NSString stringWithFormat:@"%02ld:%02ld", (seconds%3600)/60, seconds%60]
+
+- (void)updateProgressWithNowSeconds:(NSTimeInterval)seconds {
+    self.currentTimeLabel.text = kSZTPlayerTIMESTRING((NSInteger)seconds, NO);
+    self.restTimeLabel.text =  kSZTPlayerTIMESTRING((NSInteger)(self.player.totalSeconds - seconds), NO);
+    if (self.player.totalSeconds > 0 && !self.slider.isTouchInside) {
+        self.slider.value = seconds/self.player.totalSeconds;
+    }
+}
+
+#pragma mark - SZTPlayerDelegate
+- (void)player:(SZTPlayer *)player didPlayAtSeconds:(NSTimeInterval)seconds {
+    if (!self.isSeeking) {
+        [self updateProgressWithNowSeconds:seconds];
+    }
+}
+
+- (void)player:(SZTPlayer *)player playerStatusDidChanged:(SZTPlayerStatus)status {
+    switch (status) {
+        case SZTPlayerStatusPlaying: {
+            [self.statusView setStatus:(SZTPlayerStatusViewStatusPlaying) withDescription:nil];
+        }
+            break;
+        case SZTPlayerStatusPaused: {
+            [self.statusView setStatus:(SZTPlayerStatusViewStatusPaused) withDescription:nil];
+        }
+            break;
+        case SZTPlayerStatusBuffering:
+        case SZTPlayerStatusWaiting: {
+            [self.statusView setStatus:(SZTPlayerStatusViewStatusLoading) withDescription:nil];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)player:(SZTPlayer *)player didCompletedCacheToUrl:(NSString *)url {
+    if (_delegate && [_delegate respondsToSelector:@selector(didCompletedCacheToUrl:)]) {
+        [_delegate didCompletedCacheToUrl:url];
+    }
+}
+
+- (void)player:(SZTPlayer *)player didOccurError:(NSError *)error {
+    [self.statusView setStatus:(SZTPlayerStatusViewStatusError) withDescription:nil];
+}
+
+#pragma mark - player end
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    self.playerLayer.frame = frame;
+    [self updateFrame:frame];
 }
 
 - (void)changeScreen {
@@ -83,9 +165,9 @@ static CGFloat kSZTPlayerViewBottomViewMargin = 8.f;
 
 - (void)configUI {
     [self addSubview:self.placeHolderImageView];
+    [self addSubview:self.statusView];
     [self addSubview:self.bottomView];
     [self addSubview:self.mediaNameLabel];
-    [self addSubview:self.statusView];
     
     [self.bottomView addSubview:self.currentTimeLabel];
     [self.bottomView addSubview:self.restTimeLabel];
@@ -139,6 +221,22 @@ CGFloat kChangeScreenAnimateDuration = 0.3;
         _playerFullScreenViewController = [[SZTPlayerFullScreenViewController alloc] init];
     }
     return _playerFullScreenViewController;
+}
+
+- (SZTPlayerStatusView *)statusView {
+    if (!_statusView) {
+        _statusView = [[SZTPlayerStatusView alloc] initWithFrame:self.bounds];
+        __weak typeof(self) weakself = self;
+        _statusView.changePauseStatusBlock = ^{
+            if (weakself.player.isPlaying) {
+                [weakself.player pause];
+            }
+            else {
+                [weakself.player play];
+            }
+        };
+    }
+    return _statusView;
 }
 
 - (UIView *)bottomView {
@@ -200,8 +298,20 @@ CGFloat kChangeScreenAnimateDuration = 0.3;
     if (!_slider) {
         _slider = [[UISlider alloc] initWithFrame:CGRectMake(kSZTPlayerViewTimeLabelWidth + 8, (kSZTPlayerViewBottomViewHeight - 16.f)/2, self.bottomView.frame.size.width - kSZTPlayerViewTimeLabelWidth*2 - 18 - 8*3, 16)];
         _slider.value = 0;
+        [_slider addTarget:self action:@selector(slideValueChanging) forControlEvents:(UIControlEventValueChanged)];
+        [_slider addTarget:self action:@selector(slideValueEndChanging) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _slider;
+}
+
+
+#pragma mark - player
+- (SZTPlayer *)player {
+    if (!_player) {
+        _player = [[SZTPlayer alloc] init];
+        _player.delegate = self;
+    }
+    return _player;
 }
 
 @end

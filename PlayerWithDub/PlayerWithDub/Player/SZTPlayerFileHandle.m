@@ -31,6 +31,8 @@ NSString * szt_cacheResourcePath(NSString *fileName) {
 @property (nonatomic, strong) NSFileHandle *writeFileHandle;
 @property (nonatomic, strong) NSFileHandle *readFileHandle;
 
+@property (nonatomic, assign) NSInteger fileLength;
+
 @end
 
 @implementation SZTPlayerFileHandle
@@ -42,34 +44,65 @@ NSString * szt_cacheResourcePath(NSString *fileName) {
         if (!self.tempResourcePath) {
             return nil;
         }
-        _readFileHandle = [NSFileHandle fileHandleForReadingAtPath:self.tempResourcePath];
-        _writeFileHandle = [NSFileHandle fileHandleForWritingAtPath:self.tempResourcePath];
     }
     return self;
 }
 
 - (void)dealloc {
-    [self.readFileHandle closeFile];
-    [self.writeFileHandle closeFile];
+    if (_readFileHandle) {
+        [self.readFileHandle closeFile];
+    }
+    if (_writeFileHandle) {
+        [self.writeFileHandle closeFile];
+    }
 }
 
 - (BOOL)createTempFile {
     NSFileManager * manager = [NSFileManager defaultManager];
     if ([manager fileExistsAtPath:self.tempResourcePath]) {
-        [manager removeItemAtPath:self.tempResourcePath error:nil];
+        NSError *error;
+        [manager removeItemAtPath:self.tempResourcePath error:&error];
+        if (error) {
+            NSLog(@"%@", error);
+        }
     }
-    return [manager createFileAtPath:self.tempResourcePath contents:nil attributes:nil];
+    BOOL success = [manager createFileAtPath:self.tempResourcePath contents:nil attributes:nil];
+    if (success) {
+        [self updateFileHandle];
+    }
+    return success;
+}
+
+- (void)updateFileHandle {
+    if (_readFileHandle) {
+        [_readFileHandle closeFile];
+    }
+    _readFileHandle = [NSFileHandle fileHandleForReadingAtPath:self.tempResourcePath];
+    if (_writeFileHandle) {
+        [_writeFileHandle closeFile];
+    }
+    _writeFileHandle = [NSFileHandle fileHandleForWritingAtPath:self.tempResourcePath];
+    _fileLength = 0;
 }
 
 - (void)writeTempFileData:(NSData *)data {
     [self.writeFileHandle seekToEndOfFile];
     [self.writeFileHandle writeData:data];
     [self.writeFileHandle synchronizeFile];
+    _fileLength += data.length;
 }
 
 - (NSData *)readTempFileDataWithRange:(NSRange)range {
+    if (range.location + range.length > _fileLength) {
+        return [NSData data];
+    }
     [self.readFileHandle seekToFileOffset:range.location];
     return [self.readFileHandle readDataOfLength:range.length];
+}
+
+- (NSData *)allData {
+    [self.readFileHandle seekToFileOffset:0];
+    return [self.readFileHandle readDataToEndOfFile];
 }
 
 - (void)cacheTempFile {
@@ -100,7 +133,11 @@ NSString * szt_cacheResourcePath(NSString *fileName) {
 
 - (BOOL)clearTempData {
     NSFileManager * manager = [NSFileManager defaultManager];
-    return [manager removeItemAtPath:self.tempResourcePath error:nil];
+    BOOL success = [manager removeItemAtPath:self.tempResourcePath error:nil];
+    if (success) {
+        [self updateFileHandle];
+    }
+    return success;
 }
 
 

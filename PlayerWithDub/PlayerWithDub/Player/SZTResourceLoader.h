@@ -36,7 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithResourceUrl:(NSString *)resourceUrl;
 
-- (void)cancelDownloadAndClear:(BOOL)clear;
+- (void)cancelDownloadAndClearTemp;
+- (NSString *)getCachedFileUrl;
 
 @end
 

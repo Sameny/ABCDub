@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVPlayerLayer.h>
 #import "SZTKVOSimpleDefine.h"
 
 typedef NS_ENUM(NSUInteger, SZTPlayerStatus) {
@@ -26,7 +27,14 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 - (void)player:(SZTPlayer *)player didPlayAtSeconds:(NSTimeInterval)seconds;
 - (void)player:(SZTPlayer *)player didUpdateCachedProgress:(double)progress;
-- (void)player:(SZTPlayer *)player playerStatusDidChanged:(int)status;
+- (void)player:(SZTPlayer *)player playerStatusDidChanged:(SZTPlayerStatus)status;
+
+- (void)player:(SZTPlayer *)player didOccurError:(NSError *)error;
+
+- (void)playerWillPauseForStartBuffer;
+- (void)playerDidCompletedBuffer;
+
+- (void)player:(SZTPlayer *)player didCompletedCacheToUrl:(NSString *)url;
 
 @end
 
@@ -36,7 +44,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) BOOL isPlaying;
 @property (nonatomic, readonly) SZTPlayerStatus status;
+@property (nonatomic, readonly) NSTimeInterval totalSeconds;
 
+@property (nonatomic, weak) id<SZTPlayerDelegate> delegate;
 
 // in main queue
 - (void)configUrl:(NSURL *)url;
@@ -45,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)stop;
 - (void)clear;
 
-- (void)seekToTimeWithSeconds:(double)seconds;
+- (void)seekToTimeWithSeconds:(NSTimeInterval)seconds completion:(void(^)(BOOL finish))completion;
 
 @end
 

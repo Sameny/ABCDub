@@ -119,10 +119,10 @@
 }
 
 - (void)playNetworkVideo {
-    NSURL *videoUrl = [[NSBundle mainBundle] URLForResource:@"幻想中的无敌神鹰" withExtension:@"mp4"];
-//    NSURL *url = [NSURL URLWithString:TestVideoUrl];
-    [self.player configUrl:videoUrl];
-    [self.playerView addPlayerLayer:self.player.playerLayer];
+//    NSURL *url = [[NSBundle mainBundle] URLForResource:@"幻想中的无敌神鹰" withExtension:@"mp4"];
+    NSURL *url = [NSURL URLWithString:TestVideoUrl];
+    [self.playerView configUrl:url];
+//    [self.playerView addPlayerLayer:self.player.playerLayer];
 }
 
 - (void)addPlayerView:(SZTPlayerView *)playerView {

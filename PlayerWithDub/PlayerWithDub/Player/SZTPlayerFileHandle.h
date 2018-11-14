@@ -12,10 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SZTPlayerFileHandle : NSObject
 
+@property (nonatomic, strong, readonly) NSString *cachedResourcePath;
+@property (nonatomic, assign, readonly) NSInteger fileLength;
+
 - (instancetype)initWithUrl:(NSString *)url;
 - (BOOL)createTempFile;
 - (void)writeTempFileData:(NSData *)data;
 - (NSData *)readTempFileDataWithRange:(NSRange)range;
+- (NSData *)allData;
 - (void)cacheTempFile;
 - (BOOL)clearTempData;
 

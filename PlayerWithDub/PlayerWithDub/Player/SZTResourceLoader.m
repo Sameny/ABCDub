@@ -15,9 +15,9 @@
 @interface SZTLoadingRequestInfo : NSObject
 
 @property (nonatomic, strong) AVAssetResourceLoadingRequest *loadingRequest;
-@property (nonatomic, assign) NSUInteger requestedOffset;
-@property (nonatomic, assign) NSUInteger requestedLength;
-@property (nonatomic, assign) NSUInteger currentOffset;
+@property (nonatomic, assign) NSInteger requestedOffset;
+@property (nonatomic, assign) NSInteger requestedLength;
+@property (nonatomic, assign) NSInteger currentOffset;
 
 @property (nonatomic, assign) NSURL *url;
 
@@ -37,12 +37,12 @@
 @property (nonatomic, strong) NSURLSessionDataTask *task;
 
 @property (nonatomic, strong) SZTPlayerFileHandle *fileHandle;
-@property (nonatomic, assign) long long resourceLength;
-@property (nonatomic, assign) long long completedDownloadSize;
-@property (nonatomic, assign) long long currentStartOffset; // 本地数据开始的offset
+@property (nonatomic, assign) NSInteger resourceLength;
+@property (nonatomic, assign) NSInteger currentStartOffset; // 本地数据开始的offset
 
 @property (nonatomic, assign) BOOL enableCache;
 @property (nonatomic, assign) BOOL canResponseToProgress;
+@property (nonatomic, assign) BOOL resetting;
 
 @end
 
@@ -74,8 +74,12 @@
     self.canResponseToProgress = [_delegate respondsToSelector:@selector(resourceLoader:didBufferToProgress:)];
 }
 
+- (NSString *)getCachedFileUrl {
+    return self.fileHandle.cachedResourcePath;
+}
+
 - (void)dealloc {
-    [self cancelDownloadAndClear:NO];
+    [self cancelDownloadAndClearTemp];
 }
 
 #pragma mark - 处理下载的完成和过程中的数据
@@ -83,19 +87,22 @@
     NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *)response;
     NSString * contentRange = [[httpResponse allHeaderFields] objectForKey:@"Content-Range"];
     NSString *fileLengthString = [[contentRange componentsSeparatedByString:@"/"] lastObject];
-    NSUInteger fileLength = fileLengthString.integerValue > 0 ? fileLengthString.integerValue : response.expectedContentLength;
+    NSInteger fileLength = fileLengthString.integerValue > 0 ? fileLengthString.integerValue : @(response.expectedContentLength).integerValue;
     NSLog(@"ready for download length:%ld", fileLength);
     
     self.resourceLength = fileLength;
 }
 
 - (void)handlerProcessData:(NSData *)data withDataTask:(NSURLSessionDataTask *)dataTask {
+    while (self.resetting) {
+        return;
+    }
+    
     [self.fileHandle writeTempFileData:data];
-    self.completedDownloadSize += data.length;
     
     [self processLoadingRequests];
     if (self.canResponseToProgress) {
-        double localNowOffset = self.currentStartOffset + self.completedDownloadSize;
+        double localNowOffset = self.currentStartOffset + self.fileHandle.fileLength;
         [_delegate resourceLoader:self didBufferToProgress:localNowOffset/self.resourceLength];
     }
 }
@@ -124,12 +131,16 @@
     @synchronized (self) {
         if (self.task) {
             if (loadingRequest.requestedOffset >= self.currentStartOffset
-                && loadingRequest.requestedOffset < self.currentStartOffset + self.completedDownloadSize) {
+                && loadingRequest.requestedOffset < self.currentStartOffset + self.fileHandle.fileLength) {
                 [self processLoadingRequests];
+                if (self.isSeek) {
+                    self.isSeek = NO;
+                }
             }
             else {
                 if (self.isSeek) {
                     self.enableCache = NO;
+                    self.isSeek = NO;
                     [self newLoadResourceWithLoadingRequest:loadingRequest];
                 }
             }
@@ -144,25 +155,27 @@
  建立下载资源的请求
  */
 - (void)newLoadResourceWithLoadingRequest:(SZTLoadingRequestInfo *)loadingRequest {
+    self.resetting = YES;
+    if (self.task) {
+        [self.task cancel];
+    }
+    self.task = nil;
     long long requestedOffset = loadingRequest.requestedOffset;
-    if (requestedOffset == 0) {
-        [self cancelDownloadAndClear:YES];
-    }
-    else {
-        [self cancelDownloadAndClear:!_enableCache];
-    }
     // ready for download
     self.currentStartOffset = requestedOffset;
-    self.completedDownloadSize = 0;
     [self.fileHandle createTempFile];
 
     NSURL *url = loadingRequest.url;
     
     self.task = [[SZTPlayerResourceManager sharedInstance] dataTaskWithUrl:url.absoluteString offset:requestedOffset resourceLength:self.resourceLength];
     [self.task resume];
+    self.resetting = NO;
 }
 
 - (void)processLoadingRequests {
+    while (self.resetting) {
+        return;
+    }
     NSMutableArray <SZTLoadingRequestInfo *>*completedRequests = [[NSMutableArray alloc] init];
     [self.loadingRequests enumerateObjectsUsingBlock:^(SZTLoadingRequestInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([self processLoadingRequest:obj]) {
@@ -179,29 +192,29 @@
         if (self.currentStartOffset == kUnknowStartOffset) {
             return NO;
         }
-        NSUInteger localNowOffset = self.currentStartOffset + self.completedDownloadSize;
+        NSInteger localNowOffset = self.currentStartOffset + self.fileHandle.fileLength;
         
         NSInteger currentOffset = loadingRequest.currentOffset;
         if (currentOffset == 0) {
             currentOffset = loadingRequest.requestedOffset;
         }
-        NSUInteger unReadLength = localNowOffset - currentOffset;
+        NSInteger unReadLength = localNowOffset - currentOffset;
+        if (unReadLength <= 0) {
+            return NO; // NO data
+        }
         NSInteger canReadLength = MIN(loadingRequest.requestedLength, unReadLength);
         
-        NSRange dataRange = NSMakeRange(currentOffset - self.currentStartOffset, canReadLength);
-        if (dataRange.location + dataRange.length > self.completedDownloadSize) {
-//            NSLog(@"超出已下载的数据长度");
-            return NO;
-//            NSData *subData = [fileData subdataWithRange:NSMakeRange(MIN(dataRange.location, fileData.length), 0)];
-//            [loadingRequest respondWithData:subData];
+        NSRange dataRange = NSMakeRange(@(currentOffset - self.currentStartOffset).unsignedIntegerValue, @(canReadLength).unsignedIntegerValue);
+        if (dataRange.location + dataRange.length > localNowOffset) {
+            return NO; // 超出已下载的数据长度
         }
         else {
             NSData *subData = [self.fileHandle readTempFileDataWithRange:dataRange];
             [loadingRequest respondWithData:subData];
         }
         
-        NSUInteger nowEndOffset = currentOffset + unReadLength;
-        NSUInteger expectedEndOffset = loadingRequest.requestedOffset + loadingRequest.requestedLength;
+        NSInteger nowEndOffset = currentOffset + unReadLength;
+        NSInteger expectedEndOffset = loadingRequest.requestedOffset + loadingRequest.requestedLength;
         if (nowEndOffset >= expectedEndOffset) {
             [loadingRequest finishLoading];
             return YES;
@@ -210,16 +223,12 @@
     return NO;
 }
 
-- (void)cancelDownloadAndClear:(BOOL)clear {
+- (void)cancelDownloadAndClearTemp {
     if (self.task && self.task.state == NSURLSessionTaskStateRunning) {
         [self.task cancel];
     }
     self.task = nil;
-    if (clear) {
-        if (self.task.state != NSURLSessionTaskStateCompleted) {
-            [self.fileHandle clearTempData];
-        }
-    }
+    [self.fileHandle clearTempData];
 }
 
 #pragma mark - AVAssetResourceLoaderDelegate
@@ -267,17 +276,17 @@
     return self;
 }
 
-- (NSUInteger)requestedOffset {
-    _currentOffset = self.loadingRequest.dataRequest.requestedOffset;
+- (NSInteger)requestedOffset {
+    _currentOffset = @(self.loadingRequest.dataRequest.requestedOffset).integerValue;
     return _currentOffset;
 }
 
-- (NSUInteger)requestedLength {
+- (NSInteger)requestedLength {
     return self.loadingRequest.dataRequest.requestedLength;
 }
 
-- (NSUInteger)currentOffset {
-    return self.loadingRequest.dataRequest.currentOffset;
+- (NSInteger)currentOffset {
+    return @(self.loadingRequest.dataRequest.currentOffset).integerValue;
 }
 
 - (NSURL *)url {
@@ -289,7 +298,9 @@
 }
 
 - (void)finishLoading {
-    [self.loadingRequest finishLoading];
+    if (!self.loadingRequest.isFinished) {
+        [self.loadingRequest finishLoading];
+    }
 }
 
 - (void)fillInContentInformationWithResourceUrl:(NSString *)url fileLength:(NSUInteger)fileLength {

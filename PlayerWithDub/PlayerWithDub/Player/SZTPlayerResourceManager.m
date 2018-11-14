@@ -120,6 +120,9 @@ static SZTPlayerResourceManager *sharedPlayerResourceManager;
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    if (task.state == NSURLSessionTaskStateCanceling) {
+        return;
+    }
     NSString *originUrl = task.originalRequest.URL.absoluteString;
     SZTResourceLoader *resourceLoader = [self existsResourceLoaderWithUrl:originUrl];
     if (resourceLoader && resourceLoader.completion) {
@@ -130,6 +133,9 @@ static SZTPlayerResourceManager *sharedPlayerResourceManager;
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
 didReceiveResponse:(NSURLResponse *)response
  completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
+    if (dataTask.state == NSURLSessionTaskStateCanceling) {
+        return;
+    }
     
     NSString *originUrl = dataTask.originalRequest.URL.absoluteString;
     SZTResourceLoader *resourceLoader = [self existsResourceLoaderWithUrl:originUrl];
@@ -143,6 +149,9 @@ didReceiveResponse:(NSURLResponse *)response
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data {
+    if (dataTask.state == NSURLSessionTaskStateCanceling) {
+        return;
+    }
     NSString *originUrl = dataTask.originalRequest.URL.absoluteString;
     SZTResourceLoader *resourceLoader = [self existsResourceLoaderWithUrl:originUrl];
     if (resourceLoader && resourceLoader.dataHandler) {

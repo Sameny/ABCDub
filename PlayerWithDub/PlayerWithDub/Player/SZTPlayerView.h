@@ -15,6 +15,14 @@
 // 旋转为竖屏时调用
 - (void)addPlayerView:(SZTPlayerView *)playerView;
 
+
+@end
+
+@protocol SZTPlayerViewLoadDelegate <NSObject>
+
+@optional
+- (void)didCompletedCacheToUrl:(NSString *)url;
+
 @end
 
 NS_ASSUME_NONNULL_BEGIN
@@ -23,10 +31,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SZTPlayerView : UIView
 
 @property (nonatomic, weak) UIViewController <SZTPlayerViewDelegate> *presentingViewController;
+@property (nonatomic, weak) id<SZTPlayerViewLoadDelegate> delegate;
 
+// in main queue
+- (void)configUrl:(NSURL *)url;
 - (void)addPlayerLayer:(AVPlayerLayer *)playerLayer;
 
 - (void)changeScreenToPortrait;
+- (void)changeScreenToLandscape;
 
 @end
 

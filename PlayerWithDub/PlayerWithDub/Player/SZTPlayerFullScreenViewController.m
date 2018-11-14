@@ -11,6 +11,8 @@
 
 @interface SZTPlayerFullScreenViewController ()
 
+@property (nonatomic, strong) id orientationObserver;
+
 @end
 
 @implementation SZTPlayerFullScreenViewController
@@ -42,6 +44,32 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.view.transform = CGAffineTransformIdentity;
     }];
+    
+    if (!self.orientationObserver) {
+        self.orientationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:UIDeviceOrientationDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+            [self orientationDidChanged:note];
+        }];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (self.orientationObserver) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self.orientationObserver];
+        self.orientationObserver = nil;
+    }
+}
+
+- (void)orientationDidChanged:(NSNotification *)notification {
+    UIDevice *device = (UIDevice *)notification.object;
+    UIDeviceOrientation orientation = device.orientation;
+    if (orientation == UIDeviceOrientationPortrait) {
+        [self backBtnDidClicked];
+    }
+    else if (UIDeviceOrientationIsLandscape(orientation)) {
+        self.playerView.frame = self.view.bounds;
+        [self.view layoutIfNeeded];
+    }
 }
 
 - (void)backBtnDidClicked {
