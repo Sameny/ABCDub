@@ -63,8 +63,22 @@
 		105777582188419800F7EEB2 /* 如何增长利润 .mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 105777432188419800F7EEB2 /* 如何增长利润 .mp3 */; };
 		105777592188419800F7EEB2 /* 卡车围场十周年纪念日要来了.srt in Resources */ = {isa = PBXBuildFile; fileRef = 105777442188419800F7EEB2 /* 卡车围场十周年纪念日要来了.srt */; };
 		1057775A2188419800F7EEB2 /* 帮我和我妈妈打个招呼.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 105777452188419800F7EEB2 /* 帮我和我妈妈打个招呼.mp4 */; };
+		10635773219C0E8100D505BD /* ABCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10635772219C0E8100D505BD /* ABCTabBarController.m */; };
+		10635779219C0EEE00D505BD /* ABCMainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10635778219C0EEE00D505BD /* ABCMainViewViewController.m */; };
+		1063577C219C0F7A00D505BD /* ABCFocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1063577B219C0F7A00D505BD /* ABCFocusViewController.m */; };
+		1063577F219C0F8B00D505BD /* ABCMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1063577E219C0F8B00D505BD /* ABCMessageViewController.m */; };
+		10635782219C0F9800D505BD /* ABCUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10635781219C0F9800D505BD /* ABCUserViewController.m */; };
+		10635784219C138D00D505BD /* ABCTabbar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10635783219C138D00D505BD /* ABCTabbar.xcassets */; };
+		10635787219C13AA00D505BD /* ABCMain.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10635786219C13AA00D505BD /* ABCMain.xcassets */; };
+		10635789219C13B600D505BD /* ABCFocus.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10635788219C13B600D505BD /* ABCFocus.xcassets */; };
+		1063578B219C13C500D505BD /* ABCMessage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1063578A219C13C500D505BD /* ABCMessage.xcassets */; };
+		1063578D219C13D300D505BD /* ABCUser.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1063578C219C13D300D505BD /* ABCUser.xcassets */; };
+		1063578F219C13E000D505BD /* ABCOthers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1063578E219C13E000D505BD /* ABCOthers.xcassets */; };
+		10635795219C1BF800D505BD /* SZTBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10635794219C1BF800D505BD /* SZTBannerView.m */; };
+		1063579A219C1F6400D505BD /* SZTPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 10635799219C1F6400D505BD /* SZTPageControl.m */; };
 		106D1AB821917DF5007973DE /* ABCDubHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 106D1AB721917DF5007973DE /* ABCDubHelper.m */; };
 		10721AE62193D90800867A74 /* SZTPlayerResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10721AE52193D90800867A74 /* SZTPlayerResourceManager.m */; };
+		107504B9219D59FC0037B436 /* UINavigationController+SZTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 107504B8219D59FC0037B436 /* UINavigationController+SZTAdd.m */; };
 		1077336921903F78004F5998 /* UIButton+SZTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 1077336821903F78004F5998 /* UIButton+SZTAdd.m */; };
 		107D765F2199592B0024EDB7 /* SZTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 107D765E2199592B0024EDB7 /* SZTPlayerView.m */; };
 		107D766121997CC20024EDB7 /* SZTPlayerImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107D766021997CC20024EDB7 /* SZTPlayerImages.xcassets */; };
@@ -186,10 +200,35 @@
 		105777432188419800F7EEB2 /* 如何增长利润 .mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "如何增长利润 .mp3"; sourceTree = "<group>"; };
 		105777442188419800F7EEB2 /* 卡车围场十周年纪念日要来了.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "卡车围场十周年纪念日要来了.srt"; sourceTree = "<group>"; };
 		105777452188419800F7EEB2 /* 帮我和我妈妈打个招呼.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "帮我和我妈妈打个招呼.mp4"; sourceTree = "<group>"; };
+		10635771219C0E8100D505BD /* ABCTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCTabBarController.h; sourceTree = "<group>"; };
+		10635772219C0E8100D505BD /* ABCTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCTabBarController.m; sourceTree = "<group>"; };
+		10635777219C0EEE00D505BD /* ABCMainViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCMainViewViewController.h; sourceTree = "<group>"; };
+		10635778219C0EEE00D505BD /* ABCMainViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCMainViewViewController.m; sourceTree = "<group>"; };
+		1063577A219C0F7A00D505BD /* ABCFocusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCFocusViewController.h; sourceTree = "<group>"; };
+		1063577B219C0F7A00D505BD /* ABCFocusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCFocusViewController.m; sourceTree = "<group>"; };
+		1063577D219C0F8B00D505BD /* ABCMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCMessageViewController.h; sourceTree = "<group>"; };
+		1063577E219C0F8B00D505BD /* ABCMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCMessageViewController.m; sourceTree = "<group>"; };
+		10635780219C0F9800D505BD /* ABCUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCUserViewController.h; sourceTree = "<group>"; };
+		10635781219C0F9800D505BD /* ABCUserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCUserViewController.m; sourceTree = "<group>"; };
+		10635783219C138D00D505BD /* ABCTabbar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ABCTabbar.xcassets; sourceTree = "<group>"; };
+		10635786219C13AA00D505BD /* ABCMain.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ABCMain.xcassets; sourceTree = "<group>"; };
+		10635788219C13B600D505BD /* ABCFocus.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ABCFocus.xcassets; sourceTree = "<group>"; };
+		1063578A219C13C500D505BD /* ABCMessage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ABCMessage.xcassets; sourceTree = "<group>"; };
+		1063578C219C13D300D505BD /* ABCUser.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ABCUser.xcassets; sourceTree = "<group>"; };
+		1063578E219C13E000D505BD /* ABCOthers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ABCOthers.xcassets; sourceTree = "<group>"; };
+		10635790219C16E300D505BD /* ABCColorDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCColorDefines.h; sourceTree = "<group>"; };
+		10635791219C187000D505BD /* ABCFontDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCFontDefines.h; sourceTree = "<group>"; };
+		10635793219C1BF800D505BD /* SZTBannerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTBannerView.h; sourceTree = "<group>"; };
+		10635794219C1BF800D505BD /* SZTBannerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTBannerView.m; sourceTree = "<group>"; };
+		10635798219C1F6400D505BD /* SZTPageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPageControl.h; sourceTree = "<group>"; };
+		10635799219C1F6400D505BD /* SZTPageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPageControl.m; sourceTree = "<group>"; };
 		106D1AB621917DF5007973DE /* ABCDubHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCDubHelper.h; sourceTree = "<group>"; };
 		106D1AB721917DF5007973DE /* ABCDubHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCDubHelper.m; sourceTree = "<group>"; };
 		10721AE42193D90800867A74 /* SZTPlayerResourceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayerResourceManager.h; sourceTree = "<group>"; };
 		10721AE52193D90800867A74 /* SZTPlayerResourceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPlayerResourceManager.m; sourceTree = "<group>"; };
+		107504B6219D58480037B436 /* SZTSimpleDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTSimpleDefines.h; sourceTree = "<group>"; };
+		107504B7219D59FC0037B436 /* UINavigationController+SZTAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+SZTAdd.h"; sourceTree = "<group>"; };
+		107504B8219D59FC0037B436 /* UINavigationController+SZTAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SZTAdd.m"; sourceTree = "<group>"; };
 		1077336721903F77004F5998 /* UIButton+SZTAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+SZTAdd.h"; sourceTree = "<group>"; };
 		1077336821903F78004F5998 /* UIButton+SZTAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SZTAdd.m"; sourceTree = "<group>"; };
 		107D765D2199592B0024EDB7 /* SZTPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayerView.h; sourceTree = "<group>"; };
@@ -309,6 +348,9 @@
 				107D766221997DA90024EDB7 /* SZTFontDefine.h */,
 				1017F601219A979C0080F524 /* SZTPresentedViewController.h */,
 				1017F602219A979C0080F524 /* SZTPresentedViewController.m */,
+				10635790219C16E300D505BD /* ABCColorDefines.h */,
+				10635791219C187000D505BD /* ABCFontDefines.h */,
+				107504B6219D58480037B436 /* SZTSimpleDefines.h */,
 			);
 			path = Heplers;
 			sourceTree = "<group>";
@@ -316,6 +358,7 @@
 		105776D521880BC100F7EEB2 = {
 			isa = PBXGroup;
 			children = (
+				10635785219C139200D505BD /* Assets */,
 				105776E021880BC100F7EEB2 /* PlayerWithDub */,
 				105776F921880BC400F7EEB2 /* PlayerWithDubTests */,
 				1057770421880BC400F7EEB2 /* PlayerWithDubUITests */,
@@ -339,8 +382,14 @@
 		105776E021880BC100F7EEB2 /* PlayerWithDub */ = {
 			isa = PBXGroup;
 			children = (
+				10635770219C0E3200D505BD /* TabbarViewController */,
+				1063576F219C0E0B00D505BD /* Main */,
+				10635774219C0EA100D505BD /* Focus */,
+				10635776219C0EB000D505BD /* Message */,
+				10635775219C0EAB00D505BD /* User */,
 				103BFA2B21912540002A681A /* Heplers */,
 				1077336621903F58004F5998 /* Categorys */,
+				10635792219C1BD100D505BD /* Views */,
 				10BF24AC219011A20078BEFB /* Hooks */,
 				10BF24A5218FEBDC0078BEFB /* Present */,
 				100B3BEE218ACFA200919864 /* AlertHelper */,
@@ -460,11 +509,98 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		1063576F219C0E0B00D505BD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				10635777219C0EEE00D505BD /* ABCMainViewViewController.h */,
+				10635778219C0EEE00D505BD /* ABCMainViewViewController.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		10635770219C0E3200D505BD /* TabbarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				10635771219C0E8100D505BD /* ABCTabBarController.h */,
+				10635772219C0E8100D505BD /* ABCTabBarController.m */,
+			);
+			path = TabbarViewController;
+			sourceTree = "<group>";
+		};
+		10635774219C0EA100D505BD /* Focus */ = {
+			isa = PBXGroup;
+			children = (
+				1063577A219C0F7A00D505BD /* ABCFocusViewController.h */,
+				1063577B219C0F7A00D505BD /* ABCFocusViewController.m */,
+			);
+			path = Focus;
+			sourceTree = "<group>";
+		};
+		10635775219C0EAB00D505BD /* User */ = {
+			isa = PBXGroup;
+			children = (
+				10635780219C0F9800D505BD /* ABCUserViewController.h */,
+				10635781219C0F9800D505BD /* ABCUserViewController.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		10635776219C0EB000D505BD /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				1063577D219C0F8B00D505BD /* ABCMessageViewController.h */,
+				1063577E219C0F8B00D505BD /* ABCMessageViewController.m */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		10635785219C139200D505BD /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				10635783219C138D00D505BD /* ABCTabbar.xcassets */,
+				10635786219C13AA00D505BD /* ABCMain.xcassets */,
+				10635788219C13B600D505BD /* ABCFocus.xcassets */,
+				1063578A219C13C500D505BD /* ABCMessage.xcassets */,
+				1063578C219C13D300D505BD /* ABCUser.xcassets */,
+				1063578E219C13E000D505BD /* ABCOthers.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		10635792219C1BD100D505BD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				10635797219C1F2E00D505BD /* SZTPageControl */,
+				10635796219C1F2500D505BD /* SZTBannerView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		10635796219C1F2500D505BD /* SZTBannerView */ = {
+			isa = PBXGroup;
+			children = (
+				10635793219C1BF800D505BD /* SZTBannerView.h */,
+				10635794219C1BF800D505BD /* SZTBannerView.m */,
+			);
+			path = SZTBannerView;
+			sourceTree = "<group>";
+		};
+		10635797219C1F2E00D505BD /* SZTPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				10635798219C1F6400D505BD /* SZTPageControl.h */,
+				10635799219C1F6400D505BD /* SZTPageControl.m */,
+			);
+			path = SZTPageControl;
+			sourceTree = "<group>";
+		};
 		1077336621903F58004F5998 /* Categorys */ = {
 			isa = PBXGroup;
 			children = (
 				1077336721903F77004F5998 /* UIButton+SZTAdd.h */,
 				1077336821903F78004F5998 /* UIButton+SZTAdd.m */,
+				107504B7219D59FC0037B436 /* UINavigationController+SZTAdd.h */,
+				107504B8219D59FC0037B436 /* UINavigationController+SZTAdd.m */,
 			);
 			path = Categorys;
 			sourceTree = "<group>";
@@ -677,6 +813,7 @@
 				105777572188419800F7EEB2 /* 彭彭获得一美元奖励.srt in Resources */,
 				105777482188419800F7EEB2 /* 幻想中的无敌神鹰.srt in Resources */,
 				105777592188419800F7EEB2 /* 卡车围场十周年纪念日要来了.srt in Resources */,
+				1063578B219C13C500D505BD /* ABCMessage.xcassets in Resources */,
 				1057772C21882B3400F7EEB2 /* player_play@3x.png in Resources */,
 				105777472188419800F7EEB2 /* 如何增长利润 .mp4 in Resources */,
 				105777562188419800F7EEB2 /* 幻想中的无敌神鹰.mp3 in Resources */,
@@ -691,10 +828,14 @@
 				1057772321882B0100F7EEB2 /* player_centerPlay@2x.png in Resources */,
 				107D766121997CC20024EDB7 /* SZTPlayerImages.xcassets in Resources */,
 				105777512188419800F7EEB2 /* 丁满照看鸟宝宝.srt in Resources */,
+				10635784219C138D00D505BD /* ABCTabbar.xcassets in Resources */,
 				10BF24B2219036130078BEFB /* Podfile in Resources */,
+				1063578F219C13E000D505BD /* ABCOthers.xcassets in Resources */,
 				1057772F21882B4B00F7EEB2 /* player_slideThumb@2x.png in Resources */,
+				1063578D219C13D300D505BD /* ABCUser.xcassets in Resources */,
 				1057774D2188419800F7EEB2 /* 帮我和我妈妈打个招呼.srt in Resources */,
 				105777532188419800F7EEB2 /* 彭彭获得一美元奖励.mp4 in Resources */,
+				10635789219C13B600D505BD /* ABCFocus.xcassets in Resources */,
 				105777492188419800F7EEB2 /* 幻想中的无敌神鹰.mp4 in Resources */,
 				105777462188419800F7EEB2 /* 彭彭获得一美元奖励.mp3 in Resources */,
 				1057774B2188419800F7EEB2 /* 丁满照看鸟宝宝.mp4 in Resources */,
@@ -703,6 +844,7 @@
 				105776EB21880BC400F7EEB2 /* Assets.xcassets in Resources */,
 				1057774C2188419800F7EEB2 /* 卡车围场十周年纪念日要来了.mp4 in Resources */,
 				1057773021882B4B00F7EEB2 /* player_slideThumb@3x.png in Resources */,
+				10635787219C13AA00D505BD /* ABCMain.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,15 +926,19 @@
 			files = (
 				100B3BF1218ACFBC00919864 /* AlertHelper.m in Sources */,
 				10BF24AF219011F10078BEFB /* NSObject+SZTAdd.m in Sources */,
+				10635779219C0EEE00D505BD /* ABCMainViewViewController.m in Sources */,
 				10BF249E218FDD500078BEFB /* ABCDubViewController.m in Sources */,
 				10817D7F218979870026E5C7 /* LocalFileManager.m in Sources */,
 				102CE668218BF77B00D2E8CA /* ABCError.m in Sources */,
+				1063577C219C0F7A00D505BD /* ABCFocusViewController.m in Sources */,
 				105776E621880BC100F7EEB2 /* ViewController.m in Sources */,
 				10250093219561690024679A /* SZTPlayer.m in Sources */,
 				1017F603219A979C0080F524 /* SZTPresentedViewController.m in Sources */,
 				10BF24B521903ABB0078BEFB /* ABCDubTableViewCell.m in Sources */,
 				10817D832189A9BE0026E5C7 /* ABCAudioRecorder.m in Sources */,
+				10635773219C0E8100D505BD /* ABCTabBarController.m in Sources */,
 				105776F121880BC400F7EEB2 /* main.m in Sources */,
+				10635782219C0F9800D505BD /* ABCUserViewController.m in Sources */,
 				1025009A219923D20024679A /* SZTPlayerFileHandle.m in Sources */,
 				102A4ADE21928C9700AC6C89 /* SZTPlayerViewController.m in Sources */,
 				10BF24AB219011030078BEFB /* UIViewController+PresentAnimation.m in Sources */,
@@ -812,10 +958,14 @@
 				1017F600219A6AB00080F524 /* SZTPlayerFullScreenViewController.m in Sources */,
 				105776E321880BC100F7EEB2 /* AppDelegate.m in Sources */,
 				10BF24A4218FE8AA0078BEFB /* ABCNavigationViewController.m in Sources */,
+				1063577F219C0F8B00D505BD /* ABCMessageViewController.m in Sources */,
 				10BF24A8218FEE230078BEFB /* ABCPresentAnimation.m in Sources */,
+				10635795219C1BF800D505BD /* SZTBannerView.m in Sources */,
 				10103827218C392E00085420 /* ABCSRTParser.m in Sources */,
 				10103824218C389F00085420 /* ABCCaptionSegment.m in Sources */,
+				107504B9219D59FC0037B436 /* UINavigationController+SZTAdd.m in Sources */,
 				1057771F2188291E00F7EEB2 /* AWVideoPlayerViewController.m in Sources */,
+				1063579A219C1F6400D505BD /* SZTPageControl.m in Sources */,
 				102CE665218BED8300D2E8CA /* MP3EncodedRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

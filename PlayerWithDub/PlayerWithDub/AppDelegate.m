@@ -8,7 +8,7 @@
 
 #import "ABCDubHelper.h"
 #import "ABCNavigationViewController.h"
-#import "ViewController.h"
+#import "ABCTabBarController.h"
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
@@ -21,8 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    ViewController *vc = [[ViewController alloc] init];
-    self.window.rootViewController = [[ABCNavigationViewController alloc] initWithRootViewController:vc];
+    ABCTabBarController *vc = [[ABCTabBarController alloc] init];
+    self.window.rootViewController = vc;
     
     [self.window makeKeyAndVisible];
     

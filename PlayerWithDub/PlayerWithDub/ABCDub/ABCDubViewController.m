@@ -8,6 +8,7 @@
 
 #import <AVFoundation/AVFoundation.h>
 
+#import "SZTSimpleDefines.h"
 #import "ABCDubHelper.h"
 #import "ControlHelper.h"
 
@@ -50,7 +51,7 @@
     [self.view addSubview:self.backBtn];
     [self configUI];
     [self configData];
-    SZT_AdjustsScrollViewInsetNever(self, self.captionTableView);
+    SZT_AdjustsScrollViewContentInsetNever(self, self.captionTableView);
     
     self.viewModel = [[ABCDubViewModel alloc] init];
     [self.viewModel configSrtFile:_srtFilePath completion:^(BOOL success) {
