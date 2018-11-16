@@ -13,5 +13,8 @@
 
 #define ABCMainColor ABCRGBA(49, 196, 16, 1)
 #define ABCMainColorNormal ABCRGBA(102, 102, 102, 1)
+#define ABCCommonBackColor ABCRGBA(248, 248, 248, 1.f)
+
+#define ABCImageViewPlaceHolderImage [UIImage imageWithColor:ABCRGBA(179, 179, 179, 1)] 
 
 #endif /* ABCColorDefines_h */

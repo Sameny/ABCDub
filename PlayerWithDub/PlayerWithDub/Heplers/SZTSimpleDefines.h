@@ -9,6 +9,10 @@
 #ifndef SZTSimpleDefines_h
 #define SZTSimpleDefines_h
 
+// * 常用代码简化
+#define ImageWithName(imageName)  [UIImage imageNamed: imageName]
+#define SZTWeakself(self) __weak typeof(self) weak##self = self
+
 // iOS 11 scrollView适配
 /// 第一个参数是当下的控制器适配iOS11 一下的，第二个参数表示scrollview或子类
 #define SZT_AdjustsScrollViewContentInsetNever(controller,view) if(@available(iOS 11.0, *) && view) {view.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;} else if([controller isKindOfClass:[UIViewController class]]) {controller.automaticallyAdjustsScrollViewInsets = NO;}
@@ -36,9 +40,6 @@
 #define SZTBackItemLeftMargin 5.f
 #define SZTBackItemTopMargin 20.f
 #define SZTBackItemSize CGSizeMake(44.f, 44.f)
-
-// * 常用代码简化
-#define ImageWithName(imageName)  [UIImage imageNamed: imageName]
 
 //常用代码定义
 typedef void(^SZTHandler)(void);

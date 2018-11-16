@@ -11,6 +11,9 @@
 
 #define SZTTIMESTRING(seconds) [NSString stringWithFormat:@"%02ld:%02ld:%02ld", seconds/3600, (seconds%3600)/60, seconds%60]
 
+// 常用间距
+#define ABCHomeModuleLineSpacing 8.f 
+
 //常用代码定义
 typedef void(^ABCHandler)(void);
 typedef void(^ABCSuccessHandler)(BOOL success);

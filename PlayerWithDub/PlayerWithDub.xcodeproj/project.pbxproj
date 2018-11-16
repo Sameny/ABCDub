@@ -79,6 +79,10 @@
 		106D1AB821917DF5007973DE /* ABCDubHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 106D1AB721917DF5007973DE /* ABCDubHelper.m */; };
 		10721AE62193D90800867A74 /* SZTPlayerResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10721AE52193D90800867A74 /* SZTPlayerResourceManager.m */; };
 		107504B9219D59FC0037B436 /* UINavigationController+SZTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 107504B8219D59FC0037B436 /* UINavigationController+SZTAdd.m */; };
+		107504C8219D7F6C0037B436 /* ABCMainViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 107504C7219D7F6C0037B436 /* ABCMainViewModel.m */; };
+		107504CB219D8B510037B436 /* ABCMainCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 107504CA219D8B510037B436 /* ABCMainCollectionHeaderView.m */; };
+		107504D0219D8F0D0037B436 /* ABCCommonCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 107504CF219D8F0D0037B436 /* ABCCommonCollectionView.m */; };
+		107504D3219D8F2F0037B436 /* ABCCommonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 107504D2219D8F2F0037B436 /* ABCCommonCollectionViewCell.m */; };
 		1077336921903F78004F5998 /* UIButton+SZTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 1077336821903F78004F5998 /* UIButton+SZTAdd.m */; };
 		107D765F2199592B0024EDB7 /* SZTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 107D765E2199592B0024EDB7 /* SZTPlayerView.m */; };
 		107D766121997CC20024EDB7 /* SZTPlayerImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107D766021997CC20024EDB7 /* SZTPlayerImages.xcassets */; };
@@ -94,6 +98,13 @@
 		10BF24AF219011F10078BEFB /* NSObject+SZTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24AE219011F10078BEFB /* NSObject+SZTAdd.m */; };
 		10BF24B2219036130078BEFB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 10BF24B1219036130078BEFB /* Podfile */; };
 		10BF24B521903ABB0078BEFB /* ABCDubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24B421903ABB0078BEFB /* ABCDubTableViewCell.m */; };
+		10F35A23219E8A93008A2685 /* ABCCommonEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A22219E8A93008A2685 /* ABCCommonEntryCell.m */; };
+		10F35A26219E8C08008A2685 /* ABCCommonEntryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A25219E8C08008A2685 /* ABCCommonEntryCollectionViewCell.m */; };
+		10F35A29219E96AF008A2685 /* ABCMainDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A28219E96AF008A2685 /* ABCMainDataModel.m */; };
+		10F35A2C219E970D008A2685 /* ABCCommonCollectionViewItemData.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A2B219E970D008A2685 /* ABCCommonCollectionViewItemData.m */; };
+		10F35A32219EA931008A2685 /* SZTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A31219EA931008A2685 /* SZTTableViewCell.m */; };
+		10F35A37219EBDB2008A2685 /* ABCCommonVideoSnapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A36219EBDB2008A2685 /* ABCCommonVideoSnapCell.m */; };
+		10F35A3A219EBDDB008A2685 /* ABCCommonVideoSnapCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A39219EBDDB008A2685 /* ABCCommonVideoSnapCollectionViewCell.m */; };
 		35010AA6FDF99A709638AAB6 /* Pods_PlayerWithDub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08D64A394732A9496711DD9 /* Pods_PlayerWithDub.framework */; };
 /* End PBXBuildFile section */
 
@@ -229,6 +240,14 @@
 		107504B6219D58480037B436 /* SZTSimpleDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTSimpleDefines.h; sourceTree = "<group>"; };
 		107504B7219D59FC0037B436 /* UINavigationController+SZTAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+SZTAdd.h"; sourceTree = "<group>"; };
 		107504B8219D59FC0037B436 /* UINavigationController+SZTAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SZTAdd.m"; sourceTree = "<group>"; };
+		107504C6219D7F6C0037B436 /* ABCMainViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCMainViewModel.h; sourceTree = "<group>"; };
+		107504C7219D7F6C0037B436 /* ABCMainViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCMainViewModel.m; sourceTree = "<group>"; };
+		107504C9219D8B510037B436 /* ABCMainCollectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCMainCollectionHeaderView.h; sourceTree = "<group>"; };
+		107504CA219D8B510037B436 /* ABCMainCollectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCMainCollectionHeaderView.m; sourceTree = "<group>"; };
+		107504CE219D8F0D0037B436 /* ABCCommonCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCCommonCollectionView.h; sourceTree = "<group>"; };
+		107504CF219D8F0D0037B436 /* ABCCommonCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCCommonCollectionView.m; sourceTree = "<group>"; };
+		107504D1219D8F2F0037B436 /* ABCCommonCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCCommonCollectionViewCell.h; sourceTree = "<group>"; };
+		107504D2219D8F2F0037B436 /* ABCCommonCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCCommonCollectionViewCell.m; sourceTree = "<group>"; };
 		1077336721903F77004F5998 /* UIButton+SZTAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+SZTAdd.h"; sourceTree = "<group>"; };
 		1077336821903F78004F5998 /* UIButton+SZTAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SZTAdd.m"; sourceTree = "<group>"; };
 		107D765D2199592B0024EDB7 /* SZTPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayerView.h; sourceTree = "<group>"; };
@@ -259,6 +278,20 @@
 		10BF24B1219036130078BEFB /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		10BF24B321903ABB0078BEFB /* ABCDubTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCDubTableViewCell.h; sourceTree = "<group>"; };
 		10BF24B421903ABB0078BEFB /* ABCDubTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCDubTableViewCell.m; sourceTree = "<group>"; };
+		10F35A21219E8A93008A2685 /* ABCCommonEntryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCCommonEntryCell.h; sourceTree = "<group>"; };
+		10F35A22219E8A93008A2685 /* ABCCommonEntryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCCommonEntryCell.m; sourceTree = "<group>"; };
+		10F35A24219E8C08008A2685 /* ABCCommonEntryCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCCommonEntryCollectionViewCell.h; sourceTree = "<group>"; };
+		10F35A25219E8C08008A2685 /* ABCCommonEntryCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCCommonEntryCollectionViewCell.m; sourceTree = "<group>"; };
+		10F35A27219E96AF008A2685 /* ABCMainDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCMainDataModel.h; sourceTree = "<group>"; };
+		10F35A28219E96AF008A2685 /* ABCMainDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCMainDataModel.m; sourceTree = "<group>"; };
+		10F35A2A219E970D008A2685 /* ABCCommonCollectionViewItemData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCCommonCollectionViewItemData.h; sourceTree = "<group>"; };
+		10F35A2B219E970D008A2685 /* ABCCommonCollectionViewItemData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCCommonCollectionViewItemData.m; sourceTree = "<group>"; };
+		10F35A30219EA931008A2685 /* SZTTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTTableViewCell.h; sourceTree = "<group>"; };
+		10F35A31219EA931008A2685 /* SZTTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTTableViewCell.m; sourceTree = "<group>"; };
+		10F35A35219EBDB2008A2685 /* ABCCommonVideoSnapCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCCommonVideoSnapCell.h; sourceTree = "<group>"; };
+		10F35A36219EBDB2008A2685 /* ABCCommonVideoSnapCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCCommonVideoSnapCell.m; sourceTree = "<group>"; };
+		10F35A38219EBDDB008A2685 /* ABCCommonVideoSnapCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCCommonVideoSnapCollectionViewCell.h; sourceTree = "<group>"; };
+		10F35A39219EBDDB008A2685 /* ABCCommonVideoSnapCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCCommonVideoSnapCollectionViewCell.m; sourceTree = "<group>"; };
 		777D5A045157527A3A542F10 /* Pods-PlayerWithDub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayerWithDub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlayerWithDub/Pods-PlayerWithDub.debug.xcconfig"; sourceTree = "<group>"; };
 		F08D64A394732A9496711DD9 /* Pods_PlayerWithDub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayerWithDub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F376C40EF10C618FE92D3B35 /* Pods-PlayerWithDub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayerWithDub.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlayerWithDub/Pods-PlayerWithDub.release.xcconfig"; sourceTree = "<group>"; };
@@ -344,10 +377,10 @@
 			children = (
 				103BFA2C21912560002A681A /* ControlHelper.h */,
 				103BFA2D21912560002A681A /* ControlHelper.m */,
-				1025009E219952750024679A /* SZTKVOSimpleDefine.h */,
-				107D766221997DA90024EDB7 /* SZTFontDefine.h */,
 				1017F601219A979C0080F524 /* SZTPresentedViewController.h */,
 				1017F602219A979C0080F524 /* SZTPresentedViewController.m */,
+				1025009E219952750024679A /* SZTKVOSimpleDefine.h */,
+				107D766221997DA90024EDB7 /* SZTFontDefine.h */,
 				10635790219C16E300D505BD /* ABCColorDefines.h */,
 				10635791219C187000D505BD /* ABCFontDefines.h */,
 				107504B6219D58480037B436 /* SZTSimpleDefines.h */,
@@ -382,6 +415,7 @@
 		105776E021880BC100F7EEB2 /* PlayerWithDub */ = {
 			isa = PBXGroup;
 			children = (
+				10F35A1E219E897A008A2685 /* Others */,
 				10635770219C0E3200D505BD /* TabbarViewController */,
 				1063576F219C0E0B00D505BD /* Main */,
 				10635774219C0EA100D505BD /* Focus */,
@@ -390,6 +424,7 @@
 				103BFA2B21912540002A681A /* Heplers */,
 				1077336621903F58004F5998 /* Categorys */,
 				10635792219C1BD100D505BD /* Views */,
+				107504CC219D8DE40037B436 /* ABCViews */,
 				10BF24AC219011A20078BEFB /* Hooks */,
 				10BF24A5218FEBDC0078BEFB /* Present */,
 				100B3BEE218ACFA200919864 /* AlertHelper */,
@@ -512,8 +547,7 @@
 		1063576F219C0E0B00D505BD /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				10635777219C0EEE00D505BD /* ABCMainViewViewController.h */,
-				10635778219C0EEE00D505BD /* ABCMainViewViewController.m */,
+				107504C5219D7F480037B436 /* Home */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -570,6 +604,7 @@
 		10635792219C1BD100D505BD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				10F35A33219EA93A008A2685 /* SZTTableViewCell */,
 				10635797219C1F2E00D505BD /* SZTPageControl */,
 				10635796219C1F2500D505BD /* SZTBannerView */,
 			);
@@ -592,6 +627,42 @@
 				10635799219C1F6400D505BD /* SZTPageControl.m */,
 			);
 			path = SZTPageControl;
+			sourceTree = "<group>";
+		};
+		107504C5219D7F480037B436 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				10635777219C0EEE00D505BD /* ABCMainViewViewController.h */,
+				10635778219C0EEE00D505BD /* ABCMainViewViewController.m */,
+				107504C6219D7F6C0037B436 /* ABCMainViewModel.h */,
+				107504C7219D7F6C0037B436 /* ABCMainViewModel.m */,
+				107504C9219D8B510037B436 /* ABCMainCollectionHeaderView.h */,
+				107504CA219D8B510037B436 /* ABCMainCollectionHeaderView.m */,
+				10F35A27219E96AF008A2685 /* ABCMainDataModel.h */,
+				10F35A28219E96AF008A2685 /* ABCMainDataModel.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		107504CC219D8DE40037B436 /* ABCViews */ = {
+			isa = PBXGroup;
+			children = (
+				107504CD219D8DF80037B436 /* ABCCommonCollectionView */,
+			);
+			path = ABCViews;
+			sourceTree = "<group>";
+		};
+		107504CD219D8DF80037B436 /* ABCCommonCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				107504CE219D8F0D0037B436 /* ABCCommonCollectionView.h */,
+				107504CF219D8F0D0037B436 /* ABCCommonCollectionView.m */,
+				107504D1219D8F2F0037B436 /* ABCCommonCollectionViewCell.h */,
+				107504D2219D8F2F0037B436 /* ABCCommonCollectionViewCell.m */,
+				10F35A2A219E970D008A2685 /* ABCCommonCollectionViewItemData.h */,
+				10F35A2B219E970D008A2685 /* ABCCommonCollectionViewItemData.m */,
+			);
+			path = ABCCommonCollectionView;
 			sourceTree = "<group>";
 		};
 		1077336621903F58004F5998 /* Categorys */ = {
@@ -681,6 +752,54 @@
 				10BF24AE219011F10078BEFB /* NSObject+SZTAdd.m */,
 			);
 			path = Hooks;
+			sourceTree = "<group>";
+		};
+		10F35A1E219E897A008A2685 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				10F35A20219E8A41008A2685 /* Views */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		10F35A1F219E8988008A2685 /* ABCCommonEntryCell */ = {
+			isa = PBXGroup;
+			children = (
+				10F35A21219E8A93008A2685 /* ABCCommonEntryCell.h */,
+				10F35A22219E8A93008A2685 /* ABCCommonEntryCell.m */,
+				10F35A24219E8C08008A2685 /* ABCCommonEntryCollectionViewCell.h */,
+				10F35A25219E8C08008A2685 /* ABCCommonEntryCollectionViewCell.m */,
+			);
+			path = ABCCommonEntryCell;
+			sourceTree = "<group>";
+		};
+		10F35A20219E8A41008A2685 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				10F35A34219EBD24008A2685 /* ABCCommonVideoSnapCell */,
+				10F35A1F219E8988008A2685 /* ABCCommonEntryCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		10F35A33219EA93A008A2685 /* SZTTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				10F35A30219EA931008A2685 /* SZTTableViewCell.h */,
+				10F35A31219EA931008A2685 /* SZTTableViewCell.m */,
+			);
+			path = SZTTableViewCell;
+			sourceTree = "<group>";
+		};
+		10F35A34219EBD24008A2685 /* ABCCommonVideoSnapCell */ = {
+			isa = PBXGroup;
+			children = (
+				10F35A35219EBDB2008A2685 /* ABCCommonVideoSnapCell.h */,
+				10F35A36219EBDB2008A2685 /* ABCCommonVideoSnapCell.m */,
+				10F35A38219EBDDB008A2685 /* ABCCommonVideoSnapCollectionViewCell.h */,
+				10F35A39219EBDDB008A2685 /* ABCCommonVideoSnapCollectionViewCell.m */,
+			);
+			path = ABCCommonVideoSnapCell;
 			sourceTree = "<group>";
 		};
 		177E23009FC768F40B3CF9E5 /* Pods */ = {
@@ -926,8 +1045,10 @@
 			files = (
 				100B3BF1218ACFBC00919864 /* AlertHelper.m in Sources */,
 				10BF24AF219011F10078BEFB /* NSObject+SZTAdd.m in Sources */,
+				107504CB219D8B510037B436 /* ABCMainCollectionHeaderView.m in Sources */,
 				10635779219C0EEE00D505BD /* ABCMainViewViewController.m in Sources */,
 				10BF249E218FDD500078BEFB /* ABCDubViewController.m in Sources */,
+				10F35A32219EA931008A2685 /* SZTTableViewCell.m in Sources */,
 				10817D7F218979870026E5C7 /* LocalFileManager.m in Sources */,
 				102CE668218BF77B00D2E8CA /* ABCError.m in Sources */,
 				1063577C219C0F7A00D505BD /* ABCFocusViewController.m in Sources */,
@@ -936,16 +1057,23 @@
 				1017F603219A979C0080F524 /* SZTPresentedViewController.m in Sources */,
 				10BF24B521903ABB0078BEFB /* ABCDubTableViewCell.m in Sources */,
 				10817D832189A9BE0026E5C7 /* ABCAudioRecorder.m in Sources */,
+				107504C8219D7F6C0037B436 /* ABCMainViewModel.m in Sources */,
 				10635773219C0E8100D505BD /* ABCTabBarController.m in Sources */,
+				10F35A26219E8C08008A2685 /* ABCCommonEntryCollectionViewCell.m in Sources */,
 				105776F121880BC400F7EEB2 /* main.m in Sources */,
+				10F35A23219E8A93008A2685 /* ABCCommonEntryCell.m in Sources */,
 				10635782219C0F9800D505BD /* ABCUserViewController.m in Sources */,
+				10F35A3A219EBDDB008A2685 /* ABCCommonVideoSnapCollectionViewCell.m in Sources */,
 				1025009A219923D20024679A /* SZTPlayerFileHandle.m in Sources */,
 				102A4ADE21928C9700AC6C89 /* SZTPlayerViewController.m in Sources */,
 				10BF24AB219011030078BEFB /* UIViewController+PresentAnimation.m in Sources */,
+				10F35A2C219E970D008A2685 /* ABCCommonCollectionViewItemData.m in Sources */,
 				10817D7B218950210026E5C7 /* ABCMediaComposeUnit.m in Sources */,
 				103BFA2E21912560002A681A /* ControlHelper.m in Sources */,
+				107504D3219D8F2F0037B436 /* ABCCommonCollectionViewCell.m in Sources */,
 				106D1AB821917DF5007973DE /* ABCDubHelper.m in Sources */,
 				102A4AE12192EC3100AC6C89 /* SZTResourceLoader.m in Sources */,
+				10F35A29219E96AF008A2685 /* ABCMainDataModel.m in Sources */,
 				10817D78218940840026E5C7 /* ABCMediaComposeUtil.m in Sources */,
 				10721AE62193D90800867A74 /* SZTPlayerResourceManager.m in Sources */,
 				107D765F2199592B0024EDB7 /* SZTPlayerView.m in Sources */,
@@ -954,10 +1082,12 @@
 				1077336921903F78004F5998 /* UIButton+SZTAdd.m in Sources */,
 				103BFA3221916EB7002A681A /* ABCDubFileManager.m in Sources */,
 				102CE658218BE27D00D2E8CA /* MP3Endocder.mm in Sources */,
+				107504D0219D8F0D0037B436 /* ABCCommonCollectionView.m in Sources */,
 				100B3BF6218AD80400919864 /* GCDTimer.m in Sources */,
 				1017F600219A6AB00080F524 /* SZTPlayerFullScreenViewController.m in Sources */,
 				105776E321880BC100F7EEB2 /* AppDelegate.m in Sources */,
 				10BF24A4218FE8AA0078BEFB /* ABCNavigationViewController.m in Sources */,
+				10F35A37219EBDB2008A2685 /* ABCCommonVideoSnapCell.m in Sources */,
 				1063577F219C0F8B00D505BD /* ABCMessageViewController.m in Sources */,
 				10BF24A8218FEE230078BEFB /* ABCPresentAnimation.m in Sources */,
 				10635795219C1BF800D505BD /* SZTBannerView.m in Sources */,
