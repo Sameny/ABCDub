@@ -91,6 +91,11 @@
 		10817D7F218979870026E5C7 /* LocalFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10817D7D218979870026E5C7 /* LocalFileManager.m */; };
 		10817D832189A9BE0026E5C7 /* ABCAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 10817D822189A9BE0026E5C7 /* ABCAudioRecorder.m */; };
 		109E42AF21A255B400198861 /* ABCSectionTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42AE21A255B400198861 /* ABCSectionTitleView.m */; };
+		109E42B321A28B9C00198861 /* NSNumber+STAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42B121A28B9B00198861 /* NSNumber+STAdd.m */; };
+		109E42B621A28D5800198861 /* NSArray+YYModelAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42B521A28D5800198861 /* NSArray+YYModelAdd.m */; };
+		109E42BA21A2A08700198861 /* ABCSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42B921A2A08700198861 /* ABCSearchView.m */; };
+		109E42BD21A2B03F00198861 /* ABCSearchHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42BC21A2B03F00198861 /* ABCSearchHistoryView.m */; };
+		109E42C021A2B06200198861 /* ABCSearchResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42BF21A2B06200198861 /* ABCSearchResultView.m */; };
 		10BF249E218FDD500078BEFB /* ABCDubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF249D218FDD500078BEFB /* ABCDubViewController.m */; };
 		10BF24A1218FDD820078BEFB /* ABCDubViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24A0218FDD820078BEFB /* ABCDubViewModel.m */; };
 		10BF24A4218FE8AA0078BEFB /* ABCNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24A3218FE8AA0078BEFB /* ABCNavigationViewController.m */; };
@@ -265,6 +270,16 @@
 		10817D822189A9BE0026E5C7 /* ABCAudioRecorder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCAudioRecorder.m; sourceTree = "<group>"; };
 		109E42AD21A255B400198861 /* ABCSectionTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSectionTitleView.h; sourceTree = "<group>"; };
 		109E42AE21A255B400198861 /* ABCSectionTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSectionTitleView.m; sourceTree = "<group>"; };
+		109E42B121A28B9B00198861 /* NSNumber+STAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+STAdd.m"; sourceTree = "<group>"; };
+		109E42B221A28B9C00198861 /* NSNumber+STAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+STAdd.h"; sourceTree = "<group>"; };
+		109E42B421A28D5800198861 /* NSArray+YYModelAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+YYModelAdd.h"; sourceTree = "<group>"; };
+		109E42B521A28D5800198861 /* NSArray+YYModelAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+YYModelAdd.m"; sourceTree = "<group>"; };
+		109E42B821A2A08700198861 /* ABCSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSearchView.h; sourceTree = "<group>"; };
+		109E42B921A2A08700198861 /* ABCSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSearchView.m; sourceTree = "<group>"; };
+		109E42BB21A2B03F00198861 /* ABCSearchHistoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSearchHistoryView.h; sourceTree = "<group>"; };
+		109E42BC21A2B03F00198861 /* ABCSearchHistoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSearchHistoryView.m; sourceTree = "<group>"; };
+		109E42BE21A2B06200198861 /* ABCSearchResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSearchResultView.h; sourceTree = "<group>"; };
+		109E42BF21A2B06200198861 /* ABCSearchResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSearchResultView.m; sourceTree = "<group>"; };
 		10BF249C218FDD500078BEFB /* ABCDubViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCDubViewController.h; sourceTree = "<group>"; };
 		10BF249D218FDD500078BEFB /* ABCDubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCDubViewController.m; sourceTree = "<group>"; };
 		10BF249F218FDD820078BEFB /* ABCDubViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCDubViewModel.h; sourceTree = "<group>"; };
@@ -661,10 +676,14 @@
 		1077336621903F58004F5998 /* Categorys */ = {
 			isa = PBXGroup;
 			children = (
+				109E42B221A28B9C00198861 /* NSNumber+STAdd.h */,
+				109E42B121A28B9B00198861 /* NSNumber+STAdd.m */,
 				1077336721903F77004F5998 /* UIButton+SZTAdd.h */,
 				1077336821903F78004F5998 /* UIButton+SZTAdd.m */,
 				107504B7219D59FC0037B436 /* UINavigationController+SZTAdd.h */,
 				107504B8219D59FC0037B436 /* UINavigationController+SZTAdd.m */,
+				109E42B421A28D5800198861 /* NSArray+YYModelAdd.h */,
+				109E42B521A28D5800198861 /* NSArray+YYModelAdd.m */,
 			);
 			path = Categorys;
 			sourceTree = "<group>";
@@ -716,6 +735,19 @@
 				109E42AE21A255B400198861 /* ABCSectionTitleView.m */,
 			);
 			path = ABCSectionTitleView;
+			sourceTree = "<group>";
+		};
+		109E42B721A2914800198861 /* ABCSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				109E42B821A2A08700198861 /* ABCSearchView.h */,
+				109E42B921A2A08700198861 /* ABCSearchView.m */,
+				109E42BB21A2B03F00198861 /* ABCSearchHistoryView.h */,
+				109E42BC21A2B03F00198861 /* ABCSearchHistoryView.m */,
+				109E42BE21A2B06200198861 /* ABCSearchResultView.h */,
+				109E42BF21A2B06200198861 /* ABCSearchResultView.m */,
+			);
+			path = ABCSearchView;
 			sourceTree = "<group>";
 		};
 		10BF249B218FDD0C0078BEFB /* ABCDub */ = {
@@ -778,6 +810,7 @@
 		10F35A20219E8A41008A2685 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				109E42B721A2914800198861 /* ABCSearchView */,
 				109E42B021A255DF00198861 /* ABCSectionTitleView */,
 				107504CD219D8DF80037B436 /* ABCCommonCollectionView */,
 				10F35A3B219EC016008A2685 /* ABCCommonCollectionViewTableCell */,
@@ -1049,6 +1082,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				100B3BF1218ACFBC00919864 /* AlertHelper.m in Sources */,
+				109E42BA21A2A08700198861 /* ABCSearchView.m in Sources */,
 				10BF24AF219011F10078BEFB /* NSObject+SZTAdd.m in Sources */,
 				107504CB219D8B510037B436 /* ABCMainCollectionHeaderView.m in Sources */,
 				10635779219C0EEE00D505BD /* ABCMainViewViewController.m in Sources */,
@@ -1061,6 +1095,7 @@
 				10250093219561690024679A /* SZTPlayer.m in Sources */,
 				1017F603219A979C0080F524 /* SZTPresentedViewController.m in Sources */,
 				10BF24B521903ABB0078BEFB /* ABCDubTableViewCell.m in Sources */,
+				109E42C021A2B06200198861 /* ABCSearchResultView.m in Sources */,
 				10817D832189A9BE0026E5C7 /* ABCAudioRecorder.m in Sources */,
 				107504C8219D7F6C0037B436 /* ABCMainViewModel.m in Sources */,
 				10635773219C0E8100D505BD /* ABCTabBarController.m in Sources */,
@@ -1072,6 +1107,7 @@
 				1025009A219923D20024679A /* SZTPlayerFileHandle.m in Sources */,
 				102A4ADE21928C9700AC6C89 /* SZTPlayerViewController.m in Sources */,
 				10BF24AB219011030078BEFB /* UIViewController+PresentAnimation.m in Sources */,
+				109E42B321A28B9C00198861 /* NSNumber+STAdd.m in Sources */,
 				10F35A2C219E970D008A2685 /* ABCCommonCollectionViewItemData.m in Sources */,
 				10817D7B218950210026E5C7 /* ABCMediaComposeUnit.m in Sources */,
 				103BFA2E21912560002A681A /* ControlHelper.m in Sources */,
@@ -1086,6 +1122,7 @@
 				10BF24A1218FDD820078BEFB /* ABCDubViewModel.m in Sources */,
 				1077336921903F78004F5998 /* UIButton+SZTAdd.m in Sources */,
 				103BFA3221916EB7002A681A /* ABCDubFileManager.m in Sources */,
+				109E42BD21A2B03F00198861 /* ABCSearchHistoryView.m in Sources */,
 				102CE658218BE27D00D2E8CA /* MP3Endocder.mm in Sources */,
 				107504D0219D8F0D0037B436 /* ABCCommonCollectionView.m in Sources */,
 				109E42AF21A255B400198861 /* ABCSectionTitleView.m in Sources */,
@@ -1097,6 +1134,7 @@
 				1063577F219C0F8B00D505BD /* ABCMessageViewController.m in Sources */,
 				10BF24A8218FEE230078BEFB /* ABCPresentAnimation.m in Sources */,
 				10635795219C1BF800D505BD /* SZTBannerView.m in Sources */,
+				109E42B621A28D5800198861 /* NSArray+YYModelAdd.m in Sources */,
 				10103827218C392E00085420 /* ABCSRTParser.m in Sources */,
 				10103824218C389F00085420 /* ABCCaptionSegment.m in Sources */,
 				107504B9219D59FC0037B436 /* UINavigationController+SZTAdd.m in Sources */,

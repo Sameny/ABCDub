@@ -13,6 +13,15 @@
 #define ImageWithName(imageName)  [UIImage imageNamed: imageName]
 #define SZTWeakself(self) __weak typeof(self) weak##self = self
 
+#pragma mark - define - log
+#ifdef DEBUG
+#define DebugLog(...) NSLog(@"%s 第%d行 \n %@\n\n", __func__, __LINE__, [NSString stringWithFormat:__VA_ARGS__])
+#define DebugFunctionLog() NSLog(@"\n==============================================================================\nclassName : %s\nclassFunction : %s\nclassFunctionLine : %d\n==============================================================================", object_getClassName(self),__PRETTY_FUNCTION__,__LINE__)
+#else
+#define DebugLog(...) /* */
+#define DebugFunctionLog(...) /* */
+#endif
+
 // iOS 11 scrollView适配
 /// 第一个参数是当下的控制器适配iOS11 一下的，第二个参数表示scrollview或子类
 #define SZT_AdjustsScrollViewContentInsetNever(controller,view) if(@available(iOS 11.0, *) && view) {view.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;} else if([controller isKindOfClass:[UIViewController class]]) {controller.automaticallyAdjustsScrollViewInsets = NO;}

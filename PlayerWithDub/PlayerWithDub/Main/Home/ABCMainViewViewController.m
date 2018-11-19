@@ -6,6 +6,7 @@
 //  Copyright © 2018年 泽泰 舒. All rights reserved.
 //
 
+#import "ABCSearchView.h"
 #import "SZTBannerView.h"
 #import "ABCCommonEntryCell.h"
 #import "ABCCommonVideoSnapCell.h"
@@ -14,7 +15,7 @@
 #import "ABCMainViewModel.h"
 #import "ABCMainViewViewController.h"
 
-@interface ABCMainViewViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ABCMainViewViewController () <UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) SZTBannerView *bannerView;
@@ -24,6 +25,8 @@
 @property (nonatomic, strong) ABCSectionTitleView *todayUpdateSectionHeaderView;
 
 @property (nonatomic, strong) ABCMainViewModel *viewModel;
+
+@property (nonatomic, strong) ABCSearchView *searchView;
 
 @end
 
@@ -42,7 +45,10 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self configUI];
     [self configData];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     SZT_AdjustsScrollViewContentInsetNever(self, self.tableView);
+#pragma clang diagnostic pop
     
     self.bannerView.urls = self.viewModel.bannerUrls;
     [self.bannerView startScroll];
@@ -55,7 +61,7 @@
 }
 
 - (void)moreTodayUpdate {
-    
+    // TODO: more today update
 }
 
 #pragma mark - UITableViewDataSource
@@ -102,10 +108,6 @@
     return self.blankSectionHeaderView;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
-
 #pragma mark - lazy init
 - (ABCMainViewModel *)viewModel {
     if (!_viewModel) {
@@ -147,6 +149,14 @@
 #pragma mark - UI
 - (void)configUI {
     [self.view addSubview:self.tableView];
+    [self.view addSubview:self.searchView];
+}
+
+- (ABCSearchView *)searchView {
+    if (!_searchView) {
+        _searchView = [[ABCSearchView alloc] initWithFrame:CGRectMake(0, 12, SCREEN_WIDTH, 44.f)];
+    }
+    return _searchView;
 }
 
 - (UITableView *)tableView {

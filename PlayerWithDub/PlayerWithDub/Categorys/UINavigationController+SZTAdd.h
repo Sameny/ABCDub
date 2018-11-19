@@ -11,6 +11,16 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UINavigationController (SZTAdd)
+// 去掉UINavigationBar底部的分割线
+- (void)removeBottomSpliteLine;
+- (void)removeBottomSpliteLineWithBackgroundColor:(UIColor *)backColor;
+// 显示分割线 UIBarStyleDefault 黑色底线  UIBarStyleBlack 白色底线
+- (void)showBottomSpliteLineWithBarStyle:(UIBarStyle)barStyle;
+
+- (void)pushViewControllerWithClassName:(NSString *)className;
+- (void)pushViewControllerWithClassName:(NSString *)className animated:(BOOL)animted;
+
+- (void)tr_setTitleColor:(UIColor *)color;
 
 @end
 
