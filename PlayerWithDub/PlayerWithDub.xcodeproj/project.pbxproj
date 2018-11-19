@@ -90,6 +90,7 @@
 		10817D7B218950210026E5C7 /* ABCMediaComposeUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 10817D7A218950210026E5C7 /* ABCMediaComposeUnit.m */; };
 		10817D7F218979870026E5C7 /* LocalFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10817D7D218979870026E5C7 /* LocalFileManager.m */; };
 		10817D832189A9BE0026E5C7 /* ABCAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 10817D822189A9BE0026E5C7 /* ABCAudioRecorder.m */; };
+		109E42AF21A255B400198861 /* ABCSectionTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42AE21A255B400198861 /* ABCSectionTitleView.m */; };
 		10BF249E218FDD500078BEFB /* ABCDubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF249D218FDD500078BEFB /* ABCDubViewController.m */; };
 		10BF24A1218FDD820078BEFB /* ABCDubViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24A0218FDD820078BEFB /* ABCDubViewModel.m */; };
 		10BF24A4218FE8AA0078BEFB /* ABCNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24A3218FE8AA0078BEFB /* ABCNavigationViewController.m */; };
@@ -262,6 +263,8 @@
 		10817D7E218979870026E5C7 /* LocalFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFileManager.h; sourceTree = "<group>"; };
 		10817D812189A9BE0026E5C7 /* ABCAudioRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCAudioRecorder.h; sourceTree = "<group>"; };
 		10817D822189A9BE0026E5C7 /* ABCAudioRecorder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCAudioRecorder.m; sourceTree = "<group>"; };
+		109E42AD21A255B400198861 /* ABCSectionTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSectionTitleView.h; sourceTree = "<group>"; };
+		109E42AE21A255B400198861 /* ABCSectionTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSectionTitleView.m; sourceTree = "<group>"; };
 		10BF249C218FDD500078BEFB /* ABCDubViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCDubViewController.h; sourceTree = "<group>"; };
 		10BF249D218FDD500078BEFB /* ABCDubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCDubViewController.m; sourceTree = "<group>"; };
 		10BF249F218FDD820078BEFB /* ABCDubViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCDubViewModel.h; sourceTree = "<group>"; };
@@ -706,6 +709,15 @@
 			path = Caption;
 			sourceTree = "<group>";
 		};
+		109E42B021A255DF00198861 /* ABCSectionTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				109E42AD21A255B400198861 /* ABCSectionTitleView.h */,
+				109E42AE21A255B400198861 /* ABCSectionTitleView.m */,
+			);
+			path = ABCSectionTitleView;
+			sourceTree = "<group>";
+		};
 		10BF249B218FDD0C0078BEFB /* ABCDub */ = {
 			isa = PBXGroup;
 			children = (
@@ -766,6 +778,7 @@
 		10F35A20219E8A41008A2685 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				109E42B021A255DF00198861 /* ABCSectionTitleView */,
 				107504CD219D8DF80037B436 /* ABCCommonCollectionView */,
 				10F35A3B219EC016008A2685 /* ABCCommonCollectionViewTableCell */,
 				10F35A34219EBD24008A2685 /* ABCCommonVideoSnapCell */,
@@ -1075,6 +1088,7 @@
 				103BFA3221916EB7002A681A /* ABCDubFileManager.m in Sources */,
 				102CE658218BE27D00D2E8CA /* MP3Endocder.mm in Sources */,
 				107504D0219D8F0D0037B436 /* ABCCommonCollectionView.m in Sources */,
+				109E42AF21A255B400198861 /* ABCSectionTitleView.m in Sources */,
 				100B3BF6218AD80400919864 /* GCDTimer.m in Sources */,
 				1017F600219A6AB00080F524 /* SZTPlayerFullScreenViewController.m in Sources */,
 				105776E321880BC100F7EEB2 /* AppDelegate.m in Sources */,

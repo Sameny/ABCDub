@@ -9,6 +9,7 @@
 #import "SZTBannerView.h"
 #import "ABCCommonEntryCell.h"
 #import "ABCCommonVideoSnapCell.h"
+#import "ABCSectionTitleView.h"
 
 #import "ABCMainViewModel.h"
 #import "ABCMainViewViewController.h"
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) ABCCommonEntryCell *entryCell;
 @property (nonatomic, strong) ABCCommonVideoSnapCell *todayUpdateCell;
 @property (nonatomic, strong) UIView *blankSectionHeaderView;
+@property (nonatomic, strong) ABCSectionTitleView *todayUpdateSectionHeaderView;
 
 @property (nonatomic, strong) ABCMainViewModel *viewModel;
 
@@ -52,6 +54,10 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
+- (void)moreTodayUpdate {
+    
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.viewModel.numberOfSections;
@@ -68,7 +74,7 @@
     else if (indexPath.section == 1) {
         return self.todayUpdateCell;
     }
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeUITableViewCell" forIndexPath:indexPath];
     return cell;
 }
 
@@ -77,9 +83,21 @@
     return [self.viewModel heightForSection:indexPath.section];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 1) {
+        return 48.f;
+    }
+    return 8.f;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 1) {
-        
+        SZTWeakself(self);
+        [self.todayUpdateSectionHeaderView shwoMoreButtonWithEvent:^{
+            [weakself moreTodayUpdate];
+        }];
+        [self.todayUpdateSectionHeaderView setTitle:@"今日更新"];
+        return self.todayUpdateSectionHeaderView;
     }
     return self.blankSectionHeaderView;
 }
@@ -119,6 +137,13 @@
     return _blankSectionHeaderView;
 }
 
+- (ABCSectionTitleView *)todayUpdateSectionHeaderView {
+    if (!_todayUpdateSectionHeaderView) {
+        _todayUpdateSectionHeaderView = [[ABCSectionTitleView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 48.f)];
+    }
+    return _todayUpdateSectionHeaderView;
+}
+
 #pragma mark - UI
 - (void)configUI {
     [self.view addSubview:self.tableView];
@@ -131,8 +156,6 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
-        _tableView.sectionHeaderHeight = 8.f;
         
         _tableView.tableHeaderView = self.bannerView;
     }
