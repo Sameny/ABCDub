@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) NSArray <NSString *>* bannerUrls;
 @property (nonatomic, readonly) NSArray <ABCCommonCollectionViewItemData *>*itemData;
+@property (nonatomic, readonly) NSArray <ABCCommonCollectionViewItemData *>*todayUpdateData;
 
 - (void)configDataWithCompletion:(ABCSuccessHandler)completion;
 - (NSInteger)numberOfSections;

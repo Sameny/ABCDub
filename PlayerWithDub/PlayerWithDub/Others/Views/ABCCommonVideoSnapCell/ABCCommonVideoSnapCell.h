@@ -6,11 +6,11 @@
 //  Copyright © 2018年 泽泰 舒. All rights reserved.
 //
 
-#import "SZTTableViewCell.h"
+#import "ABCCommonCollectionViewTableCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ABCCommonVideoSnapCell : SZTTableViewCell
+@interface ABCCommonVideoSnapCell : ABCCommonCollectionViewTableCell
 
 @end
 

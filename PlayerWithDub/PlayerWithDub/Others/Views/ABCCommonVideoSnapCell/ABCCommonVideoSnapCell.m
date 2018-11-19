@@ -10,15 +10,19 @@
 
 @implementation ABCCommonVideoSnapCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+- (UICollectionViewLayout *)abc_CollectionViewLayout {
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    layout.minimumLineSpacing = 8;
+    layout.minimumInteritemSpacing = 8;
+    layout.sectionInset = UIEdgeInsetsMake(0, 8, 0, 8);
+    layout.itemSize = CGSizeMake(175.f, 128.f);
+    return layout;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (Class)abc_CollectionViewCellClass {
+    return NSClassFromString(@"ABCCommonVideoSnapCollectionViewCell");
 }
+
 
 @end

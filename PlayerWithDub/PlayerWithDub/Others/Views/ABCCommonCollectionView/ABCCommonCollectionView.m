@@ -8,9 +8,11 @@
 
 #import "ABCCommonCollectionView.h"
 
+CGFloat const ABCCommonCollectionViewCellAutoDivideWidth = 1.11;
+
 @interface ABCCommonCollectionView () <UICollectionViewDataSource>
 
-
+@property (nonatomic, assign) BOOL needAverageLineSpace; // 是否平均分配行空间
 
 @end
 
@@ -19,20 +21,24 @@
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewFlowLayout *)layout {
     self = [super initWithFrame:frame collectionViewLayout:layout];
     if (self) {
+        if (layout.itemSize.width == ABCCommonCollectionViewCellAutoDivideWidth) { // 如果为（0， y）每个cell是否平均分配行空间
+            self.needAverageLineSpace = YES;
+        }
         self.backgroundColor = [UIColor clearColor];
-        self.itemSize = CGSizeZero;
     }
     return self;
 }
 
 - (void)setData:(NSArray<__kindof ABCCommonCollectionViewItemData *> *)data {
-    _data = [data mutableCopy];
-    [self updateCollectionViewCellSize];
-    if (!self.dataSource) {
-        [self registerClass:[self.cellClass class] forCellWithReuseIdentifier:[self reuseId]];
-        self.dataSource = self;
+    if (data.count > 0) {
+        _data = [data mutableCopy];
+        [self updateCollectionViewCellSize];
+        if (!self.dataSource) {
+            [self registerClass:[self.cellClass class] forCellWithReuseIdentifier:[self reuseId]];
+            self.dataSource = self;
+        }
+        [self reloadData];
     }
-    [self reloadData];
 }
 
 - (void)setFrame:(CGRect)frame {
@@ -48,24 +54,11 @@
     return [cellClass abc_reuseId];
 }
 
-- (void)setItemSize:(CGSize)itemSize {
-    if (!CGSizeEqualToSize(self.itemSize, itemSize)) {
-        _itemSize = itemSize;
-        [self updateCollectionViewCellSize];
-    }
-    if (self.dataSource) {
-        [self reloadData];
-    }
-}
-
 - (void)updateCollectionViewCellSize {
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
-    if (self.itemSize.width == 0) {
+    if (self.needAverageLineSpace && _data.count > 0) {
         UIEdgeInsets insets = layout.sectionInset;
         layout.itemSize = CGSizeMake((self.bounds.size.width - insets.left - insets.right)/_data.count, layout.itemSize.height);
-    }
-    else {
-        layout.itemSize = self.itemSize;
     }
 }
 

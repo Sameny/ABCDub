@@ -28,8 +28,12 @@
 - (void)setDataModel:(ABCMainDataModel *)dataModel {
     _dataModel = dataModel;
     NSInteger index = 0;
-    if (dataModel.entry_data) {
+    if (dataModel.entry_data.count > 0) {
         self.itemHeights[@(index).stringValue] = @(65.f);
+        index++;
+    }
+    if (dataModel.today_update.count > 0) {
+        self.itemHeights[@(index).stringValue] = @(272.f);
         index++;
     }
 }
@@ -40,6 +44,10 @@
 
 - (NSArray<ABCCommonCollectionViewItemData *> *)itemData {
     return self.dataModel.entry_data;
+}
+
+- (NSArray<ABCCommonCollectionViewItemData *> *)todayUpdateData {
+    return self.dataModel.today_update;
 }
 
 - (NSInteger)numberOfSections {

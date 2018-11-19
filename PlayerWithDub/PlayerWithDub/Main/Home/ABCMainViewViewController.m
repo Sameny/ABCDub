@@ -8,6 +8,7 @@
 
 #import "SZTBannerView.h"
 #import "ABCCommonEntryCell.h"
+#import "ABCCommonVideoSnapCell.h"
 
 #import "ABCMainViewModel.h"
 #import "ABCMainViewViewController.h"
@@ -17,7 +18,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) SZTBannerView *bannerView;
 @property (nonatomic, strong) ABCCommonEntryCell *entryCell;
-@property (nonatomic, strong) UIView *sectionHeaderView;
+@property (nonatomic, strong) ABCCommonVideoSnapCell *todayUpdateCell;
+@property (nonatomic, strong) UIView *blankSectionHeaderView;
 
 @property (nonatomic, strong) ABCMainViewModel *viewModel;
 
@@ -28,6 +30,7 @@
 - (void)configData {
     [self.viewModel configDataWithCompletion:^(BOOL success) {
         self.entryCell.data = self.viewModel.itemData;
+        self.todayUpdateCell.data = self.viewModel.todayUpdateData;
         [self.tableView reloadData];
     }];
 }
@@ -40,7 +43,6 @@
     SZT_AdjustsScrollViewContentInsetNever(self, self.tableView);
     
     self.bannerView.urls = self.viewModel.bannerUrls;
-    
     [self.bannerView startScroll];
 }
 
@@ -63,20 +65,23 @@
     if (indexPath.section == 0) {
         return self.entryCell;
     }
+    else if (indexPath.section == 1) {
+        return self.todayUpdateCell;
+    }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return [self.viewModel heightForSection:indexPath.section];
-    }
-    return 50.f;
+    return [self.viewModel heightForSection:indexPath.section];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return self.sectionHeaderView;
+    if (section == 1) {
+        
+    }
+    return self.blankSectionHeaderView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -99,11 +104,19 @@
     return _entryCell;
 }
 
-- (UIView *)sectionHeaderView {
-    if (!_sectionHeaderView) {
-        _sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 8.f)];
+- (ABCCommonVideoSnapCell *)todayUpdateCell {
+    if (!_todayUpdateCell) {
+        _todayUpdateCell = [[ABCCommonVideoSnapCell alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 272.f)];
+        _todayUpdateCell.backgroundColor = [UIColor whiteColor];
     }
-    return _sectionHeaderView;
+    return _todayUpdateCell;
+}
+
+- (UIView *)blankSectionHeaderView {
+    if (!_blankSectionHeaderView) {
+        _blankSectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 8.f)];
+    }
+    return _blankSectionHeaderView;
 }
 
 #pragma mark - UI

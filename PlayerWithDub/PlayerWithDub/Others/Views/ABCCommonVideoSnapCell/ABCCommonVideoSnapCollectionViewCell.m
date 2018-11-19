@@ -10,4 +10,21 @@
 
 @implementation ABCCommonVideoSnapCollectionViewCell
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.titleLabel.textAlignment = NSTextAlignmentLeft;
+    }
+    return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    // image view alignment center
+    self.imageView.frame = CGRectMake(0, 0, self.width, 94);
+    self.titleLabel.frame = CGRectMake(6, self.height - (self.height - 17 - 94)/2 - 17, self.width - 12, 17.f);
+}
+
 @end

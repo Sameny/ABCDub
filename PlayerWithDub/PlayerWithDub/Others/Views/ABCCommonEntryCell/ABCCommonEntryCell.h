@@ -6,17 +6,11 @@
 //  Copyright © 2018年 泽泰 舒. All rights reserved.
 //
 
-#import "ABCCommonCollectionViewCell.h"
-#import "SZTTableViewCell.h"
+#import "ABCCommonCollectionViewTableCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ABCCommonEntryCell : UITableViewCell
-
-@property (nonatomic, copy) void(^selectedHandler)(NSInteger index);
-
-@property (nonatomic, copy) NSArray <ABCCommonCollectionViewItemData *>*data;
-@property (nonatomic, strong) UIFont *itemTitleFont;
+@interface ABCCommonEntryCell : ABCCommonCollectionViewTableCell
 
 @end
 

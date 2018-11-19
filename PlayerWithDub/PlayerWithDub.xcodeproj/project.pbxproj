@@ -102,9 +102,9 @@
 		10F35A26219E8C08008A2685 /* ABCCommonEntryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A25219E8C08008A2685 /* ABCCommonEntryCollectionViewCell.m */; };
 		10F35A29219E96AF008A2685 /* ABCMainDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A28219E96AF008A2685 /* ABCMainDataModel.m */; };
 		10F35A2C219E970D008A2685 /* ABCCommonCollectionViewItemData.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A2B219E970D008A2685 /* ABCCommonCollectionViewItemData.m */; };
-		10F35A32219EA931008A2685 /* SZTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A31219EA931008A2685 /* SZTTableViewCell.m */; };
 		10F35A37219EBDB2008A2685 /* ABCCommonVideoSnapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A36219EBDB2008A2685 /* ABCCommonVideoSnapCell.m */; };
 		10F35A3A219EBDDB008A2685 /* ABCCommonVideoSnapCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A39219EBDDB008A2685 /* ABCCommonVideoSnapCollectionViewCell.m */; };
+		10F35A3E219EC052008A2685 /* ABCCommonCollectionViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A3D219EC052008A2685 /* ABCCommonCollectionViewTableCell.m */; };
 		35010AA6FDF99A709638AAB6 /* Pods_PlayerWithDub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08D64A394732A9496711DD9 /* Pods_PlayerWithDub.framework */; };
 /* End PBXBuildFile section */
 
@@ -286,12 +286,12 @@
 		10F35A28219E96AF008A2685 /* ABCMainDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCMainDataModel.m; sourceTree = "<group>"; };
 		10F35A2A219E970D008A2685 /* ABCCommonCollectionViewItemData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCCommonCollectionViewItemData.h; sourceTree = "<group>"; };
 		10F35A2B219E970D008A2685 /* ABCCommonCollectionViewItemData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCCommonCollectionViewItemData.m; sourceTree = "<group>"; };
-		10F35A30219EA931008A2685 /* SZTTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTTableViewCell.h; sourceTree = "<group>"; };
-		10F35A31219EA931008A2685 /* SZTTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTTableViewCell.m; sourceTree = "<group>"; };
 		10F35A35219EBDB2008A2685 /* ABCCommonVideoSnapCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCCommonVideoSnapCell.h; sourceTree = "<group>"; };
 		10F35A36219EBDB2008A2685 /* ABCCommonVideoSnapCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCCommonVideoSnapCell.m; sourceTree = "<group>"; };
 		10F35A38219EBDDB008A2685 /* ABCCommonVideoSnapCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCCommonVideoSnapCollectionViewCell.h; sourceTree = "<group>"; };
 		10F35A39219EBDDB008A2685 /* ABCCommonVideoSnapCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCCommonVideoSnapCollectionViewCell.m; sourceTree = "<group>"; };
+		10F35A3C219EC052008A2685 /* ABCCommonCollectionViewTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCCommonCollectionViewTableCell.h; sourceTree = "<group>"; };
+		10F35A3D219EC052008A2685 /* ABCCommonCollectionViewTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCCommonCollectionViewTableCell.m; sourceTree = "<group>"; };
 		777D5A045157527A3A542F10 /* Pods-PlayerWithDub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayerWithDub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlayerWithDub/Pods-PlayerWithDub.debug.xcconfig"; sourceTree = "<group>"; };
 		F08D64A394732A9496711DD9 /* Pods_PlayerWithDub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayerWithDub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F376C40EF10C618FE92D3B35 /* Pods-PlayerWithDub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayerWithDub.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlayerWithDub/Pods-PlayerWithDub.release.xcconfig"; sourceTree = "<group>"; };
@@ -424,7 +424,6 @@
 				103BFA2B21912540002A681A /* Heplers */,
 				1077336621903F58004F5998 /* Categorys */,
 				10635792219C1BD100D505BD /* Views */,
-				107504CC219D8DE40037B436 /* ABCViews */,
 				10BF24AC219011A20078BEFB /* Hooks */,
 				10BF24A5218FEBDC0078BEFB /* Present */,
 				100B3BEE218ACFA200919864 /* AlertHelper */,
@@ -604,7 +603,6 @@
 		10635792219C1BD100D505BD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				10F35A33219EA93A008A2685 /* SZTTableViewCell */,
 				10635797219C1F2E00D505BD /* SZTPageControl */,
 				10635796219C1F2500D505BD /* SZTBannerView */,
 			);
@@ -642,14 +640,6 @@
 				10F35A28219E96AF008A2685 /* ABCMainDataModel.m */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		107504CC219D8DE40037B436 /* ABCViews */ = {
-			isa = PBXGroup;
-			children = (
-				107504CD219D8DF80037B436 /* ABCCommonCollectionView */,
-			);
-			path = ABCViews;
 			sourceTree = "<group>";
 		};
 		107504CD219D8DF80037B436 /* ABCCommonCollectionView */ = {
@@ -776,19 +766,12 @@
 		10F35A20219E8A41008A2685 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				107504CD219D8DF80037B436 /* ABCCommonCollectionView */,
+				10F35A3B219EC016008A2685 /* ABCCommonCollectionViewTableCell */,
 				10F35A34219EBD24008A2685 /* ABCCommonVideoSnapCell */,
 				10F35A1F219E8988008A2685 /* ABCCommonEntryCell */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		10F35A33219EA93A008A2685 /* SZTTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				10F35A30219EA931008A2685 /* SZTTableViewCell.h */,
-				10F35A31219EA931008A2685 /* SZTTableViewCell.m */,
-			);
-			path = SZTTableViewCell;
 			sourceTree = "<group>";
 		};
 		10F35A34219EBD24008A2685 /* ABCCommonVideoSnapCell */ = {
@@ -800,6 +783,15 @@
 				10F35A39219EBDDB008A2685 /* ABCCommonVideoSnapCollectionViewCell.m */,
 			);
 			path = ABCCommonVideoSnapCell;
+			sourceTree = "<group>";
+		};
+		10F35A3B219EC016008A2685 /* ABCCommonCollectionViewTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				10F35A3C219EC052008A2685 /* ABCCommonCollectionViewTableCell.h */,
+				10F35A3D219EC052008A2685 /* ABCCommonCollectionViewTableCell.m */,
+			);
+			path = ABCCommonCollectionViewTableCell;
 			sourceTree = "<group>";
 		};
 		177E23009FC768F40B3CF9E5 /* Pods */ = {
@@ -1048,9 +1040,9 @@
 				107504CB219D8B510037B436 /* ABCMainCollectionHeaderView.m in Sources */,
 				10635779219C0EEE00D505BD /* ABCMainViewViewController.m in Sources */,
 				10BF249E218FDD500078BEFB /* ABCDubViewController.m in Sources */,
-				10F35A32219EA931008A2685 /* SZTTableViewCell.m in Sources */,
 				10817D7F218979870026E5C7 /* LocalFileManager.m in Sources */,
 				102CE668218BF77B00D2E8CA /* ABCError.m in Sources */,
+				10F35A3E219EC052008A2685 /* ABCCommonCollectionViewTableCell.m in Sources */,
 				1063577C219C0F7A00D505BD /* ABCFocusViewController.m in Sources */,
 				105776E621880BC100F7EEB2 /* ViewController.m in Sources */,
 				10250093219561690024679A /* SZTPlayer.m in Sources */,

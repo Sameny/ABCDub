@@ -8,12 +8,14 @@
 
 #import "ABCCommonCollectionViewCell.h"
 
+// 设置为该宽度时，宽度会自动分割
+extern CGFloat const ABCCommonCollectionViewCellAutoDivideWidth;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ABCCommonCollectionView : UICollectionView
 
-@property (nonatomic, assign) CGSize itemSize; // 如果为（0， y）每个cell是否平均分配行空间
-@property (nonatomic, strong) Class cellClass; // default is ABCCommonCollectionViewCell, you can offer the subclass of ABCCommonCollectionViewCell
+@property (nonatomic, strong) Class cellClass; // default is ABCCommonCollectionViewCell, you can offer the subclass of ABCCommonCollectionViewCel
 
 @property (nonatomic, copy) NSArray <__kindof ABCCommonCollectionViewItemData *>*data;
 
