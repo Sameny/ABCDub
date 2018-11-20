@@ -12,6 +12,8 @@
 #import "ABCCommonVideoSnapCell.h"
 #import "ABCSectionTitleView.h"
 
+#import "ABCDubViewController.h"
+
 #import "ABCMainViewModel.h"
 #import "ABCMainViewViewController.h"
 
@@ -62,6 +64,12 @@
 
 - (void)moreTodayUpdate {
     // TODO: more today update
+    
+}
+
+- (void)didSelectedTodayUpdateIndex:(NSInteger)index {
+    ABCDubViewController *dubViewController = [[ABCDubViewController alloc] init];
+    [self presentViewController:dubViewController animated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -127,7 +135,11 @@
 - (ABCCommonVideoSnapCell *)todayUpdateCell {
     if (!_todayUpdateCell) {
         _todayUpdateCell = [[ABCCommonVideoSnapCell alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 272.f)];
-        _todayUpdateCell.backgroundColor = [UIColor whiteColor];
+        _todayUpdateCell.backgroundColor = [UIColor clearColor];
+        SZTWeakself(self);
+        _todayUpdateCell.selectedHandler = ^(NSInteger index) {
+            [weakself didSelectedTodayUpdateIndex:index];
+        };
     }
     return _todayUpdateCell;
 }

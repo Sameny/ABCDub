@@ -278,6 +278,14 @@
     return self.player.rate > 0;
 }
 
+- (CGFloat)volume {
+    return self.player.volume;
+}
+
+- (void)setVolume:(CGFloat)volume {
+    self.player.volume = volume;
+}
+
 - (CMTime)playerItemDuration {
     AVPlayerItem *playerItem = [self.player currentItem];
     if (playerItem.status == AVPlayerItemStatusReadyToPlay){

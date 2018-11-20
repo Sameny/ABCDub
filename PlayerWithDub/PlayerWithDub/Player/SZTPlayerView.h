@@ -35,17 +35,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) UIViewController <SZTPlayerViewScreenDelegate> *presentingViewController;
 @property (nonatomic, weak) id<SZTPlayerViewDelegate> delegate;
 @property (nonatomic, readonly) BOOL isPlaying;
+@property (nonatomic, assign) CGFloat volume;
 
 // in main queue
 - (void)configUrl:(NSURL *)url;
-- (void)addPlayerLayer:(AVPlayerLayer *)playerLayer;
 
 - (void)play;
 - (void)pause;
 - (void)stop;
 - (void)clear;
 
-- (void)seekToTimeWithSeconds:(NSTimeInterval)seconds completion:(void(^)(BOOL finish))completion;
+- (void)seekToTimeWithSeconds:(NSTimeInterval)seconds completion:(nullable void(^)(BOOL finish))completion;
 
 - (void)changeScreenToPortrait;
 - (void)changeScreenToLandscape;

@@ -331,6 +331,8 @@
         // 手机静音时允许播放声音
         AVAudioSession *audioSession = [AVAudioSession sharedInstance];
         [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+        // 需要检测是否是耳机
+        [audioSession overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:nil];
         
         [self.player play];
         self.isPlaying = YES;

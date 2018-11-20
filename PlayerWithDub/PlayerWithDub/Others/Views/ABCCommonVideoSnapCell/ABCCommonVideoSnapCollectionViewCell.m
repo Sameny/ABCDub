@@ -15,6 +15,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        self.contentView.layer.cornerRadius = 8.f;
+        self.contentView.clipsToBounds = YES;
     }
     return self;
 }

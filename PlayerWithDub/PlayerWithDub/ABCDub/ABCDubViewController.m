@@ -15,13 +15,10 @@
 #import "ABCDubViewModel.h"
 #import "ABCDubTableViewCell.h"
 
-#import "SZTPlayerViewController.h"
-#import "AWVideoPlayerViewController.h"
 #import "ABCDubViewController.h"
 
-@interface ABCDubViewController () <UITableViewDataSource, UITableViewDelegate, AWVideoPlayerDelegate, AVAudioPlayerDelegate>
+@interface ABCDubViewController () <UITableViewDataSource, UITableViewDelegate, AVAudioPlayerDelegate, SZTPlayerViewDelegate>
 
-@property (nonatomic, strong) AWVideoPlayerViewController *player;
 @property (nonatomic, strong) AVAudioPlayer *musicPlayer;
 
 @property (nonatomic, strong) UITableView *captionTableView;
@@ -46,12 +43,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view addSubview:self.player.view];
     [self.view addSubview:self.captionTableView];
     [self.view addSubview:self.backBtn];
     [self configUI];
     [self configData];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     SZT_AdjustsScrollViewContentInsetNever(self, self.captionTableView);
+#pragma clang diagnostic pop
     
     self.viewModel = [[ABCDubViewModel alloc] init];
     [self.viewModel configSrtFile:_srtFilePath completion:^(BOOL success) {
@@ -68,26 +67,15 @@
 }
 
 - (void)startPlay {
-    [self.player readyForPlayVideoWithURLString:_mp4FilePath];
+    [self.playerView configUrl:[NSURL fileURLWithPath:_mp4FilePath]];
     [self updateSelectedIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 }
 
 - (void)configUI {
     self.view.backgroundColor = [UIColor blueColor];
-    
-    [self.player.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.mas_equalTo(0);
-        make.height.equalTo(self.player.view.mas_width).multipliedBy(9.f/16.f);
-    }];
-    [self.captionTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.player.view.mas_bottom);
-        make.left.right.bottom.mas_equalTo(0);
-    }];
-    [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(SZTBackItemLeftMargin);
-        make.top.mas_equalTo(SZTBackItemTopMargin);
-        make.size.mas_equalTo(SZTBackItemSize);
-    }];
+    self.captionTableView.frame = CGRectMake(0, self.playerView.height, PORTRAIT_SCREEN_WIDTH, PORTRAIT_SCREEN_HEIGHT - self.playerView.height);
+
+    self.playerView.delegate = self;
 }
 
 #pragma mark - events
@@ -106,14 +94,16 @@
         }
         weakself.captionTableView.scrollEnabled = YES;
     }];
-    [self.player playWithBeginMilliSeconds:(NSTimeInterval)self.selectedSegment.startTime];
-    self.player.volume = 0;
+    self.playerView.volume = 0;
+    [self.playerView seekToTimeWithSeconds:self.selectedSegment.startTime/1000.f completion:^(BOOL finish) {
+    }];
 }
 
 - (void)playAudioWithUrl:(NSURL *)url {
     // 手机静音时播放声音
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    [audioSession overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:nil];
     
     NSError *error;
     self.musicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
@@ -122,8 +112,9 @@
     self.musicPlayer.delegate = self;
     NSLog(@"音频长度:%.3f second", self.musicPlayer.duration);
     
-    [self.player playWithBeginMilliSeconds:(NSTimeInterval)self.selectedSegment.startTime];
-    self.player.volume = 0;
+    self.playerView.volume = 0;
+    [self.playerView seekToTimeWithSeconds:self.selectedSegment.startTime/1000.f completion:^(BOOL finish) {
+    }];
 }
 
 - (void)previewDub {
@@ -144,7 +135,7 @@
 }
 
 - (void)playComposedVideoWithUrl:(NSURL *)url {
-    [self.player pause];
+    [self.playerView pause];
     SZTPlayerViewController *playerViewController = [[SZTPlayerViewController alloc] init];
     [playerViewController setVideoUrl:url];
     [self presentViewController:playerViewController animated:YES completion:nil];
@@ -154,20 +145,22 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)player:(AWVideoPlayerViewController *)player playingAtTime:(NSTimeInterval)milliSeconds {
+#pragma mark - SZTPlayerViewDelegate
+- (void)playerDidPlayAtSeconds:(NSTimeInterval)seconds {
+    NSTimeInterval milliSeconds = seconds * 1000.f;
     if (self.selectedSegment.endTime <= milliSeconds) {
-        [self.player playWithBeginMilliSeconds:(NSTimeInterval)self.selectedSegment.startTime];
+        [self.playerView seekToTimeWithSeconds:self.selectedSegment.startTime/1000.f completion:nil];
     }
 }
 
 #pragma mark - AVAudioPlayerDelegate
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-    self.player.volume = 1.f;
+    self.playerView.volume = 1.f;
     self.musicPlayer.delegate = nil;
 }
 
 - (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error {
-    self.player.volume = 1.f;
+    self.playerView.volume = 1.f;
     self.musicPlayer.delegate = nil;
 }
 
@@ -225,20 +218,11 @@
         [self.captionTableView scrollToRowAtIndexPath:selectedIndexPath atScrollPosition:(UITableViewScrollPositionTop) animated:YES];
         
         self.selectedSegment = [self.viewModel captionSegmentWithIndexPath:_selectedIndexPath];
-        [self.player playWithBeginMilliSeconds:(NSTimeInterval)self.selectedSegment.startTime];
+        [self.playerView seekToTimeWithSeconds:self.selectedSegment.startTime/1000.f completion:nil];
         
         cell = [self.captionTableView cellForRowAtIndexPath:_selectedIndexPath];
         [cell setSelected:YES animated:YES];
     }
-}
-
-#pragma mark - player
-- (AWVideoPlayerViewController *)player {
-    if (!_player) {
-        _player = [AWVideoPlayerViewController playerViewControllerWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*9.f/16) playerControl:(AWVideoPlayerControlAll)];
-        _player.delegate = self;
-    }
-    return _player;
 }
 
 #pragma mark - table view

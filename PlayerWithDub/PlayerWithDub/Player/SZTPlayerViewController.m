@@ -6,11 +6,10 @@
 //  Copyright © 2018年 泽泰 舒. All rights reserved.
 //
 
-#import "SZTPlayerView.h"
 #import "ControlHelper.h"
 #import "SZTPlayerViewController.h"
 
-@interface SZTPlayerViewController ()
+@interface SZTPlayerViewController () <SZTPlayerViewScreenDelegate>
 
 @property (nonatomic, strong) SZTPlayerView *playerView;
 @property (nonatomic, strong) UIButton *backBtn;
@@ -30,21 +29,11 @@
     self.backBtn.frame = CGRectMake(SZTBackItemLeftMargin, SZTBackItemTopMargin, SZTBackItemSize.width, SZTBackItemSize.height);
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    if (_url) {
-        [self.playerView play];
-    }
-}
-
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    self.view.window.frame = CGRectMake(0, 0, size.width, size.height);
-    self.navigationController.view.frame = CGRectMake(0, 0, size.width, size.height);
-    self.view.frame = CGRectMake(0, 0, size.width, size.height);
-    self.playerView.frame = CGRectMake(0, 0, size.width, size.width*9.f/16.f);
+    self.view.window.frame = CGRectMake(0, 0, PORTRAIT_SCREEN_WIDTH, PORTRAIT_SCREEN_HEIGHT);
+    self.navigationController.view.frame = CGRectMake(0, 0, PORTRAIT_SCREEN_WIDTH, PORTRAIT_SCREEN_HEIGHT);
+    self.view.frame = CGRectMake(0, 0, PORTRAIT_SCREEN_WIDTH, PORTRAIT_SCREEN_HEIGHT);
+    self.playerView.frame = CGRectMake(0, 0, PORTRAIT_SCREEN_WIDTH, size.width*9.f/16.f);
 }
 
 - (void)setVideoUrl:(NSURL *)url {
@@ -55,6 +44,7 @@
 }
 
 - (void)backBtnDidClicked {
+    self.playerView.presentingViewController = nil;
     if (self.navigationController) {
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -63,10 +53,20 @@
     }
 }
 
+#pragma mark - SZTPlayerViewScreenDelegate
+// 旋转为竖屏时调用
+- (void)addPlayerView:(SZTPlayerView *)playerView {
+    [self.view addSubview:playerView];
+    [self.view addSubview:self.backBtn];
+    playerView.frame = CGRectMake(0, 0, PORTRAIT_SCREEN_WIDTH, PORTRAIT_SCREEN_WIDTH*9.f/16.f);
+    self.backBtn.frame = CGRectMake(SZTBackItemLeftMargin, SZTBackItemTopMargin, SZTBackItemSize.width, SZTBackItemSize.height);
+}
+
 #pragma mark - player
 - (SZTPlayerView *)playerView {
     if (!_playerView) {
-        _playerView = [[SZTPlayerView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width*9.f/16.f)];
+        _playerView = [[SZTPlayerView alloc] initWithFrame:CGRectMake(0, 0, PORTRAIT_SCREEN_WIDTH, PORTRAIT_SCREEN_WIDTH*9.f/16.f)];
+        _playerView.presentingViewController = self;
     }
     return _playerView;
 }
@@ -76,6 +76,19 @@
         _backBtn = [ControlHelper baseButtonAddtarget:self selector:@selector(backBtnDidClicked) image:nil imagePressed:nil title:@"返回" font:18.f textColor:[UIColor whiteColor] textBold:NO];
     }
     return _backBtn;
+}
+
+#pragma mark - orentation
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
 }
 
 @end

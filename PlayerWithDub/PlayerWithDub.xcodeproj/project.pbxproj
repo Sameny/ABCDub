@@ -42,26 +42,14 @@
 		1057772C21882B3400F7EEB2 /* player_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1057772A21882B3300F7EEB2 /* player_play@3x.png */; };
 		1057772F21882B4B00F7EEB2 /* player_slideThumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1057772D21882B4700F7EEB2 /* player_slideThumb@2x.png */; };
 		1057773021882B4B00F7EEB2 /* player_slideThumb@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1057772E21882B4900F7EEB2 /* player_slideThumb@3x.png */; };
-		105777462188419800F7EEB2 /* 彭彭获得一美元奖励.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 105777312188419600F7EEB2 /* 彭彭获得一美元奖励.mp3 */; };
-		105777472188419800F7EEB2 /* 如何增长利润 .mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 105777322188419600F7EEB2 /* 如何增长利润 .mp4 */; };
 		105777482188419800F7EEB2 /* 幻想中的无敌神鹰.srt in Resources */ = {isa = PBXBuildFile; fileRef = 105777332188419600F7EEB2 /* 幻想中的无敌神鹰.srt */; };
 		105777492188419800F7EEB2 /* 幻想中的无敌神鹰.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 105777342188419600F7EEB2 /* 幻想中的无敌神鹰.mp4 */; };
 		1057774A2188419800F7EEB2 /* 丁满照看鸟宝宝.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 105777352188419600F7EEB2 /* 丁满照看鸟宝宝.mp3 */; };
 		1057774B2188419800F7EEB2 /* 丁满照看鸟宝宝.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 105777362188419600F7EEB2 /* 丁满照看鸟宝宝.mp4 */; };
-		1057774C2188419800F7EEB2 /* 卡车围场十周年纪念日要来了.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 105777372188419700F7EEB2 /* 卡车围场十周年纪念日要来了.mp4 */; };
 		1057774D2188419800F7EEB2 /* 帮我和我妈妈打个招呼.srt in Resources */ = {isa = PBXBuildFile; fileRef = 105777382188419700F7EEB2 /* 帮我和我妈妈打个招呼.srt */; };
-		1057774E2188419800F7EEB2 /* 如何增长利润 .srt in Resources */ = {isa = PBXBuildFile; fileRef = 105777392188419700F7EEB2 /* 如何增长利润 .srt */; };
-		1057774F2188419800F7EEB2 /* 卡车围场十周年纪念日要来了.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1057773A2188419700F7EEB2 /* 卡车围场十周年纪念日要来了.mp3 */; };
 		105777502188419800F7EEB2 /* 帮我和我妈妈打个招呼.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1057773B2188419700F7EEB2 /* 帮我和我妈妈打个招呼.mp3 */; };
 		105777512188419800F7EEB2 /* 丁满照看鸟宝宝.srt in Resources */ = {isa = PBXBuildFile; fileRef = 1057773C2188419700F7EEB2 /* 丁满照看鸟宝宝.srt */; };
-		105777522188419800F7EEB2 /* 她的话触动了我.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1057773D2188419700F7EEB2 /* 她的话触动了我.mp4 */; };
-		105777532188419800F7EEB2 /* 彭彭获得一美元奖励.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1057773E2188419800F7EEB2 /* 彭彭获得一美元奖励.mp4 */; };
-		105777542188419800F7EEB2 /* 她的话触动了我.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1057773F2188419800F7EEB2 /* 她的话触动了我.mp3 */; };
-		105777552188419800F7EEB2 /* 她的话触动了我.srt in Resources */ = {isa = PBXBuildFile; fileRef = 105777402188419800F7EEB2 /* 她的话触动了我.srt */; };
 		105777562188419800F7EEB2 /* 幻想中的无敌神鹰.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 105777412188419800F7EEB2 /* 幻想中的无敌神鹰.mp3 */; };
-		105777572188419800F7EEB2 /* 彭彭获得一美元奖励.srt in Resources */ = {isa = PBXBuildFile; fileRef = 105777422188419800F7EEB2 /* 彭彭获得一美元奖励.srt */; };
-		105777582188419800F7EEB2 /* 如何增长利润 .mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 105777432188419800F7EEB2 /* 如何增长利润 .mp3 */; };
-		105777592188419800F7EEB2 /* 卡车围场十周年纪念日要来了.srt in Resources */ = {isa = PBXBuildFile; fileRef = 105777442188419800F7EEB2 /* 卡车围场十周年纪念日要来了.srt */; };
 		1057775A2188419800F7EEB2 /* 帮我和我妈妈打个招呼.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 105777452188419800F7EEB2 /* 帮我和我妈妈打个招呼.mp4 */; };
 		10635773219C0E8100D505BD /* ABCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10635772219C0E8100D505BD /* ABCTabBarController.m */; };
 		10635779219C0EEE00D505BD /* ABCMainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10635778219C0EEE00D505BD /* ABCMainViewViewController.m */; };
@@ -96,6 +84,7 @@
 		109E42BA21A2A08700198861 /* ABCSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42B921A2A08700198861 /* ABCSearchView.m */; };
 		109E42BD21A2B03F00198861 /* ABCSearchHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42BC21A2B03F00198861 /* ABCSearchHistoryView.m */; };
 		109E42C021A2B06200198861 /* ABCSearchResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42BF21A2B06200198861 /* ABCSearchResultView.m */; };
+		109E42C521A2BB9500198861 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42C421A2BB9500198861 /* APIClient.m */; };
 		10BF249E218FDD500078BEFB /* ABCDubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF249D218FDD500078BEFB /* ABCDubViewController.m */; };
 		10BF24A1218FDD820078BEFB /* ABCDubViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24A0218FDD820078BEFB /* ABCDubViewModel.m */; };
 		10BF24A4218FE8AA0078BEFB /* ABCNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24A3218FE8AA0078BEFB /* ABCNavigationViewController.m */; };
@@ -104,6 +93,11 @@
 		10BF24AF219011F10078BEFB /* NSObject+SZTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24AE219011F10078BEFB /* NSObject+SZTAdd.m */; };
 		10BF24B2219036130078BEFB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 10BF24B1219036130078BEFB /* Podfile */; };
 		10BF24B521903ABB0078BEFB /* ABCDubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24B421903ABB0078BEFB /* ABCDubTableViewCell.m */; };
+		10D3470A21A3B15700006CED /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D3470921A3B15700006CED /* APIManager.m */; };
+		10D3470D21A3D0E000006CED /* APIRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D3470C21A3D0E000006CED /* APIRequestObject.m */; };
+		10D3471121A3F6DF00006CED /* UIView+SZTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D3471021A3F6DF00006CED /* UIView+SZTAdd.m */; };
+		10D3471421A3F6F700006CED /* UIImageView+SZTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D3471321A3F6F700006CED /* UIImageView+SZTAdd.m */; };
+		10D3471721A3FBB900006CED /* UIImage+SZTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 10D3471621A3FBB900006CED /* UIImage+SZTAdd.m */; };
 		10F35A23219E8A93008A2685 /* ABCCommonEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A22219E8A93008A2685 /* ABCCommonEntryCell.m */; };
 		10F35A26219E8C08008A2685 /* ABCCommonEntryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A25219E8C08008A2685 /* ABCCommonEntryCollectionViewCell.m */; };
 		10F35A29219E96AF008A2685 /* ABCMainDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F35A28219E96AF008A2685 /* ABCMainDataModel.m */; };
@@ -196,26 +190,14 @@
 		1057772A21882B3300F7EEB2 /* player_play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_play@3x.png"; sourceTree = "<group>"; };
 		1057772D21882B4700F7EEB2 /* player_slideThumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_slideThumb@2x.png"; sourceTree = "<group>"; };
 		1057772E21882B4900F7EEB2 /* player_slideThumb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_slideThumb@3x.png"; sourceTree = "<group>"; };
-		105777312188419600F7EEB2 /* 彭彭获得一美元奖励.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "彭彭获得一美元奖励.mp3"; sourceTree = "<group>"; };
-		105777322188419600F7EEB2 /* 如何增长利润 .mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "如何增长利润 .mp4"; sourceTree = "<group>"; };
 		105777332188419600F7EEB2 /* 幻想中的无敌神鹰.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "幻想中的无敌神鹰.srt"; sourceTree = "<group>"; };
 		105777342188419600F7EEB2 /* 幻想中的无敌神鹰.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "幻想中的无敌神鹰.mp4"; sourceTree = "<group>"; };
 		105777352188419600F7EEB2 /* 丁满照看鸟宝宝.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "丁满照看鸟宝宝.mp3"; sourceTree = "<group>"; };
 		105777362188419600F7EEB2 /* 丁满照看鸟宝宝.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "丁满照看鸟宝宝.mp4"; sourceTree = "<group>"; };
-		105777372188419700F7EEB2 /* 卡车围场十周年纪念日要来了.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "卡车围场十周年纪念日要来了.mp4"; sourceTree = "<group>"; };
 		105777382188419700F7EEB2 /* 帮我和我妈妈打个招呼.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "帮我和我妈妈打个招呼.srt"; sourceTree = "<group>"; };
-		105777392188419700F7EEB2 /* 如何增长利润 .srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "如何增长利润 .srt"; sourceTree = "<group>"; };
-		1057773A2188419700F7EEB2 /* 卡车围场十周年纪念日要来了.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "卡车围场十周年纪念日要来了.mp3"; sourceTree = "<group>"; };
 		1057773B2188419700F7EEB2 /* 帮我和我妈妈打个招呼.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "帮我和我妈妈打个招呼.mp3"; sourceTree = "<group>"; };
 		1057773C2188419700F7EEB2 /* 丁满照看鸟宝宝.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "丁满照看鸟宝宝.srt"; sourceTree = "<group>"; };
-		1057773D2188419700F7EEB2 /* 她的话触动了我.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "她的话触动了我.mp4"; sourceTree = "<group>"; };
-		1057773E2188419800F7EEB2 /* 彭彭获得一美元奖励.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "彭彭获得一美元奖励.mp4"; sourceTree = "<group>"; };
-		1057773F2188419800F7EEB2 /* 她的话触动了我.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "她的话触动了我.mp3"; sourceTree = "<group>"; };
-		105777402188419800F7EEB2 /* 她的话触动了我.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "她的话触动了我.srt"; sourceTree = "<group>"; };
 		105777412188419800F7EEB2 /* 幻想中的无敌神鹰.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "幻想中的无敌神鹰.mp3"; sourceTree = "<group>"; };
-		105777422188419800F7EEB2 /* 彭彭获得一美元奖励.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "彭彭获得一美元奖励.srt"; sourceTree = "<group>"; };
-		105777432188419800F7EEB2 /* 如何增长利润 .mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "如何增长利润 .mp3"; sourceTree = "<group>"; };
-		105777442188419800F7EEB2 /* 卡车围场十周年纪念日要来了.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "卡车围场十周年纪念日要来了.srt"; sourceTree = "<group>"; };
 		105777452188419800F7EEB2 /* 帮我和我妈妈打个招呼.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "帮我和我妈妈打个招呼.mp4"; sourceTree = "<group>"; };
 		10635771219C0E8100D505BD /* ABCTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCTabBarController.h; sourceTree = "<group>"; };
 		10635772219C0E8100D505BD /* ABCTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCTabBarController.m; sourceTree = "<group>"; };
@@ -280,6 +262,8 @@
 		109E42BC21A2B03F00198861 /* ABCSearchHistoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSearchHistoryView.m; sourceTree = "<group>"; };
 		109E42BE21A2B06200198861 /* ABCSearchResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSearchResultView.h; sourceTree = "<group>"; };
 		109E42BF21A2B06200198861 /* ABCSearchResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSearchResultView.m; sourceTree = "<group>"; };
+		109E42C321A2BB9500198861 /* APIClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
+		109E42C421A2BB9500198861 /* APIClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
 		10BF249C218FDD500078BEFB /* ABCDubViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCDubViewController.h; sourceTree = "<group>"; };
 		10BF249D218FDD500078BEFB /* ABCDubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCDubViewController.m; sourceTree = "<group>"; };
 		10BF249F218FDD820078BEFB /* ABCDubViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCDubViewModel.h; sourceTree = "<group>"; };
@@ -296,6 +280,17 @@
 		10BF24B1219036130078BEFB /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		10BF24B321903ABB0078BEFB /* ABCDubTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCDubTableViewCell.h; sourceTree = "<group>"; };
 		10BF24B421903ABB0078BEFB /* ABCDubTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCDubTableViewCell.m; sourceTree = "<group>"; };
+		10D3470821A3B15700006CED /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		10D3470921A3B15700006CED /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
+		10D3470B21A3D0E000006CED /* APIRequestObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIRequestObject.h; sourceTree = "<group>"; };
+		10D3470C21A3D0E000006CED /* APIRequestObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIRequestObject.m; sourceTree = "<group>"; };
+		10D3470E21A3D1E100006CED /* APIDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIDefines.h; sourceTree = "<group>"; };
+		10D3470F21A3F6DF00006CED /* UIView+SZTAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+SZTAdd.h"; sourceTree = "<group>"; };
+		10D3471021A3F6DF00006CED /* UIView+SZTAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+SZTAdd.m"; sourceTree = "<group>"; };
+		10D3471221A3F6F700006CED /* UIImageView+SZTAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SZTAdd.h"; sourceTree = "<group>"; };
+		10D3471321A3F6F700006CED /* UIImageView+SZTAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SZTAdd.m"; sourceTree = "<group>"; };
+		10D3471521A3FBB900006CED /* UIImage+SZTAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+SZTAdd.h"; sourceTree = "<group>"; };
+		10D3471621A3FBB900006CED /* UIImage+SZTAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SZTAdd.m"; sourceTree = "<group>"; };
 		10F35A21219E8A93008A2685 /* ABCCommonEntryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCCommonEntryCell.h; sourceTree = "<group>"; };
 		10F35A22219E8A93008A2685 /* ABCCommonEntryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCCommonEntryCell.m; sourceTree = "<group>"; };
 		10F35A24219E8C08008A2685 /* ABCCommonEntryCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCCommonEntryCollectionViewCell.h; sourceTree = "<group>"; };
@@ -502,18 +497,6 @@
 				105777412188419800F7EEB2 /* 幻想中的无敌神鹰.mp3 */,
 				105777342188419600F7EEB2 /* 幻想中的无敌神鹰.mp4 */,
 				105777332188419600F7EEB2 /* 幻想中的无敌神鹰.srt */,
-				1057773A2188419700F7EEB2 /* 卡车围场十周年纪念日要来了.mp3 */,
-				105777372188419700F7EEB2 /* 卡车围场十周年纪念日要来了.mp4 */,
-				105777442188419800F7EEB2 /* 卡车围场十周年纪念日要来了.srt */,
-				105777312188419600F7EEB2 /* 彭彭获得一美元奖励.mp3 */,
-				1057773E2188419800F7EEB2 /* 彭彭获得一美元奖励.mp4 */,
-				105777422188419800F7EEB2 /* 彭彭获得一美元奖励.srt */,
-				105777432188419800F7EEB2 /* 如何增长利润 .mp3 */,
-				105777322188419600F7EEB2 /* 如何增长利润 .mp4 */,
-				105777392188419700F7EEB2 /* 如何增长利润 .srt */,
-				1057773F2188419800F7EEB2 /* 她的话触动了我.mp3 */,
-				1057773D2188419700F7EEB2 /* 她的话触动了我.mp4 */,
-				105777402188419800F7EEB2 /* 她的话触动了我.srt */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -684,6 +667,12 @@
 				107504B8219D59FC0037B436 /* UINavigationController+SZTAdd.m */,
 				109E42B421A28D5800198861 /* NSArray+YYModelAdd.h */,
 				109E42B521A28D5800198861 /* NSArray+YYModelAdd.m */,
+				10D3470F21A3F6DF00006CED /* UIView+SZTAdd.h */,
+				10D3471021A3F6DF00006CED /* UIView+SZTAdd.m */,
+				10D3471221A3F6F700006CED /* UIImageView+SZTAdd.h */,
+				10D3471321A3F6F700006CED /* UIImageView+SZTAdd.m */,
+				10D3471521A3FBB900006CED /* UIImage+SZTAdd.h */,
+				10D3471621A3FBB900006CED /* UIImage+SZTAdd.m */,
 			);
 			path = Categorys;
 			sourceTree = "<group>";
@@ -750,6 +739,28 @@
 			path = ABCSearchView;
 			sourceTree = "<group>";
 		};
+		109E42C121A2BB3600198861 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				109E42C221A2BB4600198861 /* APIClient */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		109E42C221A2BB4600198861 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				109E42C321A2BB9500198861 /* APIClient.h */,
+				109E42C421A2BB9500198861 /* APIClient.m */,
+				10D3470821A3B15700006CED /* APIManager.h */,
+				10D3470921A3B15700006CED /* APIManager.m */,
+				10D3470B21A3D0E000006CED /* APIRequestObject.h */,
+				10D3470C21A3D0E000006CED /* APIRequestObject.m */,
+				10D3470E21A3D1E100006CED /* APIDefines.h */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
 		10BF249B218FDD0C0078BEFB /* ABCDub */ = {
 			isa = PBXGroup;
 			children = (
@@ -791,6 +802,7 @@
 		10F35A1E219E897A008A2685 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				109E42C121A2BB3600198861 /* Modules */,
 				10F35A20219E8A41008A2685 /* Views */,
 			);
 			path = Others;
@@ -963,24 +975,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				105776EE21880BC400F7EEB2 /* LaunchScreen.storyboard in Resources */,
-				1057774F2188419800F7EEB2 /* 卡车围场十周年纪念日要来了.mp3 in Resources */,
-				1057774E2188419800F7EEB2 /* 如何增长利润 .srt in Resources */,
 				1057772821882B1F00F7EEB2 /* player_pause@3x.png in Resources */,
-				105777582188419800F7EEB2 /* 如何增长利润 .mp3 in Resources */,
-				105777572188419800F7EEB2 /* 彭彭获得一美元奖励.srt in Resources */,
 				105777482188419800F7EEB2 /* 幻想中的无敌神鹰.srt in Resources */,
-				105777592188419800F7EEB2 /* 卡车围场十周年纪念日要来了.srt in Resources */,
 				1063578B219C13C500D505BD /* ABCMessage.xcassets in Resources */,
 				1057772C21882B3400F7EEB2 /* player_play@3x.png in Resources */,
-				105777472188419800F7EEB2 /* 如何增长利润 .mp4 in Resources */,
 				105777562188419800F7EEB2 /* 幻想中的无敌神鹰.mp3 in Resources */,
 				1057772421882B0100F7EEB2 /* player_centerPlay@3x.png in Resources */,
-				105777542188419800F7EEB2 /* 她的话触动了我.mp3 in Resources */,
 				1057775A2188419800F7EEB2 /* 帮我和我妈妈打个招呼.mp4 in Resources */,
 				1057774A2188419800F7EEB2 /* 丁满照看鸟宝宝.mp3 in Resources */,
-				105777522188419800F7EEB2 /* 她的话触动了我.mp4 in Resources */,
 				1057771E2188291E00F7EEB2 /* AWVideoPlayerViewController.xib in Resources */,
-				105777552188419800F7EEB2 /* 她的话触动了我.srt in Resources */,
 				105777502188419800F7EEB2 /* 帮我和我妈妈打个招呼.mp3 in Resources */,
 				1057772321882B0100F7EEB2 /* player_centerPlay@2x.png in Resources */,
 				107D766121997CC20024EDB7 /* SZTPlayerImages.xcassets in Resources */,
@@ -991,15 +994,12 @@
 				1057772F21882B4B00F7EEB2 /* player_slideThumb@2x.png in Resources */,
 				1063578D219C13D300D505BD /* ABCUser.xcassets in Resources */,
 				1057774D2188419800F7EEB2 /* 帮我和我妈妈打个招呼.srt in Resources */,
-				105777532188419800F7EEB2 /* 彭彭获得一美元奖励.mp4 in Resources */,
 				10635789219C13B600D505BD /* ABCFocus.xcassets in Resources */,
 				105777492188419800F7EEB2 /* 幻想中的无敌神鹰.mp4 in Resources */,
-				105777462188419800F7EEB2 /* 彭彭获得一美元奖励.mp3 in Resources */,
 				1057774B2188419800F7EEB2 /* 丁满照看鸟宝宝.mp4 in Resources */,
 				1057772B21882B3400F7EEB2 /* player_play@2x.png in Resources */,
 				1057772721882B1F00F7EEB2 /* player_pause@2x.png in Resources */,
 				105776EB21880BC400F7EEB2 /* Assets.xcassets in Resources */,
-				1057774C2188419800F7EEB2 /* 卡车围场十周年纪念日要来了.mp4 in Resources */,
 				1057773021882B4B00F7EEB2 /* player_slideThumb@3x.png in Resources */,
 				10635787219C13AA00D505BD /* ABCMain.xcassets in Resources */,
 			);
@@ -1105,6 +1105,8 @@
 				10635782219C0F9800D505BD /* ABCUserViewController.m in Sources */,
 				10F35A3A219EBDDB008A2685 /* ABCCommonVideoSnapCollectionViewCell.m in Sources */,
 				1025009A219923D20024679A /* SZTPlayerFileHandle.m in Sources */,
+				10D3471121A3F6DF00006CED /* UIView+SZTAdd.m in Sources */,
+				10D3471721A3FBB900006CED /* UIImage+SZTAdd.m in Sources */,
 				102A4ADE21928C9700AC6C89 /* SZTPlayerViewController.m in Sources */,
 				10BF24AB219011030078BEFB /* UIViewController+PresentAnimation.m in Sources */,
 				109E42B321A28B9C00198861 /* NSNumber+STAdd.m in Sources */,
@@ -1124,6 +1126,7 @@
 				103BFA3221916EB7002A681A /* ABCDubFileManager.m in Sources */,
 				109E42BD21A2B03F00198861 /* ABCSearchHistoryView.m in Sources */,
 				102CE658218BE27D00D2E8CA /* MP3Endocder.mm in Sources */,
+				10D3471421A3F6F700006CED /* UIImageView+SZTAdd.m in Sources */,
 				107504D0219D8F0D0037B436 /* ABCCommonCollectionView.m in Sources */,
 				109E42AF21A255B400198861 /* ABCSectionTitleView.m in Sources */,
 				100B3BF6218AD80400919864 /* GCDTimer.m in Sources */,
@@ -1133,11 +1136,14 @@
 				10F35A37219EBDB2008A2685 /* ABCCommonVideoSnapCell.m in Sources */,
 				1063577F219C0F8B00D505BD /* ABCMessageViewController.m in Sources */,
 				10BF24A8218FEE230078BEFB /* ABCPresentAnimation.m in Sources */,
+				10D3470A21A3B15700006CED /* APIManager.m in Sources */,
 				10635795219C1BF800D505BD /* SZTBannerView.m in Sources */,
 				109E42B621A28D5800198861 /* NSArray+YYModelAdd.m in Sources */,
 				10103827218C392E00085420 /* ABCSRTParser.m in Sources */,
+				10D3470D21A3D0E000006CED /* APIRequestObject.m in Sources */,
 				10103824218C389F00085420 /* ABCCaptionSegment.m in Sources */,
 				107504B9219D59FC0037B436 /* UINavigationController+SZTAdd.m in Sources */,
+				109E42C521A2BB9500198861 /* APIClient.m in Sources */,
 				1057771F2188291E00F7EEB2 /* AWVideoPlayerViewController.m in Sources */,
 				1063579A219C1F6400D505BD /* SZTPageControl.m in Sources */,
 				102CE665218BED8300D2E8CA /* MP3EncodedRequest.m in Sources */,

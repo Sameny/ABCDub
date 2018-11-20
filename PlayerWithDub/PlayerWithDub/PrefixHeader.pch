@@ -37,6 +37,10 @@
 #import "ABCColorDefines.h"
 #import "ABCFontDefines.h"
 
+#import "UIImage+SZTAdd.h"
+#import "UIView+SZTAdd.h"
+#import "UIImageView+SZTAdd.h"
+
 #endif
 
 

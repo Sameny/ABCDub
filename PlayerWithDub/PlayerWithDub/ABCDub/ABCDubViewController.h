@@ -6,11 +6,11 @@
 //  Copyright © 2018年 泽泰 舒. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SZTPlayerViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ABCDubViewController : UIViewController
+@interface ABCDubViewController : SZTPlayerViewController
 
 @property (nonatomic, copy) NSString *mp3FilePath;
 @property (nonatomic, copy) NSString *mp4FilePath;

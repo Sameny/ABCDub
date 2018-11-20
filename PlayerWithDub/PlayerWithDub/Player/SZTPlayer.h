@@ -45,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) BOOL isPlaying;
 @property (nonatomic, readonly) SZTPlayerStatus status;
+@property (nonatomic, assign) CGFloat volume;
 @property (nonatomic, readonly) NSTimeInterval totalSeconds;
 
 @property (nonatomic, weak) id<SZTPlayerDelegate> delegate;
@@ -56,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)stop;
 - (void)clear;
 
-- (void)seekToTimeWithSeconds:(NSTimeInterval)seconds completion:(void(^)(BOOL finish))completion;
+- (void)seekToTimeWithSeconds:(NSTimeInterval)seconds completion:(nullable void(^)(BOOL finish))completion;
 
 @end
 

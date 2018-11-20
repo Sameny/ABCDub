@@ -41,7 +41,7 @@ static ABCAudioRecorder *sharedABCAudioRecorder = nil;
         if ([self.audioRecorder prepareToRecord]) {
             AVAudioSession *audioSession = [AVAudioSession sharedInstance];
             [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-            [audioSession overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:nil]; // 不加这句，撸出来的声音很小，但是之后插入耳机会无效，所以后面录音完成后在需要耳机功能的地方设置为AVAudioSessionPortOverrideNone
+            [audioSession overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:nil]; // 不加这句，录出来的声音很小，但是之后插入耳机会无效，所以后面录音完成后在需要耳机功能的地方设置为AVAudioSessionPortOverrideNone
             NSError *sessionError;
             [audioSession setActive:YES error:&sessionError];
             success = [self.audioRecorder recordForDuration:duration];

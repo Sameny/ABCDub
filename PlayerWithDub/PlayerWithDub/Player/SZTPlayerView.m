@@ -52,6 +52,14 @@
     return self.player.isPlaying;
 }
 
+- (CGFloat)volume {
+    return self.player.volume;
+}
+
+- (void)setVolume:(CGFloat)volume {
+    self.player.volume = volume;
+}
+
 #pragma mark - player begin
 - (void)configUrl:(NSURL *)url {
     [self.player configUrl:url];

@@ -6,11 +6,14 @@
 //  Copyright © 2018年 泽泰 舒. All rights reserved.
 //
 
+#import "SZTPlayerView.h"
 #import "SZTPresentedViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SZTPlayerViewController : SZTPresentedViewController
+
+@property (nonatomic, strong, readonly) SZTPlayerView *playerView;
 
 - (void)setVideoUrl:(NSURL *)url;
 
