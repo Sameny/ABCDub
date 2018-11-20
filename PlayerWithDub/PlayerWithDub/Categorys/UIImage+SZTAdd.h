@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
 extern NSString * const PNG_IMAGE_TYPE;
 extern NSString * const JPG_IMAGE_TYPE;
 extern NSString * const JPEG_IMAGE_TYPE;
-
-NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (SZTAdd)
 

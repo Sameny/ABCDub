@@ -73,7 +73,7 @@
 }
 
 - (NSString *)debugDescription {
-    return [NSString stringWithFormat:@"index : %d, startTime:%d to endTime:%d, en:%@, ch:%@", _index, _startTime, _endTime, _en_content, _ch_content];
+    return [NSString stringWithFormat:@"index : %ld, startTime:%ld to endTime:%ld, en:%@, ch:%@", _index, _startTime, _endTime, _en_content, _ch_content];
 }
 
 @end
