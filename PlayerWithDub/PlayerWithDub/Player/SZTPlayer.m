@@ -36,8 +36,6 @@
     [self clear];
     self.url = url;
     
-    [self updateStatus:SZTPlayerStatusWaiting];
-    
     self.isLocalFile = [url.scheme isEqualToString:@"file"];
     AVPlayerItem *item;
     NSString *cachedFilePath = [SZTPlayerFileHandle cacheFileExistsWithURL:url];
@@ -45,11 +43,15 @@
         AVAsset *asset = [AVAsset assetWithURL:url];
         item = [[AVPlayerItem alloc] initWithAsset:asset];
         
+        [self updateStatus:SZTPlayerStatusPlaying];
+        
         if (_delegate && [_delegate respondsToSelector:@selector(player:didCompletedCacheToUrl:)]) {
             [_delegate player:self didCompletedCacheToUrl:cachedFilePath];
         }
     }
     else {
+        [self updateStatus:SZTPlayerStatusWaiting];
+        
         SZTResourceLoader *resourceLoader = [[SZTPlayerResourceManager sharedInstance] resourceLoaderWithUrl:url.absoluteString];
         AVURLAsset *asset = [AVURLAsset URLAssetWithURL:url options:nil];
         [asset.resourceLoader setDelegate:resourceLoader queue:dispatch_get_main_queue()];
@@ -198,21 +200,7 @@
             float newRate = [[change objectForKey:NSKeyValueChangeNewKey] floatValue];
             BOOL willPlay = (newRate != 0.f);
             if(willPlay){
-                if (_status == SZTPlayerStatusBuffering) { // 完成缓冲
-                    if (_delegate && [_delegate respondsToSelector:@selector(playerDidCompletedBuffer)]) {
-                        [_delegate playerDidCompletedBuffer];
-                    }
-                }
-                [self updateStatus:SZTPlayerStatusPlaying];
                 [self addPlayerTimeObservers];
-            }
-            else {
-                if (_status != SZTPlayerStatusPaused) { // 开始缓冲
-                    if (_delegate && [_delegate respondsToSelector:@selector(playerWillPauseForStartBuffer)]) {
-                        [_delegate playerWillPauseForStartBuffer];
-                    }
-                }
-                [self updateStatus:SZTPlayerStatusBuffering];
             }
         }
         else if ([path isEqualToString:SZTKVOClassKeyPath(AVPlayer, status)]){
@@ -249,8 +237,8 @@
                         if (_delegate && [_delegate respondsToSelector:@selector(playerDidCompletedBuffer)]) {
                             [_delegate playerDidCompletedBuffer];
                         }
+                        [self updateStatus:SZTPlayerStatusPlaying];
                     }
-                    [self updateStatus:SZTPlayerStatusPlaying];
                     [self play];
                 }
                 if (_delegate && [_delegate respondsToSelector:@selector(player:didUpdateCachedProgress:)]) {
@@ -375,6 +363,24 @@
     }
     else {
         [self playerOccurError:error];
+    }
+}
+
+- (void)resourceLoaderWillOneStartBuffer:(SZTResourceLoader *)loader {
+    if (_status != SZTPlayerStatusPaused) { // 开始缓冲
+        if (_delegate && [_delegate respondsToSelector:@selector(playerWillPauseForStartBuffer)]) {
+            [_delegate playerWillPauseForStartBuffer];
+        }
+        [self updateStatus:SZTPlayerStatusBuffering];
+    }
+}
+
+- (void)resourceLoaderDidEndNowBuffer:(SZTResourceLoader *)loader {
+    if (_status == SZTPlayerStatusBuffering) { // 完成缓冲
+        if (_delegate && [_delegate respondsToSelector:@selector(playerDidCompletedBuffer)]) {
+            [_delegate playerDidCompletedBuffer];
+        }
+        [self updateStatus:SZTPlayerStatusPlaying];
     }
 }
 
