@@ -42,8 +42,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [[UIApplication sharedApplication] setStatusBarStyle:(UIStatusBarStyleLightContent)];
-    
+#pragma clang diagnostic pop
     self.view.backgroundColor = [UIColor whiteColor];
 //    [self.view addSubview:self.playerViewController.view];
     [self.view addSubview:self.playerView];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08847E3021A4F56500C44307 /* NSObject+APIAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 08847E2F21A4F56500C44307 /* NSObject+APIAdd.m */; };
 		100B3BF1218ACFBC00919864 /* AlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BF0218ACFBC00919864 /* AlertHelper.m */; };
 		100B3BF6218AD80400919864 /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BF5218AD80400919864 /* GCDTimer.m */; };
 		10103820218C19EE00085420 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1010381E218C19ED00085420 /* libmp3lame.a */; };
@@ -87,7 +88,6 @@
 		109E42C521A2BB9500198861 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42C421A2BB9500198861 /* APIClient.m */; };
 		10BF249E218FDD500078BEFB /* ABCDubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF249D218FDD500078BEFB /* ABCDubViewController.m */; };
 		10BF24A1218FDD820078BEFB /* ABCDubViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24A0218FDD820078BEFB /* ABCDubViewModel.m */; };
-		10BF24A4218FE8AA0078BEFB /* ABCNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24A3218FE8AA0078BEFB /* ABCNavigationViewController.m */; };
 		10BF24A8218FEE230078BEFB /* ABCPresentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24A7218FEE230078BEFB /* ABCPresentAnimation.m */; };
 		10BF24AB219011030078BEFB /* UIViewController+PresentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24AA219011030078BEFB /* UIViewController+PresentAnimation.m */; };
 		10BF24AF219011F10078BEFB /* NSObject+SZTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF24AE219011F10078BEFB /* NSObject+SZTAdd.m */; };
@@ -126,6 +126,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08847E2E21A4F56500C44307 /* NSObject+APIAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+APIAdd.h"; sourceTree = "<group>"; };
+		08847E2F21A4F56500C44307 /* NSObject+APIAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+APIAdd.m"; sourceTree = "<group>"; };
 		100B3BEF218ACFBC00919864 /* AlertHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertHelper.h; sourceTree = "<group>"; };
 		100B3BF0218ACFBC00919864 /* AlertHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertHelper.m; sourceTree = "<group>"; };
 		100B3BF4218AD80400919864 /* GCDTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDTimer.h; sourceTree = "<group>"; };
@@ -268,8 +270,6 @@
 		10BF249D218FDD500078BEFB /* ABCDubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCDubViewController.m; sourceTree = "<group>"; };
 		10BF249F218FDD820078BEFB /* ABCDubViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCDubViewModel.h; sourceTree = "<group>"; };
 		10BF24A0218FDD820078BEFB /* ABCDubViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCDubViewModel.m; sourceTree = "<group>"; };
-		10BF24A2218FE8AA0078BEFB /* ABCNavigationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCNavigationViewController.h; sourceTree = "<group>"; };
-		10BF24A3218FE8AA0078BEFB /* ABCNavigationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCNavigationViewController.m; sourceTree = "<group>"; };
 		10BF24A6218FEE230078BEFB /* ABCPresentAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCPresentAnimation.h; sourceTree = "<group>"; };
 		10BF24A7218FEE230078BEFB /* ABCPresentAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCPresentAnimation.m; sourceTree = "<group>"; };
 		10BF24A9219011030078BEFB /* UIViewController+PresentAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PresentAnimation.h"; sourceTree = "<group>"; };
@@ -337,6 +337,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08847E3221A5470700C44307 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				10BF24A5218FEBDC0078BEFB /* Present */,
+				10BF24AC219011A20078BEFB /* Hooks */,
+				10817D7C218979460026E5C7 /* FIleManager */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		100B3BEE218ACFA200919864 /* AlertHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,6 +398,7 @@
 		103BFA2B21912540002A681A /* Heplers */ = {
 			isa = PBXGroup;
 			children = (
+				100B3BEE218ACFA200919864 /* AlertHelper */,
 				103BFA2C21912560002A681A /* ControlHelper.h */,
 				103BFA2D21912560002A681A /* ControlHelper.m */,
 				1017F601219A979C0080F524 /* SZTPresentedViewController.h */,
@@ -428,32 +439,16 @@
 		105776E021880BC100F7EEB2 /* PlayerWithDub */ = {
 			isa = PBXGroup;
 			children = (
+				103BFA2B21912540002A681A /* Heplers */,
+				10577713218828D200F7EEB2 /* Resources */,
 				10F35A1E219E897A008A2685 /* Others */,
 				10635770219C0E3200D505BD /* TabbarViewController */,
 				1063576F219C0E0B00D505BD /* Main */,
 				10635774219C0EA100D505BD /* Focus */,
 				10635776219C0EB000D505BD /* Message */,
 				10635775219C0EAB00D505BD /* User */,
-				103BFA2B21912540002A681A /* Heplers */,
-				1077336621903F58004F5998 /* Categorys */,
-				10635792219C1BD100D505BD /* Views */,
-				10BF24AC219011A20078BEFB /* Hooks */,
-				10BF24A5218FEBDC0078BEFB /* Present */,
-				100B3BEE218ACFA200919864 /* AlertHelper */,
-				100B3BF3218AD7EE00919864 /* GCDTimer */,
-				102CE669218BF85800D2E8CA /* ABCError */,
-				102CE651218BDD2E00D2E8CA /* MP3Encoder */,
-				10817D842189AE0F0026E5C7 /* Caption */,
-				10817D802189A9A50026E5C7 /* AudioRecord */,
-				10817D7C218979460026E5C7 /* FIleManager */,
-				10817D7521893DBF0026E5C7 /* AVComposeUrils */,
-				1057771A2188291300F7EEB2 /* Player */,
-				10577713218828D200F7EEB2 /* Resources */,
-				10BF249B218FDD0C0078BEFB /* ABCDub */,
 				105776E121880BC100F7EEB2 /* AppDelegate.h */,
 				105776E221880BC100F7EEB2 /* AppDelegate.m */,
-				10BF24A2218FE8AA0078BEFB /* ABCNavigationViewController.h */,
-				10BF24A3218FE8AA0078BEFB /* ABCNavigationViewController.m */,
 				105776E421880BC100F7EEB2 /* ViewController.h */,
 				105776E521880BC100F7EEB2 /* ViewController.m */,
 				10BF24B0219033830078BEFB /* ABCSimpleDefines.h */,
@@ -607,7 +602,8 @@
 				10635797219C1F2E00D505BD /* SZTPageControl */,
 				10635796219C1F2500D505BD /* SZTBannerView */,
 			);
-			path = Views;
+			name = Views;
+			path = ../Views;
 			sourceTree = "<group>";
 		};
 		10635796219C1F2500D505BD /* SZTBannerView */ = {
@@ -742,6 +738,14 @@
 		109E42C121A2BB3600198861 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				100B3BF3218AD7EE00919864 /* GCDTimer */,
+				10817D842189AE0F0026E5C7 /* Caption */,
+				10817D7521893DBF0026E5C7 /* AVComposeUrils */,
+				10BF249B218FDD0C0078BEFB /* ABCDub */,
+				102CE669218BF85800D2E8CA /* ABCError */,
+				102CE651218BDD2E00D2E8CA /* MP3Encoder */,
+				10817D802189A9A50026E5C7 /* AudioRecord */,
+				1057771A2188291300F7EEB2 /* Player */,
 				109E42C221A2BB4600198861 /* APIClient */,
 			);
 			path = Modules;
@@ -757,6 +761,8 @@
 				10D3470B21A3D0E000006CED /* APIRequestObject.h */,
 				10D3470C21A3D0E000006CED /* APIRequestObject.m */,
 				10D3470E21A3D1E100006CED /* APIDefines.h */,
+				08847E2E21A4F56500C44307 /* NSObject+APIAdd.h */,
+				08847E2F21A4F56500C44307 /* NSObject+APIAdd.m */,
 			);
 			path = APIClient;
 			sourceTree = "<group>";
@@ -802,6 +808,9 @@
 		10F35A1E219E897A008A2685 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				10635792219C1BD100D505BD /* Views */,
+				1077336621903F58004F5998 /* Categorys */,
+				08847E3221A5470700C44307 /* Utils */,
 				109E42C121A2BB3600198861 /* Modules */,
 				10F35A20219E8A41008A2685 /* Views */,
 			);
@@ -1123,6 +1132,7 @@
 				1017F606219AC1790080F524 /* SZTPlayerStatusView.m in Sources */,
 				10BF24A1218FDD820078BEFB /* ABCDubViewModel.m in Sources */,
 				1077336921903F78004F5998 /* UIButton+SZTAdd.m in Sources */,
+				08847E3021A4F56500C44307 /* NSObject+APIAdd.m in Sources */,
 				103BFA3221916EB7002A681A /* ABCDubFileManager.m in Sources */,
 				109E42BD21A2B03F00198861 /* ABCSearchHistoryView.m in Sources */,
 				102CE658218BE27D00D2E8CA /* MP3Endocder.mm in Sources */,
@@ -1132,7 +1142,6 @@
 				100B3BF6218AD80400919864 /* GCDTimer.m in Sources */,
 				1017F600219A6AB00080F524 /* SZTPlayerFullScreenViewController.m in Sources */,
 				105776E321880BC100F7EEB2 /* AppDelegate.m in Sources */,
-				10BF24A4218FE8AA0078BEFB /* ABCNavigationViewController.m in Sources */,
 				10F35A37219EBDB2008A2685 /* ABCCommonVideoSnapCell.m in Sources */,
 				1063577F219C0F8B00D505BD /* ABCMessageViewController.m in Sources */,
 				10BF24A8218FEE230078BEFB /* ABCPresentAnimation.m in Sources */,
@@ -1402,7 +1411,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TMPW4E35GP;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PlayerWithDubUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1420,7 +1429,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TMPW4E35GP;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PlayerWithDubUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -8,12 +8,6 @@
 
 #import "APIClient.h"
 
-typedef NS_ENUM(NSUInteger, APIClientMethod) {
-    APIClientMethodGet,
-    APIClientMethodPost,
-    APIClientMethodPut,
-};
-
 @interface APIClient ()
 
 
@@ -30,54 +24,60 @@ static APIClient *sharedAPIClient = nil;
         NSURL *baseUrl = [NSURL URLWithString:APIClientBaseUrl];
         sharedAPIClient = [[APIClient alloc] initWithBaseURL:baseUrl];
         sharedAPIClient.requestSerializer = [AFJSONRequestSerializer serializer];
+        sharedAPIClient.requestSerializer.timeoutInterval = 20;
+        sharedAPIClient.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", @"multipart/form-data", @"application/json", @"text/html", @"image/jpeg", @"image/png", @"application/octet-stream", @"text/json", nil];
     });
     return sharedAPIClient;
 }
 
-- (NSURLSessionDataTask *)requestWithUrl:(NSString *)url
-                              method:(APIClientMethod)method
-                          parameters:(NSDictionary *)parameters
-                             success:(APIClientCompletion)completion
-                            progress:(APIClientProgressHandler)progress
-                             faliure:(APIClientFaildHandler)failure {
-    DebugLog(@"request path %@\nmethod : %ld\nparams %@\n", url, method, parameters);
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    });
-    
-    NSURLSessionDataTask *dataTask;
-    switch (method) {
-        case APIClientMethodPut: {
-            dataTask = [self POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-                
-            } progress:progress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                // TODO: success handler
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                // TODO: failure handler
-            }];
+- (NSURLSessionDataTask *)getWithUrl:(NSString *)url
+                          parameters:(nullable NSDictionary *)parameters
+                             success:(nullable APIClientCompletion)completion
+                            progress:(nullable APIClientProgressHandler)progress
+                             faliure:(nullable APIClientFaildHandler)failure {
+    return [self GET:url parameters:parameters progress:progress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (completion) {
+            completion(task, responseObject);
         }
-            break;
-        case APIClientMethodPost: {
-            dataTask = [self POST:url parameters:parameters progress:progress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                
-                // TODO: success handler
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                
-                // TODO: failure handler
-            }];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(task, error);
         }
-            break;
-        case APIClientMethodGet: {
-             dataTask = [self GET:url parameters:parameters progress:progress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                
-                // TODO: success handler
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                // TODO: failure handler
-            }];
+    }];;
+}
+
+- (NSURLSessionDataTask *)postWithUrl:(NSString *)url
+                           parameters:(NSDictionary *)parameters
+                              success:(nullable APIClientCompletion)completion
+                             progress:(nullable APIClientProgressHandler)progress
+                              faliure:(nullable APIClientFaildHandler)failure {
+    return [self POST:url parameters:parameters progress:progress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (completion) {
+            completion(task, responseObject);
         }
-            break;
-    }
-    return dataTask;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(task, error);
+        }
+    }];
+}
+
+- (NSURLSessionDataTask *)uploadDataWithUrl:(NSString *)url
+                                 parameters:(NSArray <id<APIClientUploadDelegate>>*)parameters
+                                    success:(APIClientCompletion)completion
+                                   progress:(APIClientProgressHandler)progress
+                                    faliure:(APIClientFaildHandler)failure {
+    return [self POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [APIClient appendPartWithParameters:parameters formData:formData];
+    } progress:progress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (completion) {
+            completion(task, responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(task, error);
+        }
+    }];
 }
 
 + (NSURLSessionDataTask *)getWithUrl:(NSString *)url
@@ -92,7 +92,7 @@ static APIClient *sharedAPIClient = nil;
                              success:(nullable APIClientCompletion)completion
                             progress:(nullable APIClientProgressHandler)progress
                              faliure:(nullable APIClientFaildHandler)failure {
-    return [[APIClient sharedInstance] requestWithUrl:url method:APIClientMethodGet parameters:parameters success:completion progress:progress faliure:failure];
+    return [[APIClient sharedInstance] getWithUrl:url parameters:parameters success:completion progress:progress faliure:failure];
 }
 
 + (NSURLSessionDataTask *)postWithUrl:(NSString *)url
@@ -107,15 +107,21 @@ static APIClient *sharedAPIClient = nil;
                               success:(nullable APIClientCompletion)completion
                              progress:(nullable APIClientProgressHandler)progress
                               faliure:(nullable APIClientFaildHandler)failure {
-    return [[APIClient sharedInstance] requestWithUrl:url method:APIClientMethodPost parameters:parameters success:completion progress:progress faliure:failure];
+    return [[APIClient sharedInstance] postWithUrl:url parameters:parameters success:completion progress:progress faliure:failure];
 }
 
-+ (NSURLSessionDataTask *)putWithUrl:(NSString *)url
-                          parameters:(NSDictionary *)parameters
-                             success:(APIClientCompletion)completion
-                            progress:(APIClientProgressHandler)progress
-                             faliure:(APIClientFaildHandler)failure {
-    return [[APIClient sharedInstance] requestWithUrl:url method:APIClientMethodPut parameters:parameters success:completion progress:progress faliure:failure];
++ (NSURLSessionDataTask *)uploadDataWithUrl:(NSString *)url
+                                 parameters:(NSArray <id<APIClientUploadDelegate>>*)parameters
+                                    success:(APIClientCompletion)completion
+                                   progress:(APIClientProgressHandler)progress
+                                    faliure:(APIClientFaildHandler)failure {
+    return [[APIClient sharedInstance] uploadDataWithUrl:url parameters:parameters success:completion progress:progress faliure:failure];
+}
+
++ (void)appendPartWithParameters:(NSArray <id<APIClientUploadDelegate>>*)parameters formData:(id<AFMultipartFormData> _Nonnull)formData {
+    [parameters enumerateObjectsUsingBlock:^(id<APIClientUploadDelegate>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [formData appendPartWithFileURL:obj.fileUrl name:obj.name fileName:obj.fileName mimeType:obj.mineType error:nil];
+    }];
 }
 
 @end

@@ -15,11 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, readonly) NSString *url;
 @property (nonatomic, strong) NSURLSessionDataTask *task;
-@property (nonatomic, strong) NSMutableArray <APIClientCompletion>*completions;
-@property (nonatomic, strong) NSMutableArray <APIClientFaildHandler>*failures;
-@property (nonatomic, strong) NSMutableArray <APIClientProgressHandler>*progresses;
+//@property (nonatomic, strong) NSPointerArray *responseDataHandlers;
+//@property (nonatomic, strong) NSPointerArray *progressDataHandlers;
+//@property (nonatomic, strong) NSPointerArray *failureDataHandlers;
 
+- (instancetype)initWithUrl:(NSString *)url task:(NSURLSessionDataTask *)task;
 
+- (void)cancel;
 
 @end
 

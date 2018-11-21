@@ -24,6 +24,17 @@
 }
 
 - (void)testExample {
+    XCTAssert(YES, @"test");
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"幻想中的无敌神鹰" ofType:@"srt"];
+    NSLog(@"开始解析srt文件");
+    [ABCSRTParser parserWithFilePath:filePath completion:^(NSArray<ABCCaptionSegment *> * _Nonnull captions, NSError * _Nullable error) {
+        if (error) {
+            XCTFail(@"解析srt文件出错");
+        }
+        else {
+            NSLog(@"完成解析srt文件");
+        }
+    }];
 }
 
 - (void)testPerformanceExample {

@@ -19,4 +19,14 @@
     return self;
 }
 
+- (void)cancel {
+    if (self.task.state == NSURLSessionTaskStateRunning) {
+        [self.task cancel];
+    }
+}
+
+- (void)dealloc {
+    [self cancel];
+}
+
 @end

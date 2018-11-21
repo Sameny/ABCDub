@@ -35,11 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
                              progress:(nullable APIClientProgressHandler)progress
                               faliure:(nullable APIClientFaildHandler)failure;
 
-+ (NSURLSessionDataTask *)putWithUrl:(NSString *)url
-                          parameters:(NSDictionary *)parameters
-                             success:(nullable APIClientCompletion)completion
-                            progress:(nullable APIClientProgressHandler)progress
-                             faliure:(nullable APIClientFaildHandler)failure;
++ (NSURLSessionDataTask *)uploadDataWithUrl:(NSString *)url
+                                 parameters:(NSArray <id<APIClientUploadDelegate>>*)parameters
+                                    success:(APIClientCompletion)completion
+                                   progress:(APIClientProgressHandler)progress
+                                    faliure:(APIClientFaildHandler)failure;
 
 @end
 
