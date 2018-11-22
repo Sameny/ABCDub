@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		08847E3021A4F56500C44307 /* NSObject+APIAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 08847E2F21A4F56500C44307 /* NSObject+APIAdd.m */; };
+		08847E3621A56B6200C44307 /* SZTClickableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 08847E3521A56B6200C44307 /* SZTClickableLabel.m */; };
 		100B3BF1218ACFBC00919864 /* AlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BF0218ACFBC00919864 /* AlertHelper.m */; };
 		100B3BF6218AD80400919864 /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BF5218AD80400919864 /* GCDTimer.m */; };
 		10103820218C19EE00085420 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1010381E218C19ED00085420 /* libmp3lame.a */; };
 		10103824218C389F00085420 /* ABCCaptionSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 10103823218C389F00085420 /* ABCCaptionSegment.m */; };
 		10103827218C392E00085420 /* ABCSRTParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 10103826218C392E00085420 /* ABCSRTParser.m */; };
-		1010382B218C52D500085420 /* ABCSRTParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1010382A218C52D500085420 /* ABCSRTParserTest.m */; };
 		1017F600219A6AB00080F524 /* SZTPlayerFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1017F5FF219A6AB00080F524 /* SZTPlayerFullScreenViewController.m */; };
 		1017F603219A979C0080F524 /* SZTPresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1017F602219A979C0080F524 /* SZTPresentedViewController.m */; };
 		1017F606219AC1790080F524 /* SZTPlayerStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1017F605219AC1790080F524 /* SZTPlayerStatusView.m */; };
@@ -128,6 +128,8 @@
 /* Begin PBXFileReference section */
 		08847E2E21A4F56500C44307 /* NSObject+APIAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+APIAdd.h"; sourceTree = "<group>"; };
 		08847E2F21A4F56500C44307 /* NSObject+APIAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+APIAdd.m"; sourceTree = "<group>"; };
+		08847E3421A56B6200C44307 /* SZTClickableLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTClickableLabel.h; sourceTree = "<group>"; };
+		08847E3521A56B6200C44307 /* SZTClickableLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTClickableLabel.m; sourceTree = "<group>"; };
 		100B3BEF218ACFBC00919864 /* AlertHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertHelper.h; sourceTree = "<group>"; };
 		100B3BF0218ACFBC00919864 /* AlertHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertHelper.m; sourceTree = "<group>"; };
 		100B3BF4218AD80400919864 /* GCDTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDTimer.h; sourceTree = "<group>"; };
@@ -138,7 +140,6 @@
 		10103823218C389F00085420 /* ABCCaptionSegment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCCaptionSegment.m; sourceTree = "<group>"; };
 		10103825218C392E00085420 /* ABCSRTParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSRTParser.h; sourceTree = "<group>"; };
 		10103826218C392E00085420 /* ABCSRTParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSRTParser.m; sourceTree = "<group>"; };
-		1010382A218C52D500085420 /* ABCSRTParserTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSRTParserTest.m; sourceTree = "<group>"; };
 		1017F5FE219A6AB00080F524 /* SZTPlayerFullScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPlayerFullScreenViewController.h; sourceTree = "<group>"; };
 		1017F5FF219A6AB00080F524 /* SZTPlayerFullScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTPlayerFullScreenViewController.m; sourceTree = "<group>"; };
 		1017F601219A979C0080F524 /* SZTPresentedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTPresentedViewController.h; sourceTree = "<group>"; };
@@ -347,6 +348,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		08847E3321A559B700C44307 /* SZTClickableLabel */ = {
+			isa = PBXGroup;
+			children = (
+				08847E3421A56B6200C44307 /* SZTClickableLabel.h */,
+				08847E3521A56B6200C44307 /* SZTClickableLabel.m */,
+			);
+			path = SZTClickableLabel;
+			sourceTree = "<group>";
+		};
 		100B3BEE218ACFA200919864 /* AlertHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -466,7 +476,6 @@
 			children = (
 				105776FA21880BC400F7EEB2 /* PlayerWithDubTests.m */,
 				105776FC21880BC400F7EEB2 /* Info.plist */,
-				1010382A218C52D500085420 /* ABCSRTParserTest.m */,
 			);
 			path = PlayerWithDubTests;
 			sourceTree = "<group>";
@@ -738,6 +747,7 @@
 		109E42C121A2BB3600198861 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				08847E3321A559B700C44307 /* SZTClickableLabel */,
 				100B3BF3218AD7EE00919864 /* GCDTimer */,
 				10817D842189AE0F0026E5C7 /* Caption */,
 				10817D7521893DBF0026E5C7 /* AVComposeUrils */,
@@ -1140,6 +1150,7 @@
 				107504D0219D8F0D0037B436 /* ABCCommonCollectionView.m in Sources */,
 				109E42AF21A255B400198861 /* ABCSectionTitleView.m in Sources */,
 				100B3BF6218AD80400919864 /* GCDTimer.m in Sources */,
+				08847E3621A56B6200C44307 /* SZTClickableLabel.m in Sources */,
 				1017F600219A6AB00080F524 /* SZTPlayerFullScreenViewController.m in Sources */,
 				105776E321880BC100F7EEB2 /* AppDelegate.m in Sources */,
 				10F35A37219EBDB2008A2685 /* ABCCommonVideoSnapCell.m in Sources */,
@@ -1164,7 +1175,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				105776FB21880BC400F7EEB2 /* PlayerWithDubTests.m in Sources */,
-				1010382B218C52D500085420 /* ABCSRTParserTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1411,7 +1421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TMPW4E35GP;
 				INFOPLIST_FILE = PlayerWithDubUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1429,7 +1439,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TMPW4E35GP;
 				INFOPLIST_FILE = PlayerWithDubUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
