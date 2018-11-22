@@ -139,7 +139,14 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
     CGRect textFrame = [self textRectWithContainerRect:containerFrame];
     
     if (_clickedIndex == index) {
-        [string drawInRect:textFrame withAttributes:_internelClickedAttributes];
+        // 可以设置圆角
+        NSMutableDictionary <NSAttributedStringKey,id>*clickedAttributes = _internelClickedAttributes.mutableCopy;
+        if ([clickedAttributes containsObjectForKey:NSBackgroundColorAttributeName]) {
+            UIColor *backColor = clickedAttributes[NSBackgroundColorAttributeName];
+            [[[UIImage imageWithColor:backColor size:containerFrame.size] imageByRoundCornerRadius:5.f] drawInRect:containerFrame];
+            [clickedAttributes removeObjectForKey:NSBackgroundColorAttributeName];
+        }
+        [string drawInRect:textFrame withAttributes:clickedAttributes];
     }
     else {
         [string drawInRect:textFrame withAttributes:[self defaultAttributes]];
