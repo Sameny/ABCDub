@@ -10,6 +10,7 @@
 		086D4FA321A7C6B5008B59B9 /* SZTWaveAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086D4FA221A7C6B5008B59B9 /* SZTWaveAnimationView.m */; };
 		08847E3021A4F56500C44307 /* NSObject+APIAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 08847E2F21A4F56500C44307 /* NSObject+APIAdd.m */; };
 		08847E3621A56B6200C44307 /* SZTClickableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 08847E3521A56B6200C44307 /* SZTClickableLabel.m */; };
+		08B969CD21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B969CC21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.m */; };
 		100B3BF1218ACFBC00919864 /* AlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BF0218ACFBC00919864 /* AlertHelper.m */; };
 		100B3BF6218AD80400919864 /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BF5218AD80400919864 /* GCDTimer.m */; };
 		10103820218C19EE00085420 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1010381E218C19ED00085420 /* libmp3lame.a */; };
@@ -133,6 +134,8 @@
 		08847E2F21A4F56500C44307 /* NSObject+APIAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+APIAdd.m"; sourceTree = "<group>"; };
 		08847E3421A56B6200C44307 /* SZTClickableLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTClickableLabel.h; sourceTree = "<group>"; };
 		08847E3521A56B6200C44307 /* SZTClickableLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTClickableLabel.m; sourceTree = "<group>"; };
+		08B969CB21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSearchHistoryViewModel.h; sourceTree = "<group>"; };
+		08B969CC21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSearchHistoryViewModel.m; sourceTree = "<group>"; };
 		100B3BEF218ACFBC00919864 /* AlertHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertHelper.h; sourceTree = "<group>"; };
 		100B3BF0218ACFBC00919864 /* AlertHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertHelper.m; sourceTree = "<group>"; };
 		100B3BF4218AD80400919864 /* GCDTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDTimer.h; sourceTree = "<group>"; };
@@ -617,17 +620,6 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		10635792219C1BD100D505BD /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				086D4FA421A7C6C0008B59B9 /* SZTWaveAnimationView */,
-				10635797219C1F2E00D505BD /* SZTPageControl */,
-				10635796219C1F2500D505BD /* SZTBannerView */,
-			);
-			name = Views;
-			path = ../Views;
-			sourceTree = "<group>";
-		};
 		10635796219C1F2500D505BD /* SZTBannerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -751,6 +743,8 @@
 				109E42B921A2A08700198861 /* ABCSearchView.m */,
 				109E42BB21A2B03F00198861 /* ABCSearchHistoryView.h */,
 				109E42BC21A2B03F00198861 /* ABCSearchHistoryView.m */,
+				08B969CB21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.h */,
+				08B969CC21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.m */,
 				109E42BE21A2B06200198861 /* ABCSearchResultView.h */,
 				109E42BF21A2B06200198861 /* ABCSearchResultView.m */,
 			);
@@ -760,7 +754,6 @@
 		109E42C121A2BB3600198861 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				08847E3321A559B700C44307 /* SZTClickableLabel */,
 				100B3BF3218AD7EE00919864 /* GCDTimer */,
 				10817D842189AE0F0026E5C7 /* Caption */,
 				10817D7521893DBF0026E5C7 /* AVComposeUrils */,
@@ -831,7 +824,6 @@
 		10F35A1E219E897A008A2685 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				10635792219C1BD100D505BD /* Views */,
 				1077336621903F58004F5998 /* Categorys */,
 				08847E3221A5470700C44307 /* Utils */,
 				109E42C121A2BB3600198861 /* Modules */,
@@ -854,6 +846,10 @@
 		10F35A20219E8A41008A2685 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				08847E3321A559B700C44307 /* SZTClickableLabel */,
+				086D4FA421A7C6C0008B59B9 /* SZTWaveAnimationView */,
+				10635797219C1F2E00D505BD /* SZTPageControl */,
+				10635796219C1F2500D505BD /* SZTBannerView */,
 				109E42B721A2914800198861 /* ABCSearchView */,
 				109E42B021A255DF00198861 /* ABCSectionTitleView */,
 				107504CD219D8DF80037B436 /* ABCCommonCollectionView */,
@@ -1142,6 +1138,7 @@
 				102A4ADE21928C9700AC6C89 /* SZTPlayerViewController.m in Sources */,
 				10BF24AB219011030078BEFB /* UIViewController+PresentAnimation.m in Sources */,
 				109E42B321A28B9C00198861 /* NSNumber+STAdd.m in Sources */,
+				08B969CD21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.m in Sources */,
 				10F35A2C219E970D008A2685 /* ABCCommonCollectionViewItemData.m in Sources */,
 				10817D7B218950210026E5C7 /* ABCMediaComposeUnit.m in Sources */,
 				103BFA2E21912560002A681A /* ControlHelper.m in Sources */,
@@ -1436,6 +1433,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TMPW4E35GP;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = PlayerWithDubUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1446,6 +1444,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = PlayerWithDub;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -1454,6 +1453,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TMPW4E35GP;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = PlayerWithDubUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1464,6 +1464,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = PlayerWithDub;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};

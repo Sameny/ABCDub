@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ABCSearchHistoryView : UIView
 
+- (void)addNewHistory:(NSString *)history;
+
 @end
 
 NS_ASSUME_NONNULL_END

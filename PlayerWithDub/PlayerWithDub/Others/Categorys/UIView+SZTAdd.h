@@ -26,7 +26,7 @@ static CGFloat SZTCOMMON_SPLIT_LINE_THICKNESS = 0.5;
 
 - (void)setHorDashLineSpacing:(int)lineSpacing lineColor:(UIColor *)lineColor;
 
-- (void)addGradientLayerWithColors:(NSArray <UIColor *>*)colors locations:(NSArray<NSNumber *>*)locations startPoint:(CGPoint)start endPoint:(CGPoint)end;
+- (void)addGradientLayerWithColors:(NSArray <UIColor *>*)colors locations:(nullable NSArray<NSNumber *>*)locations startPoint:(CGPoint)start endPoint:(CGPoint)end;
 
 - (void)setBorderDashWithBorderColor:(UIColor *) color borderSpace:(CGFloat) borderSpace;
 - (void)setBorderDashWithBorderColor:(UIColor *) color lineWidth:(CGFloat) lineWidth dashPattern:(NSArray<NSNumber *> *) dashPattern;

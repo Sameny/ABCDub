@@ -33,13 +33,14 @@ BOOL canTouchWithText(NSString *text) {
 
 @property (nonatomic, assign) NSInteger clickedIndex;
 @property (nonatomic, assign) NSInteger lastClickedIndex;
+@property (nonatomic, copy) NSMutableDictionary <NSAttributedStringKey, id>*internalNormalAttributes;
 @property (nonatomic, strong) NSMutableDictionary <NSAttributedStringKey, id>*internelClickedAttributes;
 
 @end
 
 @implementation SZTClickableLabel
 
-#define kSZTClickableLabelContentInsets UIEdgeInsetsMake(5.f, 10, 5.f, 10)
+#define kSZTClickableLabelContentInsets UIEdgeInsetsMake(5.f, 8, 5.f, 8)
 #define kSZTClickableTextContentInsets UIEdgeInsetsMake(1, 3, 1, 3)
 static NSInteger kSZTClickableUnSelectedIndex = -1;
 - (instancetype)initWithFrame:(CGRect)frame
@@ -53,13 +54,28 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
         _textColor = [UIColor blackColor];
         _wordSpacing = 4.f;
         _lineSpacing = 4.f;
+        _normalCornerRarius = 0.f;
+        _clickedCornerRarius = 0.f;
+        _clickable = YES;
         
+        _internalNormalAttributes = @{NSFontAttributeName:_font, NSForegroundColorAttributeName:_textColor}.mutableCopy;
         _internelClickedAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor],
                                        NSBackgroundColorAttributeName:[UIColor greenColor],
                                        NSFontAttributeName:[UIFont systemFontOfSize:[UIFont labelFontSize]]
                                        }.mutableCopy;
     }
     return self;
+}
+
+- (void)setTitles:(NSArray<NSString *> *)titles {
+    if (![_seperateTitles isEqualToArray:titles]) {
+        _seperateTitles = [titles mutableCopy];
+        [self updateTextLayers];
+    }
+}
+
+- (NSArray<NSString *> *)titles {
+    return [_seperateTitles mutableCopy];
 }
 
 - (void)setTitle:(NSString *)title {
@@ -73,6 +89,7 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
 - (void)setFont:(UIFont *)font {
     if ([_font isEqual:font]) {
         _font = font;
+        [_internalNormalAttributes setObject:font forKey:NSFontAttributeName];
         [self updateTextLayers];
     }
 }
@@ -80,6 +97,8 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
 - (void)setTextColor:(UIColor *)textColor {
     if (![_textColor isEqual:textColor]) {
         _textColor = textColor;
+        
+        [_internalNormalAttributes setObject:textColor forKey:NSForegroundColorAttributeName];
         [self updateTextLayers];
     }
 }
@@ -98,10 +117,31 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
     }
 }
 
-- (void)setClickedAttributes:(NSDictionary<NSAttributedStringKey,id> *)clickedAttributes {
-    if ([_internelClickedAttributes isEqualToDictionary:clickedAttributes]) {
-        [_internelClickedAttributes addEntriesFromDictionary:clickedAttributes];
+- (void)setNormalCornerRarius:(CGFloat)normalCornerRarius {
+    if (_normalCornerRarius != normalCornerRarius) {
+        _normalCornerRarius = normalCornerRarius;
         [self updateTextLayers];
+    }
+}
+
+- (void)setClickedCornerRarius:(CGFloat)clickedCornerRarius {
+    if (_clickedCornerRarius != clickedCornerRarius) {
+        _clickedCornerRarius = clickedCornerRarius;
+        [self updateClickedText];
+    }
+}
+
+- (void)setNormalAttributes:(NSDictionary<NSAttributedStringKey,id> *)normalAttributes {
+    if (![_internalNormalAttributes isEqualToDictionary:normalAttributes]) {
+        [_internalNormalAttributes addEntriesFromDictionary:normalAttributes];
+        [self updateTextLayers];
+    }
+}
+
+- (void)setClickedAttributes:(NSDictionary<NSAttributedStringKey,id> *)clickedAttributes {
+    if (![_internelClickedAttributes isEqualToDictionary:clickedAttributes]) {
+        [_internelClickedAttributes addEntriesFromDictionary:clickedAttributes];
+        [self updateClickedText];
     }
 }
 
@@ -112,6 +152,15 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
 - (void)updateTextLayers {
     if (self.seperateTitles.count > 0 && !CGRectEqualToRect(self.frame, CGRectZero)) {
         [self setNeedsDisplay];
+    }
+}
+
+- (void)updateClickedText {
+    if (self.seperateTitles.count > 0 && self.clickedIndex < self.textFrames.count) {
+        if (self.clickedIndex > kSZTClickableUnSelectedIndex) {
+            CGRect clickedFrame = [self.textFrames[self.clickedIndex] CGRectValue];
+            [self setNeedsDisplayInRect:clickedFrame];
+        }
     }
 }
 
@@ -126,6 +175,7 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
         location = CGPointMake(frame.origin.x + frame.size.width, frame.origin.y);
         [textFrames addObject:[NSValue valueWithCGRect:frame]];
     }
+    _contentSize = CGSizeMake(self.bounds.size.width, location.y + kSZTClickableLabelContentInsets.bottom);
     self.textFrames = [textFrames copy];
 }
 
@@ -139,17 +189,24 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
     CGRect textFrame = [self textRectWithContainerRect:containerFrame];
     
     if (_clickedIndex == index) {
-        // 可以设置圆角
         NSMutableDictionary <NSAttributedStringKey,id>*clickedAttributes = _internelClickedAttributes.mutableCopy;
+        // 画背景 可以设置圆角
         if ([clickedAttributes containsObjectForKey:NSBackgroundColorAttributeName]) {
             UIColor *backColor = clickedAttributes[NSBackgroundColorAttributeName];
-            [[[UIImage imageWithColor:backColor size:containerFrame.size] imageByRoundCornerRadius:5.f] drawInRect:containerFrame];
+            [[[UIImage imageWithColor:backColor size:containerFrame.size] imageByRoundCornerRadius:_clickedCornerRarius] drawInRect:containerFrame];
             [clickedAttributes removeObjectForKey:NSBackgroundColorAttributeName];
         }
         [string drawInRect:textFrame withAttributes:clickedAttributes];
     }
     else {
-        [string drawInRect:textFrame withAttributes:[self defaultAttributes]];
+        NSMutableDictionary <NSAttributedStringKey,id>*normalAttributes = _internalNormalAttributes.mutableCopy;
+        // 画背景 可以设置圆角
+        if ([normalAttributes containsObjectForKey:NSBackgroundColorAttributeName]) {
+            UIColor *backColor = normalAttributes[NSBackgroundColorAttributeName];
+            [[[UIImage imageWithColor:backColor size:containerFrame.size] imageByRoundCornerRadius:_normalCornerRarius] drawInRect:containerFrame];
+            [normalAttributes removeObjectForKey:NSBackgroundColorAttributeName];
+        }
+        [string drawInRect:textFrame withAttributes:_internalNormalAttributes];
     }
     return containerFrame;
 }
@@ -174,10 +231,6 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
     return CGRectMake(containerRect.origin.x + kSZTClickableTextContentInsets.left, containerRect.origin.y + kSZTClickableTextContentInsets.top, containerRect.size.width - kSZTClickableTextContentInsets.left - kSZTClickableTextContentInsets.right, _font.lineHeight);
 }
 
-- (NSDictionary <NSAttributedStringKey, id>*)defaultAttributes {
-    return @{NSFontAttributeName:self.font, NSForegroundColorAttributeName:self.textColor};
-}
-
 #pragma mark - lazy init
 - (NSArray<NSValue *> *)textFrames {
     if (!_textFrames) {
@@ -188,35 +241,40 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
 
 #pragma mark - touch
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInView:self];
-    __block NSInteger index = kSZTClickableUnSelectedIndex;
-    __block CGRect clickedFrame = CGRectZero;
-    [self.textFrames enumerateObjectsUsingBlock:^(NSValue * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        CGRect frame = [obj CGRectValue];
-        if (CGRectContainsPoint(frame, point)) {
-            clickedFrame = frame;
-            index = idx;
-            *stop = YES;
+    if (_clickable) {
+        UITouch *touch = [touches anyObject];
+        CGPoint point = [touch locationInView:self];
+        __block NSInteger index = kSZTClickableUnSelectedIndex;
+        __block CGRect clickedFrame = CGRectZero;
+        [self.textFrames enumerateObjectsUsingBlock:^(NSValue * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            CGRect frame = [obj CGRectValue];
+            if (CGRectContainsPoint(frame, point)) {
+                clickedFrame = frame;
+                index = idx;
+                *stop = YES;
+            }
+        }];
+        if (index > kSZTClickableUnSelectedIndex) {
+            NSString *string = self.seperateTitles[index];
+            if (!canTouchWithText(string)) {
+                return;
+            }
+            if (self.clickedIndex > kSZTClickableUnSelectedIndex) {
+                self.lastClickedIndex = self.clickedIndex;
+                // 这种方式清除会有残留，目前选择setNeedsDisplay全部清除重绘
+                CGRect lastClickedFrame = [self.textFrames[self.lastClickedIndex] CGRectValue];
+                [self setNeedsDisplayInRect:lastClickedFrame];
+            }
+            self.clickedIndex = index;
+            [self setNeedsDisplayInRect:clickedFrame];
+            //        [self setNeedsDisplay];
+            if (_delegate && [_delegate respondsToSelector:@selector(clickableLabel:didClickedAtWord:)]) {
+                [_delegate clickableLabel:self didClickedAtWord:string];
+            }
         }
-    }];
-    if (index > kSZTClickableUnSelectedIndex) {
-        NSString *string = self.seperateTitles[index];
-        if (!canTouchWithText(string)) {
-            return;
-        }
-        if (self.clickedIndex > kSZTClickableUnSelectedIndex) {
-            self.lastClickedIndex = self.clickedIndex;
-            // 这种方式清除会有残留，目前选择setNeedsDisplay全部清除重绘
-            CGRect lastClickedFrame = [self.textFrames[self.lastClickedIndex] CGRectValue];
-            [self setNeedsDisplayInRect:lastClickedFrame];
-        }
-        self.clickedIndex = index;
-        [self setNeedsDisplayInRect:clickedFrame];
-//        [self setNeedsDisplay];
-        if (_delegate && [_delegate respondsToSelector:@selector(clickableLabel:didClickedAtWord:)]) {
-            [_delegate clickableLabel:self didClickedAtWord:string];
-        }
+    }
+    else {
+        [super touchesEnded:touches withEvent:event];
     }
 }
 

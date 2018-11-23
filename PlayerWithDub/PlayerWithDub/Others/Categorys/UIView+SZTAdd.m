@@ -140,7 +140,9 @@ static NSString *kGradientLayerKey = @"tr_gradientLayer";
     gradientLayer.startPoint = start;
     gradientLayer.endPoint = end;
     gradientLayer.colors = cg_colors;
-    gradientLayer.locations = locations;
+    if (locations) {
+        gradientLayer.locations = locations;
+    }
     gradientLayer.cornerRadius = self.layer.cornerRadius;
 }
 

@@ -17,7 +17,7 @@
 #import "ABCMainViewModel.h"
 #import "ABCMainViewViewController.h"
 
-@interface ABCMainViewViewController () <UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating>
+@interface ABCMainViewViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) SZTBannerView *bannerView;
