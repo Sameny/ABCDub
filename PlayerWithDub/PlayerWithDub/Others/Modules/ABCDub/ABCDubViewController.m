@@ -17,7 +17,7 @@
 
 #import "ABCDubViewController.h"
 
-@interface ABCDubViewController () <UITableViewDataSource, UITableViewDelegate, AVAudioPlayerDelegate, SZTPlayerViewDelegate>
+@interface ABCDubViewController () <UITableViewDataSource, UITableViewDelegate, AVAudioPlayerDelegate, SZTPlayerViewDelegate, ABCDubHelperDelegate>
 
 @property (nonatomic, strong) AVAudioPlayer *musicPlayer;
 
@@ -85,6 +85,7 @@
     NSString *fileName = [NSString stringWithFormat:@"%ld.mp3", self.selectedIndexPath.row];
     
     __weak typeof(self) weakself = self;
+    [ABCDubHelper sharedInstance].delegate = self;
     [[ABCDubHelper sharedInstance] recordAudioWithResourceId:TestSourceId mp3FileName:fileName duration:self.selectedSegment.duration completion:^(NSURL *url, NSError *error) {
         if (url) {
             [weakself playAudioWithUrl:url];
@@ -93,6 +94,7 @@
             NSLog(@"录制mp3出错:%@", error);
         }
         weakself.captionTableView.scrollEnabled = YES;
+        [ABCDubHelper sharedInstance].delegate = nil;
     }];
     self.playerView.volume = 0;
     [self.playerView seekToTimeWithSeconds:self.selectedSegment.startTime/1000.f completion:^(BOOL finish) {
@@ -143,6 +145,11 @@
 
 - (void)backBtnDidClicked {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - ABCDubHelperDelegate
+- (void)dubVoiceMaxPowerDidChange:(float)power {
+    NSLog(@"record voice decibel : %.3f", power);
 }
 
 #pragma mark - SZTPlayerViewDelegate

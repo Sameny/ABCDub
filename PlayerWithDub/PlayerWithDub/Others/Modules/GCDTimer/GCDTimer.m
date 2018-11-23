@@ -31,18 +31,19 @@
 - (void)fire {
     dispatch_source_set_timer(_gcdTimer, DISPATCH_TIME_NOW, _timeInterval * NSEC_PER_SEC, 0.0 * NSEC_PER_SEC);
     dispatch_source_set_event_handler(_gcdTimer, ^{
-        if (self.callback) {
-            dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (self.callback) {
                 self.callback();
-            });
-        }
+            }
+        });
     });
     dispatch_resume(_gcdTimer);
 }
 
 - (void)invalidate {
-    dispatch_source_cancel(_gcdTimer);
-    _gcdTimer = nil;
+    if (_gcdTimer) {
+        dispatch_source_cancel(_gcdTimer);
+    }
     if (self.callback) {
         self.callback = nil;
     }

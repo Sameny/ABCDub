@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		086D4FA321A7C6B5008B59B9 /* SZTWaveAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086D4FA221A7C6B5008B59B9 /* SZTWaveAnimationView.m */; };
 		08847E3021A4F56500C44307 /* NSObject+APIAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 08847E2F21A4F56500C44307 /* NSObject+APIAdd.m */; };
 		08847E3621A56B6200C44307 /* SZTClickableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 08847E3521A56B6200C44307 /* SZTClickableLabel.m */; };
 		100B3BF1218ACFBC00919864 /* AlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BF0218ACFBC00919864 /* AlertHelper.m */; };
@@ -126,6 +127,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		086D4FA121A7C6B5008B59B9 /* SZTWaveAnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTWaveAnimationView.h; sourceTree = "<group>"; };
+		086D4FA221A7C6B5008B59B9 /* SZTWaveAnimationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTWaveAnimationView.m; sourceTree = "<group>"; };
 		08847E2E21A4F56500C44307 /* NSObject+APIAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+APIAdd.h"; sourceTree = "<group>"; };
 		08847E2F21A4F56500C44307 /* NSObject+APIAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+APIAdd.m"; sourceTree = "<group>"; };
 		08847E3421A56B6200C44307 /* SZTClickableLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTClickableLabel.h; sourceTree = "<group>"; };
@@ -338,6 +341,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		086D4FA421A7C6C0008B59B9 /* SZTWaveAnimationView */ = {
+			isa = PBXGroup;
+			children = (
+				086D4FA121A7C6B5008B59B9 /* SZTWaveAnimationView.h */,
+				086D4FA221A7C6B5008B59B9 /* SZTWaveAnimationView.m */,
+			);
+			path = SZTWaveAnimationView;
+			sourceTree = "<group>";
+		};
 		08847E3221A5470700C44307 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,6 +620,7 @@
 		10635792219C1BD100D505BD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				086D4FA421A7C6C0008B59B9 /* SZTWaveAnimationView */,
 				10635797219C1F2E00D505BD /* SZTPageControl */,
 				10635796219C1F2500D505BD /* SZTBannerView */,
 			);
@@ -1148,6 +1161,7 @@
 				102CE658218BE27D00D2E8CA /* MP3Endocder.mm in Sources */,
 				10D3471421A3F6F700006CED /* UIImageView+SZTAdd.m in Sources */,
 				107504D0219D8F0D0037B436 /* ABCCommonCollectionView.m in Sources */,
+				086D4FA321A7C6B5008B59B9 /* SZTWaveAnimationView.m in Sources */,
 				109E42AF21A255B400198861 /* ABCSectionTitleView.m in Sources */,
 				100B3BF6218AD80400919864 /* GCDTimer.m in Sources */,
 				08847E3621A56B6200C44307 /* SZTClickableLabel.m in Sources */,

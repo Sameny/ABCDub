@@ -7,6 +7,7 @@
 //
 
 #import "AlertHelper.h"
+#import "GCDTimer.h"
 
 #import <AVFoundation/AVFoundation.h>
 #import "ABCAudioRecorder.h"
@@ -15,6 +16,8 @@
 
 @property (nonatomic, strong) AVAudioRecorder *audioRecorder;
 @property (nonatomic, copy) ABCMediaRecordCompletion recordCompletion;
+@property (nonatomic, copy) ABCMediaRecordProgress progress;
+@property (nonatomic, strong) GCDTimer *progressTimer;
 
 @end
 
@@ -32,10 +35,13 @@ static ABCAudioRecorder *sharedABCAudioRecorder = nil;
     return sharedABCAudioRecorder;
 }
 
-- (void)startRecordWithUrl:(NSString *)url duration:(NSTimeInterval)duration completion:(ABCMediaRecordCompletion)completion {
+- (void)startRecordWithUrl:(NSString *)url duration:(NSTimeInterval)duration progress:(ABCMediaRecordProgress)progress completion:(ABCMediaRecordCompletion)completion {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         self.audioRecorder = [self audioRecorderWithUrl:url settings:[self defaultAduioRecorderSettings]];
         self.audioRecorder.delegate = self;
+        if (progress) {
+            self.audioRecorder.meteringEnabled = YES;
+        }
         
         BOOL success = NO;
         if ([self.audioRecorder prepareToRecord]) {
@@ -48,6 +54,9 @@ static ABCAudioRecorder *sharedABCAudioRecorder = nil;
         }
         if (success) {
             self.recordCompletion = completion;
+            self.progress = progress;
+            [self initProgressTimer];
+            [self.progressTimer fire];
         }
         else {
             [self resetAudioRecorder];
@@ -69,6 +78,7 @@ static ABCAudioRecorder *sharedABCAudioRecorder = nil;
 }
 
 - (void)resetAudioRecorder {
+    [self releaseProgressTimer];
     [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:nil];
     self.audioRecorder.delegate = nil;
     self.audioRecorder = nil;
@@ -99,6 +109,35 @@ static ABCAudioRecorder *sharedABCAudioRecorder = nil;
     return audioRecorder;
 }
 
+- (void)initProgressTimer {
+    if (self.progress) {
+        __weak typeof(self) weakself = self;
+        self.progressTimer = [[GCDTimer alloc] initWithQueue:dispatch_get_main_queue() scheduleTimeInterval:0.1 block:^{
+            [weakself detectionVoicePower];
+        }];
+    }
+}
+
+- (void)releaseProgressTimer {
+    if (self.progressTimer) {
+        [self.progressTimer invalidate];
+    }
+}
+
+- (void)detectionVoicePower {
+    if (self.audioRecorder) {
+        [self.audioRecorder updateMeters];//刷新音量数据
+        
+        //获取音量的平均值  [recorder averagePowerForChannel:0];
+        //音量的最大值  [recorder peakPowerForChannel:0];
+        float power = [self.audioRecorder peakPowerForChannel:0];
+        float average = [self.audioRecorder averagePowerForChannel:0];
+        double lowPassResults = pow(10, (0.1 * power)); // 获取峰值
+        self.progress(power, average);
+        DebugLog(@"*** average : %.3f\n***power : %.3f\n***lowPassResults : %.3f\n", average, power, lowPassResults);
+    }
+}
+
 #pragma mark - AVAudioRecorderDelegate
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag {
     [self resetAudioRecorder];
@@ -116,9 +155,13 @@ static ABCAudioRecorder *sharedABCAudioRecorder = nil;
 
 #pragma mark - class method
 + (void)startRecordWithUrl:(NSString *)url duration:(NSTimeInterval)duration completion:(ABCMediaRecordCompletion)completion {
+    [ABCAudioRecorder startRecordWithUrl:url duration:duration progress:nil completion:completion];
+}
+
++ (void)startRecordWithUrl:(NSString *)url duration:(NSTimeInterval)duration progress:(ABCMediaRecordProgress)progress completion:(ABCMediaRecordCompletion)completion {
     [ABCAudioRecorder authorizeRecorderWithCompletion:^(BOOL permit) {
         if (permit) {
-            [[ABCAudioRecorder sharedInstance] startRecordWithUrl:url duration:duration completion:completion];
+            [[ABCAudioRecorder sharedInstance] startRecordWithUrl:url duration:duration progress:progress completion:completion];
         }
         else {
             if (completion) {

@@ -44,10 +44,16 @@ static ABCDubHelper *sharedDubHepler;
     NSString *mp3FilePath = [ABCDubFileManager mp3FilePathWithSubDirectory:resourceId fileName:mp3FileName];
     NSString *cafFileName = [[mp3FileName stringByDeletingPathExtension] stringByAppendingPathExtension:@"caf"];
     NSString *cafFilePath = [ABCDubFileManager cafFilePathWithSubDirectory:resourceId fileName:cafFileName];
+    ABCMediaRecordProgress progress = nil;
+    if (_delegate && [_delegate respondsToSelector:@selector(dubVoiceMaxPowerDidChange:)]) {
+        progress = ^(float power, float average) {
+            [self->_delegate dubVoiceMaxPowerDidChange:power];
+        };
+    }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // 开始录音
-        [ABCAudioRecorder startRecordWithUrl:cafFilePath duration:duration completion:^(BOOL success, NSError * _Nullable err) {
+        [ABCAudioRecorder startRecordWithUrl:cafFilePath duration:duration progress:progress completion:^(BOOL success, NSError * _Nullable err) {
             if (success) {
                 // 开始转码为mp3
                 MP3EncodedRequest *request = [[MP3EncodedRequest alloc] initWithPCMFilePath:cafFilePath destionationFilePath:mp3FilePath];

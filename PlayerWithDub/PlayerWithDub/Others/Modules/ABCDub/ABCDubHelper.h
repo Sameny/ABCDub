@@ -14,10 +14,19 @@
 
 typedef void(^ABCURLHandler)(NSURL * url, NSError * error);
 
+@protocol ABCDubHelperDelegate <NSObject>
+
+@optional
+- (void)dubVoiceMaxPowerDidChange:(float)power;
+
+@end
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class ABCCaptionSegment;
 @interface ABCDubHelper : NSObject
+
+@property (nonatomic, weak) id<ABCDubHelperDelegate> delegate;
 
 + (instancetype)sharedInstance;
 
