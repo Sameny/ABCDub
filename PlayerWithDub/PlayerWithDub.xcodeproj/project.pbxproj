@@ -85,7 +85,7 @@
 		109E42B321A28B9C00198861 /* NSNumber+STAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42B121A28B9B00198861 /* NSNumber+STAdd.m */; };
 		109E42B621A28D5800198861 /* NSArray+YYModelAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42B521A28D5800198861 /* NSArray+YYModelAdd.m */; };
 		109E42BA21A2A08700198861 /* ABCSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42B921A2A08700198861 /* ABCSearchView.m */; };
-		109E42BD21A2B03F00198861 /* ABCSearchHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42BC21A2B03F00198861 /* ABCSearchHistoryView.m */; };
+		109E42BD21A2B03F00198861 /* ABCSearchVideoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42BC21A2B03F00198861 /* ABCSearchVideoProgressView.m */; };
 		109E42C021A2B06200198861 /* ABCSearchResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42BF21A2B06200198861 /* ABCSearchResultView.m */; };
 		109E42C521A2BB9500198861 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 109E42C421A2BB9500198861 /* APIClient.m */; };
 		10BF249E218FDD500078BEFB /* ABCDubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BF249D218FDD500078BEFB /* ABCDubViewController.m */; };
@@ -267,8 +267,8 @@
 		109E42B521A28D5800198861 /* NSArray+YYModelAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+YYModelAdd.m"; sourceTree = "<group>"; };
 		109E42B821A2A08700198861 /* ABCSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSearchView.h; sourceTree = "<group>"; };
 		109E42B921A2A08700198861 /* ABCSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSearchView.m; sourceTree = "<group>"; };
-		109E42BB21A2B03F00198861 /* ABCSearchHistoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSearchHistoryView.h; sourceTree = "<group>"; };
-		109E42BC21A2B03F00198861 /* ABCSearchHistoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSearchHistoryView.m; sourceTree = "<group>"; };
+		109E42BB21A2B03F00198861 /* ABCSearchVideoProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSearchVideoProgressView.h; sourceTree = "<group>"; };
+		109E42BC21A2B03F00198861 /* ABCSearchVideoProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSearchVideoProgressView.m; sourceTree = "<group>"; };
 		109E42BE21A2B06200198861 /* ABCSearchResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSearchResultView.h; sourceTree = "<group>"; };
 		109E42BF21A2B06200198861 /* ABCSearchResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSearchResultView.m; sourceTree = "<group>"; };
 		109E42C321A2BB9500198861 /* APIClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
@@ -741,8 +741,8 @@
 			children = (
 				109E42B821A2A08700198861 /* ABCSearchView.h */,
 				109E42B921A2A08700198861 /* ABCSearchView.m */,
-				109E42BB21A2B03F00198861 /* ABCSearchHistoryView.h */,
-				109E42BC21A2B03F00198861 /* ABCSearchHistoryView.m */,
+				109E42BB21A2B03F00198861 /* ABCSearchVideoProgressView.h */,
+				109E42BC21A2B03F00198861 /* ABCSearchVideoProgressView.m */,
 				08B969CB21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.h */,
 				08B969CC21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.m */,
 				109E42BE21A2B06200198861 /* ABCSearchResultView.h */,
@@ -1154,7 +1154,7 @@
 				1077336921903F78004F5998 /* UIButton+SZTAdd.m in Sources */,
 				08847E3021A4F56500C44307 /* NSObject+APIAdd.m in Sources */,
 				103BFA3221916EB7002A681A /* ABCDubFileManager.m in Sources */,
-				109E42BD21A2B03F00198861 /* ABCSearchHistoryView.m in Sources */,
+				109E42BD21A2B03F00198861 /* ABCSearchVideoProgressView.m in Sources */,
 				102CE658218BE27D00D2E8CA /* MP3Endocder.mm in Sources */,
 				10D3471421A3F6F700006CED /* UIImageView+SZTAdd.m in Sources */,
 				107504D0219D8F0D0037B436 /* ABCCommonCollectionView.m in Sources */,

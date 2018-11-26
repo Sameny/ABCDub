@@ -43,11 +43,10 @@ BOOL canTouchWithText(NSString *text) {
 #define kSZTClickableLabelContentInsets UIEdgeInsetsMake(5.f, 8, 5.f, 8)
 #define kSZTClickableTextContentInsets UIEdgeInsetsMake(1, 3, 1, 3)
 static NSInteger kSZTClickableUnSelectedIndex = -1;
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor]; // 设置为其他颜色时，上方某些情况下会出现一条黑线，原因暂未知
         _clickedIndex = kSZTClickableUnSelectedIndex;
         _lastClickedIndex = kSZTClickableUnSelectedIndex;
         _font = [UIFont systemFontOfSize:[UIFont labelFontSize]];
@@ -70,7 +69,7 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
 - (void)setTitles:(NSArray<NSString *> *)titles {
     if (![_seperateTitles isEqualToArray:titles]) {
         _seperateTitles = [titles mutableCopy];
-        [self updateTextLayers];
+        [self setNeedsDisplay];
     }
 }
 
@@ -82,7 +81,7 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
     if (![_title isEqualToString:title]) {
         _title = title;
         self.seperateTitles = [SZTClickableLabel seperateText:title];
-        [self updateTextLayers];
+        [self setNeedsDisplay];
     }
 }
 
@@ -175,16 +174,40 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
         location = CGPointMake(frame.origin.x + frame.size.width, frame.origin.y);
         [textFrames addObject:[NSValue valueWithCGRect:frame]];
     }
-    _contentSize = CGSizeMake(self.bounds.size.width, location.y + kSZTClickableLabelContentInsets.bottom);
+    CGFloat layerHeight = _font.lineHeight + kSZTClickableTextContentInsets.top + kSZTClickableTextContentInsets.bottom;
+    _contentSize = CGSizeMake(self.bounds.size.width, location.y + kSZTClickableLabelContentInsets.bottom + layerHeight);
     self.textFrames = [textFrames copy];
 }
 
-- (CGRect)drawTextWithString:(NSString *)string index:(NSUInteger)index location:(CGPoint)location {
+- (CGSize)adjustContentSizeWithTitles:(NSArray <NSString *>*)titles {
+    CGPoint location = CGPointMake(kSZTClickableLabelContentInsets.left, kSZTClickableLabelContentInsets.top);
+    for (NSInteger i = 0; i < titles.count; i++) {
+        NSString *string = titles[i];
+        
+        CGRect frame = [self containerFrameWithString:string index:i location:location];
+        location = CGPointMake(frame.origin.x + frame.size.width, frame.origin.y);
+    }
+    CGFloat layerHeight = _font.lineHeight + kSZTClickableTextContentInsets.top + kSZTClickableTextContentInsets.bottom;
+    CGSize contentSize = CGSizeMake(self.bounds.size.width, location.y + kSZTClickableLabelContentInsets.bottom + layerHeight);
+    return contentSize;
+}
+
+- (void)szt_sizeToFit {
+    CGSize contentSize = [self adjustContentSizeWithTitles:self.seperateTitles];
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, contentSize.width, contentSize.height);
+}
+
+- (CGRect)containerFrameWithString:(NSString *)string index:(NSUInteger)index location:(CGPoint)location {
     UIFont *font = self.font;
     if ([_internelClickedAttributes containsObjectForKey:NSFontAttributeName] && _clickedIndex == index) {
         font = _internelClickedAttributes[NSFontAttributeName];
     }
     CGRect containerFrame = [self containerFrameWithString:string index:index font:font location:location];
+    return containerFrame;
+}
+
+- (CGRect)drawTextWithString:(NSString *)string index:(NSUInteger)index location:(CGPoint)location {
+    CGRect containerFrame = [self containerFrameWithString:string index:index location:location];
     
     CGRect textFrame = [self textRectWithContainerRect:containerFrame];
     
@@ -222,7 +245,7 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
     CGFloat layerY = location.y;
     if (layerX + layerWidth + kSZTClickableLabelContentInsets.right > self.bounds.size.width) { // 超出当前行
         layerX = kSZTClickableLabelContentInsets.left;
-        layerY += layerHeight + _wordSpacing;
+        layerY += layerHeight + _lineSpacing;
     }
     return CGRectMake(layerX, layerY, layerWidth, layerHeight);
 }

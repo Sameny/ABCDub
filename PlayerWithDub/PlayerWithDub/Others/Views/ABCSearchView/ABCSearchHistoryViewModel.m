@@ -33,14 +33,24 @@ static NSString *kABCSearchHistoryDataKey = @"search_history_data_key";
     }
 }
 
+- (NSSet <NSString *>*)searchHistoryData {
+    return [_searchHistoryData copy];
+}
+
+- (void)clearSearchHistoryData {
+    [_searchHistoryData removeAllObjects];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kABCSearchHistoryDataKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 + (void)synSearchHistoryData:(NSSet <NSString *>*)data {
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kABCSearchHistoryDataKey];
+    [[NSUserDefaults standardUserDefaults] setObject:data.allObjects forKey:kABCSearchHistoryDataKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (NSSet <NSString *>*)searchHistoryData {
-    NSSet <NSString *>*history = [[NSUserDefaults standardUserDefaults] objectForKey:kABCSearchHistoryDataKey];
-    return history?:[NSSet set];
+    NSArray <NSString *>*history = [[NSUserDefaults standardUserDefaults] objectForKey:kABCSearchHistoryDataKey];
+    return history?[NSSet setWithArray:history]:[NSSet set];
 }
 
 @end

@@ -10,9 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ABCSearchHistoryView : UIView
+@interface ABCSearchVideoProgressView : UIView
+
+@property (nonatomic, copy) void (^didSelectedKeyWord)(NSString *key);
 
 - (void)addNewHistory:(NSString *)history;
+
+- (void)show;
+- (void)hide;
 
 @end
 

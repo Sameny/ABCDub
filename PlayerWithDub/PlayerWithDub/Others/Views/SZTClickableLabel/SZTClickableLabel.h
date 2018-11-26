@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class SZTClickableLabel;
 @protocol SZTClickableLabelDelegate <NSObject>
 
+@optional
 - (void)clickableLabel:(SZTClickableLabel *)label didClickedAtWord:(NSString *)word;
 
 @end
@@ -40,6 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL clickable; // default is YES
 @property (nonatomic, weak) id<SZTClickableLabelDelegate> delegate;
+
+- (CGSize)adjustContentSizeWithTitles:(NSArray <NSString *>*)titles;
+- (void)szt_sizeToFit;
 
 @end
 

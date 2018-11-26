@@ -7,6 +7,8 @@
 //
 
 #import "ABCSearchView.h"
+#import "ABCSearchVideoProgressView.h"
+
 #import "SZTBannerView.h"
 #import "ABCCommonEntryCell.h"
 #import "ABCCommonVideoSnapCell.h"
@@ -17,7 +19,7 @@
 #import "ABCMainViewModel.h"
 #import "ABCMainViewViewController.h"
 
-@interface ABCMainViewViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ABCMainViewViewController () <UITableViewDelegate, UITableViewDataSource, ABCSearchViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) SZTBannerView *bannerView;
@@ -29,6 +31,7 @@
 @property (nonatomic, strong) ABCMainViewModel *viewModel;
 
 @property (nonatomic, strong) ABCSearchView *searchView;
+@property (nonatomic, strong) ABCSearchVideoProgressView *searchProgressView;
 
 @end
 
@@ -116,6 +119,43 @@
     return self.blankSectionHeaderView;
 }
 
+#pragma mark - ABCSearchViewDelegate
+- (void)fetchResultWithSearchKey:(NSString *)key {
+    [self.searchProgressView addNewHistory:key];
+    [self.searchProgressView hide];
+    [self searchResultWithKeyWord:key];
+}
+
+- (void)userDidBeginEditingSearchKey {
+    [self.searchProgressView show];
+}
+
+- (void)userDidCancelEditingSearchKey {
+    [self.searchProgressView hide];
+}
+
+- (void)searchResultWithKeyWord:(NSString *)keyWord {
+    // TODO : search result
+}
+
+- (void)searchProgressViewDidSelectedKeyWord:(NSString *)keyWord {
+    self.searchView.keyWord = keyWord;
+    [self searchResultWithKeyWord:keyWord];
+}
+
+- (ABCSearchVideoProgressView *)searchProgressView {
+    if (!_searchProgressView) {
+        _searchProgressView = [[ABCSearchVideoProgressView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        [_searchProgressView layoutIfNeeded];
+        [self.view insertSubview:_searchProgressView belowSubview:self.searchView];
+        SZTWeakself(self);
+        _searchProgressView.didSelectedKeyWord = ^(NSString * _Nonnull key) {
+            [weakself searchProgressViewDidSelectedKeyWord:key];
+        };
+    }
+    return _searchProgressView;
+}
+
 #pragma mark - lazy init
 - (ABCMainViewModel *)viewModel {
     if (!_viewModel) {
@@ -166,7 +206,8 @@
 
 - (ABCSearchView *)searchView {
     if (!_searchView) {
-        _searchView = [[ABCSearchView alloc] initWithFrame:CGRectMake(0, 12, SCREEN_WIDTH, 44.f)];
+        _searchView = [[ABCSearchView alloc] initWithFrame:CGRectMake(0, 26, SCREEN_WIDTH, 30.f)];
+        _searchView.delegate = self;
     }
     return _searchView;
 }

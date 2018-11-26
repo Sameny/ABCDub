@@ -8,9 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ABCSearchViewDelegate <NSObject>
+
+@required
+- (void)fetchResultWithSearchKey:(NSString *)key;
+
+@optional
+- (void)userDidBeginEditingSearchKey;
+- (void)userInputKeyDidChange:(NSString *)key;
+- (void)userDidCancelEditingSearchKey;
+
+@end
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ABCSearchView : UIView
+
+@property (nonatomic, copy) NSString *keyWord;
+@property (nonatomic, weak) id<ABCSearchViewDelegate> delegate;
+
+- (void)reset;
 
 @end
 

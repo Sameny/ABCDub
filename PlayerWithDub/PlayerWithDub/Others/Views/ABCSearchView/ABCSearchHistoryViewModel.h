@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ABCSearchHistoryViewModel : NSObject
 
 - (void)appendHistory:(NSString *)history;
+- (NSSet <NSString *>*)searchHistoryData;
+- (void)clearSearchHistoryData;
 
 @end
 
