@@ -75,13 +75,6 @@
     return label;
 }
 
-+ (UILabel *)getLabelWithTextColor:(UIColor *) color italicTextFont:(CGFloat) font {
-    UILabel *label = [UILabel new];
-    [label setTextColor:color];
-    [label setFont:[UIFont fontWithName:AWBOLD_ITALIC_FONT_COMMON_NAME size:font]];
-    return label;
-}
-
 #pragma mark - TextField
 + (UITextField *)textFieldWithKeyboardType:(UIKeyboardType)keyboardType returnKeyType:(UIReturnKeyType)returnKeyType placeholder:(NSString *)placeholder placeholderColor:(UIColor *)placeholderColor delegate:(id<UITextFieldDelegate>)delegate textColor:(UIColor *)textColor tintColor:(UIColor *)tintColor  {
     UITextField *textField = [[UITextField alloc] init];

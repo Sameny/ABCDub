@@ -13,6 +13,8 @@
 #define ImageWithName(imageName)  [UIImage imageNamed: imageName]
 #define SZTWeakself(self) __weak typeof(self) weak##self = self
 
+#define SZTTIMESTRING(seconds) [NSString stringWithFormat:@"%02ld:%02ld:%02ld", seconds/3600, (seconds%3600)/60, seconds%60]
+
 #pragma mark - define - log
 #ifdef DEBUG
 #define DebugLog(...) NSLog(@"%s 第%d行 \n %@\n\n", __func__, __LINE__, [NSString stringWithFormat:__VA_ARGS__])

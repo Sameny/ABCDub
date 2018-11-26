@@ -12,4 +12,14 @@
 #define SZTFontNamePingFangSC @"PingFangSC-Regular"
 #define SZTFontNamePingFangSCMedium @"PingFangSC-Medium"
 
+// * 常用字体类型
+#define AWFONT_COMMON_NAME  @"ArialMT"
+#define AWITALIC_FONT_COMMON_NAME  @"Arial-ItalicMT"
+#define AWBOLD_FONT_COMMON_NAME  @"Arial-BoldMT"
+#define AWBOLD_ITALIC_FONT_COMMON_NAME  @"Arial-BoldItalicMT"
+#define AWFONT_HELVETICA_NAME  @"Helvetica"
+#define AWFONT_HELVETICA_BOLD_NAME  @"Helvetica-Bold"
+#define RezonFont @"ReznorDownwardSpiral"
+#define DINCondensed_Bold @"DINCondensed-Bold"
+
 #endif /* SZTFontDefine_h */

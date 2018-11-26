@@ -148,6 +148,10 @@ static NSInteger kSZTClickableUnSelectedIndex = -1;
     return [_internelClickedAttributes copy];
 }
 
+- (NSDictionary<NSAttributedStringKey,id> *)normalAttributes {
+    return [_internalNormalAttributes copy];
+}
+
 - (void)updateTextLayers {
     if (self.seperateTitles.count > 0 && !CGRectEqualToRect(self.frame, CGRectZero)) {
         [self setNeedsDisplay];

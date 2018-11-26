@@ -34,8 +34,6 @@
 #import "SZTSimpleDefines.h"
 #import "ABCDubPrefixHeader.h"
 #import "ABCSimpleDefines.h"
-#import "ABCColorDefines.h"
-#import "ABCFontDefines.h"
 
 #import "UIImage+SZTAdd.h"
 #import "UIView+SZTAdd.h"

@@ -127,14 +127,14 @@
 
 - (UILabel *)timeLabel {
     if (!_timeLabel) {
-        _timeLabel = [ControlHelper getLabelWithTextColor:ABCLIGHTBLACK TextFont:15.f Isbold:NO];
+        _timeLabel = [ControlHelper getLabelWithTextColor:ABCRGBA(208, 208, 208, 1.f) TextFont:15.f Isbold:NO];
     }
     return _timeLabel;
 }
 
 - (UILabel *)indexLabel {
     if (!_indexLabel) {
-        _indexLabel = [ControlHelper getLabelWithTextColor:ABCBRIGHTBLACK TextFont:13.f Isbold:NO];
+        _indexLabel = [ControlHelper getLabelWithTextColor:ABCRGBA(128, 128, 128, 1.f) TextFont:13.f Isbold:NO];
         _indexLabel.text = @"0/0";
     }
     return _indexLabel;
@@ -149,14 +149,14 @@
 
 - (UILabel *)roleNickLabel {
     if (!_roleNickLabel) {
-        _roleNickLabel = [ControlHelper getLabelWithTextColor:ABCBRIGHTBLACK TextFont:13.f Isbold:NO];
+        _roleNickLabel = [ControlHelper getLabelWithTextColor:ABCRGBA(128, 128, 128, 1.f) TextFont:13.f Isbold:NO];
     }
     return _roleNickLabel;
 }
 
 - (UILabel *)enLabel {
     if (!_enLabel) {
-        _enLabel = [ControlHelper getLabelWithTextColor:ABCDEEPBLACK TextFont:12.f Isbold:NO];
+        _enLabel = [ControlHelper getLabelWithTextColor:ABCRGBA(51, 51, 51, 1.f) TextFont:12.f Isbold:NO];
         _enLabel.text = @"This is a sententce of English caption.";
     }
     return _enLabel;
@@ -164,7 +164,7 @@
 
 - (UILabel *)chLabel {
     if (!_chLabel) {
-        _chLabel = [ControlHelper getLabelWithTextColor:ABCLIGHTBLACK TextFont:11.f Isbold:NO];
+        _chLabel = [ControlHelper getLabelWithTextColor:ABCRGBA(208, 208, 208, 1.f) TextFont:11.f Isbold:NO];
         _chLabel.text = @"这是一句中文字幕。";
     }
     return _chLabel;
@@ -187,7 +187,7 @@
 
 - (UIButton *)recordBtn {
     if (!_recordBtn) {
-        _recordBtn = [ControlHelper baseButtonAddtarget:self selector:@selector(recordBtnDidClicked) image:nil imagePressed:nil title:@"录音" font:16.f textColor:ABCLIGHTBLACK textBold:NO];
+        _recordBtn = [ControlHelper baseButtonAddtarget:self selector:@selector(recordBtnDidClicked) image:nil imagePressed:nil title:@"录音" font:16.f textColor:ABCRGBA(208, 208, 208, 1.f) textBold:NO];
     }
     return _recordBtn;
 }
