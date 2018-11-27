@@ -10,6 +10,8 @@
 		086D4FA321A7C6B5008B59B9 /* SZTWaveAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086D4FA221A7C6B5008B59B9 /* SZTWaveAnimationView.m */; };
 		08847E3021A4F56500C44307 /* NSObject+APIAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 08847E2F21A4F56500C44307 /* NSObject+APIAdd.m */; };
 		08847E3621A56B6200C44307 /* SZTClickableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 08847E3521A56B6200C44307 /* SZTClickableLabel.m */; };
+		08905F7D21ABE0A800208A44 /* ABCPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08905F7C21ABE0A800208A44 /* ABCPickerView.m */; };
+		08905F8021ABF60200208A44 /* UIPickerView+SZTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 08905F7F21ABF60200208A44 /* UIPickerView+SZTAdd.m */; };
 		08B969CD21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B969CC21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.m */; };
 		100B3BF1218ACFBC00919864 /* AlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BF0218ACFBC00919864 /* AlertHelper.m */; };
 		100B3BF6218AD80400919864 /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BF5218AD80400919864 /* GCDTimer.m */; };
@@ -134,6 +136,10 @@
 		08847E2F21A4F56500C44307 /* NSObject+APIAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+APIAdd.m"; sourceTree = "<group>"; };
 		08847E3421A56B6200C44307 /* SZTClickableLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SZTClickableLabel.h; sourceTree = "<group>"; };
 		08847E3521A56B6200C44307 /* SZTClickableLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTClickableLabel.m; sourceTree = "<group>"; };
+		08905F7B21ABE0A800208A44 /* ABCPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCPickerView.h; sourceTree = "<group>"; };
+		08905F7C21ABE0A800208A44 /* ABCPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCPickerView.m; sourceTree = "<group>"; };
+		08905F7E21ABF60200208A44 /* UIPickerView+SZTAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIPickerView+SZTAdd.h"; sourceTree = "<group>"; };
+		08905F7F21ABF60200208A44 /* UIPickerView+SZTAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIPickerView+SZTAdd.m"; sourceTree = "<group>"; };
 		08B969CB21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSearchHistoryViewModel.h; sourceTree = "<group>"; };
 		08B969CC21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSearchHistoryViewModel.m; sourceTree = "<group>"; };
 		100B3BEF218ACFBC00919864 /* AlertHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertHelper.h; sourceTree = "<group>"; };
@@ -370,6 +376,15 @@
 				08847E3521A56B6200C44307 /* SZTClickableLabel.m */,
 			);
 			path = SZTClickableLabel;
+			sourceTree = "<group>";
+		};
+		08905F7A21ABE07100208A44 /* PickerViews */ = {
+			isa = PBXGroup;
+			children = (
+				08905F7B21ABE0A800208A44 /* ABCPickerView.h */,
+				08905F7C21ABE0A800208A44 /* ABCPickerView.m */,
+			);
+			path = PickerViews;
 			sourceTree = "<group>";
 		};
 		100B3BEE218ACFA200919864 /* AlertHelper */ = {
@@ -683,6 +698,8 @@
 				10D3471321A3F6F700006CED /* UIImageView+SZTAdd.m */,
 				10D3471521A3FBB900006CED /* UIImage+SZTAdd.h */,
 				10D3471621A3FBB900006CED /* UIImage+SZTAdd.m */,
+				08905F7E21ABF60200208A44 /* UIPickerView+SZTAdd.h */,
+				08905F7F21ABF60200208A44 /* UIPickerView+SZTAdd.m */,
 			);
 			path = Categorys;
 			sourceTree = "<group>";
@@ -846,6 +863,7 @@
 		10F35A20219E8A41008A2685 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				08905F7A21ABE07100208A44 /* PickerViews */,
 				08847E3321A559B700C44307 /* SZTClickableLabel */,
 				086D4FA421A7C6C0008B59B9 /* SZTWaveAnimationView */,
 				10635797219C1F2E00D505BD /* SZTPageControl */,
@@ -1143,6 +1161,7 @@
 				10817D7B218950210026E5C7 /* ABCMediaComposeUnit.m in Sources */,
 				103BFA2E21912560002A681A /* ControlHelper.m in Sources */,
 				107504D3219D8F2F0037B436 /* ABCCommonCollectionViewCell.m in Sources */,
+				08905F8021ABF60200208A44 /* UIPickerView+SZTAdd.m in Sources */,
 				106D1AB821917DF5007973DE /* ABCDubHelper.m in Sources */,
 				102A4AE12192EC3100AC6C89 /* SZTResourceLoader.m in Sources */,
 				10F35A29219E96AF008A2685 /* ABCMainDataModel.m in Sources */,
@@ -1165,6 +1184,7 @@
 				1017F600219A6AB00080F524 /* SZTPlayerFullScreenViewController.m in Sources */,
 				105776E321880BC100F7EEB2 /* AppDelegate.m in Sources */,
 				10F35A37219EBDB2008A2685 /* ABCCommonVideoSnapCell.m in Sources */,
+				08905F7D21ABE0A800208A44 /* ABCPickerView.m in Sources */,
 				1063577F219C0F8B00D505BD /* ABCMessageViewController.m in Sources */,
 				10BF24A8218FEE230078BEFB /* ABCPresentAnimation.m in Sources */,
 				10D3470A21A3B15700006CED /* APIManager.m in Sources */,

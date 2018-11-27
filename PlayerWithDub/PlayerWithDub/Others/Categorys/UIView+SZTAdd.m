@@ -52,20 +52,40 @@
     self.layer.rasterizationScale = [UIScreen mainScreen].scale;
 }
 
-static NSString * const kTRBottomLineName = @"treadmill_bottom_line";
+static NSString * const kSZTBottomLineName = @"szt_bottom_line";
 - (void)setBottomLineWithColor:(UIColor *)color left:(CGFloat)left right:(CGFloat)right {
-    CALayer *bottomLineLayer = nil;
+    [self setLineWithColor:color lineHeight:SZTCOMMON_SPLIT_LINE_THICKNESS top:self.height - SZTCOMMON_SPLIT_LINE_THICKNESS left:left right:right name:kSZTBottomLineName];
+}
+
+static NSString * const kSZTCommonLineName = @"szt_common_line";
+- (void)setLineWithColor:(UIColor *)color top:(CGFloat)top left:(CGFloat)left right:(CGFloat)right {
+    [self setLineWithColor:color lineHeight:SZTCOMMON_SPLIT_LINE_THICKNESS top:top left:left right:right];
+}
+
+- (void)setLineWithColor:(UIColor *)color lineHeight:(CGFloat)lineHeight top:(CGFloat)top left:(CGFloat)left right:(CGFloat)right {
+    [self setLineWithColor:color lineHeight:lineHeight top:top left:left right:right name:kSZTCommonLineName];
+}
+
+- (void)setLineWithColor:(UIColor *)color lineHeight:(CGFloat)lineHeight top:(CGFloat)top left:(CGFloat)left right:(CGFloat)right name:(NSString *)name {
+    [self setLineWithColor:color lineFrame:CGRectMake(left, top, self.width - left - right, lineHeight) name:name];
+}
+
+- (void)setLineWithColor:(UIColor *)color lineFrame:(CGRect)lineFrame name:(NSString *)name {
+    CALayer *commonLineLayer = nil;
+    if (name == nil || name.length == 0) {
+        name = kSZTCommonLineName;
+    }
     for (CALayer *layer in self.layer.sublayers) {
-        if ([layer.name isEqualToString:kTRBottomLineName]) {
-            bottomLineLayer = layer;
+        if ([layer.name isEqualToString:name]) {
+            commonLineLayer = layer;
         }
     }
-    if (!bottomLineLayer) {
-        bottomLineLayer = [CALayer layer];
-        [self.layer addSublayer:bottomLineLayer];
+    if (!commonLineLayer) {
+        commonLineLayer = [CALayer layer];
+        [self.layer addSublayer:commonLineLayer];
     }
-    bottomLineLayer.backgroundColor = color.CGColor;
-    bottomLineLayer.frame = CGRectMake(left, self.height - SZTCOMMON_SPLIT_LINE_THICKNESS, self.width - left - right, SZTCOMMON_SPLIT_LINE_THICKNESS);
+    commonLineLayer.backgroundColor = color.CGColor;
+    commonLineLayer.frame = lineFrame;
 }
 
 - (void)setDashlineSpacing:(int)lineSpacing lineColor:(UIColor *)lineColor {

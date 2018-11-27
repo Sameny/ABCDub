@@ -20,9 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SZTClickableLabel : UIView
 
-@property (nonatomic, copy) NSArray <NSString *>*titles; // you can set 'titles' to show Chinese or English. The title property will be nil.
+@property (nonatomic, copy) NSArray <NSString *>*titles; // you can set 'titles' to show Chinese or English.When setted, The title property will be nil.
 
-@property (nonatomic, copy) NSString *title; // now jush can shou English
+@property (nonatomic, copy) NSString *title; // Now jush can shou English
 @property (nonatomic, strong, readonly) NSString *clickedText;
 
 @property (nonatomic, strong) UIFont *font;

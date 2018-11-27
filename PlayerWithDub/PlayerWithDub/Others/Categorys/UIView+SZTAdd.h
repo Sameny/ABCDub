@@ -21,6 +21,10 @@ static CGFloat SZTCOMMON_SPLIT_LINE_THICKNESS = 0.5;
 - (void)setLayerShadow:(UIColor*)color offset:(CGSize)offset opacity:(CGFloat) opacity radius:(CGFloat)radius;
 
 - (void)setBottomLineWithColor:(UIColor *)color left:(CGFloat)left right:(CGFloat)right;
+- (void)setLineWithColor:(UIColor *)color top:(CGFloat)top left:(CGFloat)left right:(CGFloat)right;
+- (void)setLineWithColor:(UIColor *)color lineHeight:(CGFloat)lineHeight top:(CGFloat)top left:(CGFloat)left right:(CGFloat)right;
+- (void)setLineWithColor:(UIColor *)color lineHeight:(CGFloat)lineHeight top:(CGFloat)top left:(CGFloat)left right:(CGFloat)right name:(NSString *)name;
+- (void)setLineWithColor:(UIColor *)color lineFrame:(CGRect)lineFrame name:(NSString *)name;
 
 - (void)setDashlineSpacing:(int)lineSpacing lineColor:(UIColor *)lineColor;
 
