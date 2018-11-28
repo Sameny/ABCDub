@@ -6,11 +6,11 @@
 //  Copyright © 2018年 泽泰 舒. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ABCBaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ABCUserViewController : UIViewController
+@interface ABCUserViewController : ABCBaseViewController
 
 @end
 

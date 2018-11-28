@@ -99,7 +99,7 @@
 - (UIView *)headerView {
     if (!_headerView) {
         _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, SZT_NAVIGATIONBAR_HEIGHT)];
-        [_headerView addGradientLayerWithColors:@[ABCRGBA(95, 204, 78, 1.f), ABCRGBA(50, 199, 67, 1.f)] locations:nil startPoint:CGPointMake(0, SZT_NAVIGATIONBAR_HEIGHT/2) endPoint:CGPointMake(self.bounds.size.width, SZT_NAVIGATIONBAR_HEIGHT/2)];
+        [_headerView addGradientLayerWithColors:@[ABCRGBA(95, 204, 78, 1.f), ABCRGBA(50, 199, 67, 1.f)] locations:nil startPoint:CGPointMake(0, 0.5) endPoint:CGPointMake(1, 0.5)];
     }
     return _headerView;
 }

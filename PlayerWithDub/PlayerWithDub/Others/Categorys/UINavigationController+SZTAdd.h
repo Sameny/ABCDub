@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)pushViewControllerWithClassName:(NSString *)className;
 - (void)pushViewControllerWithClassName:(NSString *)className animated:(BOOL)animted;
 
-- (void)tr_setTitleColor:(UIColor *)color;
+- (void)szt_setTitleColor:(UIColor *)color;
 
 @end
 

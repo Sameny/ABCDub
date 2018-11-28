@@ -12,6 +12,9 @@
 		08847E3621A56B6200C44307 /* SZTClickableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 08847E3521A56B6200C44307 /* SZTClickableLabel.m */; };
 		08905F7D21ABE0A800208A44 /* ABCPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08905F7C21ABE0A800208A44 /* ABCPickerView.m */; };
 		08905F8021ABF60200208A44 /* UIPickerView+SZTAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 08905F7F21ABF60200208A44 /* UIPickerView+SZTAdd.m */; };
+		08905F8321AD185800208A44 /* ABCNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08905F8221AD185800208A44 /* ABCNavigationView.m */; };
+		08905F8A21AD384300208A44 /* ABCBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08905F8921AD384300208A44 /* ABCBaseViewController.m */; };
+		08905F8D21AD4C7400208A44 /* ABCBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08905F8C21AD4C7400208A44 /* ABCBaseTableViewController.m */; };
 		08B969CD21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B969CC21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.m */; };
 		100B3BF1218ACFBC00919864 /* AlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BF0218ACFBC00919864 /* AlertHelper.m */; };
 		100B3BF6218AD80400919864 /* GCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 100B3BF5218AD80400919864 /* GCDTimer.m */; };
@@ -140,6 +143,12 @@
 		08905F7C21ABE0A800208A44 /* ABCPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCPickerView.m; sourceTree = "<group>"; };
 		08905F7E21ABF60200208A44 /* UIPickerView+SZTAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIPickerView+SZTAdd.h"; sourceTree = "<group>"; };
 		08905F7F21ABF60200208A44 /* UIPickerView+SZTAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIPickerView+SZTAdd.m"; sourceTree = "<group>"; };
+		08905F8121AD185800208A44 /* ABCNavigationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCNavigationView.h; sourceTree = "<group>"; };
+		08905F8221AD185800208A44 /* ABCNavigationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCNavigationView.m; sourceTree = "<group>"; };
+		08905F8821AD384300208A44 /* ABCBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCBaseViewController.h; sourceTree = "<group>"; };
+		08905F8921AD384300208A44 /* ABCBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCBaseViewController.m; sourceTree = "<group>"; };
+		08905F8B21AD4C7400208A44 /* ABCBaseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCBaseTableViewController.h; sourceTree = "<group>"; };
+		08905F8C21AD4C7400208A44 /* ABCBaseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCBaseTableViewController.m; sourceTree = "<group>"; };
 		08B969CB21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABCSearchHistoryViewModel.h; sourceTree = "<group>"; };
 		08B969CC21A7FC7300B5BE95 /* ABCSearchHistoryViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABCSearchHistoryViewModel.m; sourceTree = "<group>"; };
 		100B3BEF218ACFBC00919864 /* AlertHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertHelper.h; sourceTree = "<group>"; };
@@ -387,6 +396,26 @@
 			path = PickerViews;
 			sourceTree = "<group>";
 		};
+		08905F8421AD185F00208A44 /* ABCNavigationView */ = {
+			isa = PBXGroup;
+			children = (
+				08905F8121AD185800208A44 /* ABCNavigationView.h */,
+				08905F8221AD185800208A44 /* ABCNavigationView.m */,
+			);
+			path = ABCNavigationView;
+			sourceTree = "<group>";
+		};
+		08905F8721AD382C00208A44 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				08905F8821AD384300208A44 /* ABCBaseViewController.h */,
+				08905F8921AD384300208A44 /* ABCBaseViewController.m */,
+				08905F8B21AD4C7400208A44 /* ABCBaseTableViewController.h */,
+				08905F8C21AD4C7400208A44 /* ABCBaseTableViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		100B3BEE218ACFA200919864 /* AlertHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,6 +508,7 @@
 		105776E021880BC100F7EEB2 /* PlayerWithDub */ = {
 			isa = PBXGroup;
 			children = (
+				08905F8721AD382C00208A44 /* Base */,
 				103BFA2B21912540002A681A /* Heplers */,
 				10577713218828D200F7EEB2 /* Resources */,
 				10F35A1E219E897A008A2685 /* Others */,
@@ -863,6 +893,7 @@
 		10F35A20219E8A41008A2685 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				08905F8421AD185F00208A44 /* ABCNavigationView */,
 				08905F7A21ABE07100208A44 /* PickerViews */,
 				08847E3321A559B700C44307 /* SZTClickableLabel */,
 				086D4FA421A7C6C0008B59B9 /* SZTWaveAnimationView */,
@@ -1130,6 +1161,7 @@
 				100B3BF1218ACFBC00919864 /* AlertHelper.m in Sources */,
 				109E42BA21A2A08700198861 /* ABCSearchView.m in Sources */,
 				10BF24AF219011F10078BEFB /* NSObject+SZTAdd.m in Sources */,
+				08905F8D21AD4C7400208A44 /* ABCBaseTableViewController.m in Sources */,
 				107504CB219D8B510037B436 /* ABCMainCollectionHeaderView.m in Sources */,
 				10635779219C0EEE00D505BD /* ABCMainViewViewController.m in Sources */,
 				10BF249E218FDD500078BEFB /* ABCDubViewController.m in Sources */,
@@ -1163,9 +1195,11 @@
 				107504D3219D8F2F0037B436 /* ABCCommonCollectionViewCell.m in Sources */,
 				08905F8021ABF60200208A44 /* UIPickerView+SZTAdd.m in Sources */,
 				106D1AB821917DF5007973DE /* ABCDubHelper.m in Sources */,
+				08905F8A21AD384300208A44 /* ABCBaseViewController.m in Sources */,
 				102A4AE12192EC3100AC6C89 /* SZTResourceLoader.m in Sources */,
 				10F35A29219E96AF008A2685 /* ABCMainDataModel.m in Sources */,
 				10817D78218940840026E5C7 /* ABCMediaComposeUtil.m in Sources */,
+				08905F8321AD185800208A44 /* ABCNavigationView.m in Sources */,
 				10721AE62193D90800867A74 /* SZTPlayerResourceManager.m in Sources */,
 				107D765F2199592B0024EDB7 /* SZTPlayerView.m in Sources */,
 				1017F606219AC1790080F524 /* SZTPlayerStatusView.m in Sources */,

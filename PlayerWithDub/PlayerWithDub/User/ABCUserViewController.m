@@ -6,6 +6,7 @@
 //  Copyright © 2018年 泽泰 舒. All rights reserved.
 //
 
+#import "UINavigationController+SZTAdd.h"
 #import "ABCPickerView.h"
 #import "SZTClickableLabel.h"
 #import "ABCUserViewController.h"
@@ -21,6 +22,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self testClickableLabel];
+    self.navView.title = @"个人信息";
 }
 
 - (void)viewWillAppear:(BOOL)animated {

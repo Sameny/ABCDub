@@ -63,7 +63,7 @@
     }
 }
 
-- (void)tr_setTitleColor:(UIColor *)color {
+- (void)szt_setTitleColor:(UIColor *)color {
     self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:color};
 }
 
